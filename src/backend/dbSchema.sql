@@ -7,7 +7,7 @@ Create TABLE User (
 );
 
 Create TABLE WorkOrder(
-
+    id INTEGER PRIMARY KEY
 );
 
 Create TABLE 
