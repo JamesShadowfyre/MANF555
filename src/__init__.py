@@ -9,9 +9,9 @@ def create_app(test_config=None):
     login = LoginManager(app)
     
 
-    app.config.from_mapping(
+    app.config.from_mapping(  
         SECRET_KEY='test_change_later',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'src.sqlite'),
     )
 
     try:
@@ -21,16 +21,5 @@ def create_app(test_config=None):
 
     #db.init_app(app)
     app.app_context().push()
-    
-    
-    # #part of app, this guides the login and user. 
-    # @login.user_loader
-    # def load_user(id):
-    #     try:
-    #         if db.get_db().execute("SELECT id from PremiumUser where userid = (?)", (id,)).fetchone()['id'] > 0:
-    #             return SuperUser(userid=id)
-    #     except Exception as a:
-    #         print(a)
-    #         return User(userid=id)
         
     return app
