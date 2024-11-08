@@ -2,8 +2,9 @@ class item:
     def __init__(self, name, colour):
         self.name = name
         self.colour = colour
-#    def getName():
-        
+
+    def getName(self):
+        return self.name
 
 #    def setName():
         
