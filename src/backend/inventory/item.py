@@ -6,5 +6,6 @@ class item:
     def getName(self):
         return self.name
 
-#    def setName():
+    def setName(self, name):
+        self.name = str(input("What is the item name? "))        
         
