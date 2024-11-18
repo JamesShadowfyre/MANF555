@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProductTemplateWidget</class>
+ <widget class="QWidget" name="ProductTemplateWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>509</width>
+    <height>329</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Product Template</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>491</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Product Template</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>471</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QCheckBox" name="checkBox_4">
+       <property name="text">
+        <string>Back Case:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="backCaseComboBox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QCheckBox" name="checkBox_3">
+       <property name="text">
+        <string>Quality Data Collection:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBox"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboBox_2"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBox_3"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="comboBox_4"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBox_5"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="checkBox_5">
+       <property name="text">
+        <string>Drilling:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QCheckBox" name="checkBox_6">
+       <property name="text">
+        <string>Pick-by-Light:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QCheckBox" name="checkBox_7">
+       <property name="text">
+        <string>Rear Shell Assembly:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QCheckBox" name="checkBox_8">
+       <property name="text">
+        <string>Pressing:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QCheckBox" name="checkBox_9">
+       <property name="text">
+        <string>Label</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QComboBox" name="comboBox_6"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QCheckBox" name="checkBox_10">
+       <property name="text">
+        <string>Output</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="comboBox_7"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="productTemplateSave">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>290</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DeleteWorkOrderWidget</class>
+ <widget class="QWidget" name="DeleteWorkOrderWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>504</width>
+    <height>331</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Delete Work Order</string>
+  </property>
+  <widget class="QGroupBox" name="createNewWOBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>471</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Delete Work Order</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>461</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Work Order Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Customer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="DeleteWOCustomerSelection">
+       <item>
+        <property name="text">
+         <string>Auto-fills from WO #</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Order Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="createWODateInput"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Back Case Details</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="deleteWOBackCaseDetailsInput">
+       <item>
+        <property name="text">
+         <string>Auto-fills from WO #</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Drilling Arrangement</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="deleteWODrillingArrangementSelection">
+       <item>
+        <property name="text">
+         <string>Auto-fills from WO #</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>None</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Left</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Both</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Quantity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSpinBox" name="deleteWOQuantityInput"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Production Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QDateEdit" name="deleteWOProductionDateInput"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Shipping Method</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="deleteWOShippingMethod">
+       <item>
+        <property name="text">
+         <string>Delievery (Address on File)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Delivery (Other)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Customer Pickup</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="deleteWONumberComboBox">
+       <item>
+        <property name="text">
+         <string>Select...</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="createNewWOSaveButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>290</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Work Order</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

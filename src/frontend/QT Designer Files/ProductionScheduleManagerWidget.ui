@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>productionSchedulerWiget</class>
+ <widget class="QWidget" name="productionSchedulerWiget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>601</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Production Scheduler</string>
+  </property>
+  <property name="toolTip">
+   <string>Press a day on the calendar to see that day's production runs</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>20</y>
+     <width>421</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Production Calendar</string>
+   </property>
+   <widget class="QCalendarWidget" name="calendarWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>376</width>
+      <height>246</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&quot;play&quot;</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>330</y>
+     <width>1071</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Outstanding Work Orders</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>1051</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>145</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Work Order No.</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Recieved</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Finished</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Account ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Drilling Arrangement</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Qty</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Operator</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0098</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>ACCT_0040</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>2L</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>322</string>
+     </property>
+    </item>
+    <item row="0" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>0099</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>Nov-18-2024</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>ACCT_0984</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>2R</string>
+     </property>
+    </item>
+    <item row="1" column="5">
+     <property name="text">
+      <string>16</string>
+     </property>
+    </item>
+    <item row="1" column="6">
+     <property name="text">
+      <string>jRopotar</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>0100</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>ACCT_0732</string>
+     </property>
+    </item>
+    <item row="2" column="4">
+     <property name="text">
+      <string>0</string>
+     </property>
+    </item>
+    <item row="2" column="5">
+     <property name="text">
+      <string>88</string>
+     </property>
+    </item>
+    <item row="2" column="6">
+     <property name="text">
+      <string>jKettle</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>0101</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>Nov-17-2024</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>ACCT_0869</string>
+     </property>
+    </item>
+    <item row="3" column="4">
+     <property name="text">
+      <string>ALL</string>
+     </property>
+    </item>
+    <item row="3" column="5">
+     <property name="text">
+      <string>192</string>
+     </property>
+    </item>
+    <item row="3" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="ScheduleManagerBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>311</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Schedule Manager</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>274</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="sManagerCustomerManagerButton">
+       <property name="text">
+        <string>Customer Manager</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="sManagerOperatorManagerButton">
+       <property name="text">
+        <string>Operator Manager</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Modify Schedule</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>View Schedule</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>641</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Today's Production Schedule</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>621</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>145</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Work Order No.</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Scheduled Start Date</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Scheduled Start Time</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Account ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Drilling Arrangement</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Qty</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Operator</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0098</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>08:00</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>ACCT_0040</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>2L</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>322</string>
+     </property>
+    </item>
+    <item row="0" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>0099</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>08:09</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>ACCT_0984</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>2R</string>
+     </property>
+    </item>
+    <item row="1" column="5">
+     <property name="text">
+      <string>16</string>
+     </property>
+    </item>
+    <item row="1" column="6">
+     <property name="text">
+      <string>jRopotar</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>0100</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>08:45</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>ACCT_0732</string>
+     </property>
+    </item>
+    <item row="2" column="4">
+     <property name="text">
+      <string>0</string>
+     </property>
+    </item>
+    <item row="2" column="5">
+     <property name="text">
+      <string>88</string>
+     </property>
+    </item>
+    <item row="2" column="6">
+     <property name="text">
+      <string>jKettle</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>0101</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>09:15</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>ACCT_0869</string>
+     </property>
+    </item>
+    <item row="3" column="4">
+     <property name="text">
+      <string>ALL</string>
+     </property>
+    </item>
+    <item row="3" column="5">
+     <property name="text">
+      <string>192</string>
+     </property>
+    </item>
+    <item row="3" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <action name="actionEdit">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Edit a WO : opens the WO associated with a row&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WorkOrderManagerWidget</class>
+ <widget class="QWidget" name="WorkOrderManagerWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1070</width>
+    <height>379</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Work Order Manager</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>110</y>
+     <width>1071</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>All Work Orders</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>1051</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>145</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Work Order No.</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Recieved</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Finished</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Account ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Drilling Arrangement</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Qty</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Operator</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0098</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>ACCT_0040</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>2L</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>322</string>
+     </property>
+    </item>
+    <item row="0" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>0099</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>Nov-18-2024</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>ACCT_0984</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>2R</string>
+     </property>
+    </item>
+    <item row="1" column="5">
+     <property name="text">
+      <string>16</string>
+     </property>
+    </item>
+    <item row="1" column="6">
+     <property name="text">
+      <string>jRopotar</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>0100</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>ACCT_0732</string>
+     </property>
+    </item>
+    <item row="2" column="4">
+     <property name="text">
+      <string>0</string>
+     </property>
+    </item>
+    <item row="2" column="5">
+     <property name="text">
+      <string>88</string>
+     </property>
+    </item>
+    <item row="2" column="6">
+     <property name="text">
+      <string>jKettle</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>0101</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>Nov-17-2024</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>ACCT_0869</string>
+     </property>
+    </item>
+    <item row="3" column="4">
+     <property name="text">
+      <string>ALL</string>
+     </property>
+    </item>
+    <item row="3" column="5">
+     <property name="text">
+      <string>192</string>
+     </property>
+    </item>
+    <item row="3" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>831</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Work Order Manager</string>
+   </property>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>791</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="createWOButton">
+       <property name="text">
+        <string>Create Work Order</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="editWOButton">
+       <property name="text">
+        <string>Edit Work Order</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteWOButton">
+       <property name="text">
+        <string>Delete Work Order</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="completedWOButton">
+       <property name="text">
+        <string>Completed Work Orders</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="customerManagerButton">
+       <property name="text">
+        <string>Customer Manager</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionEdit">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>operatorWidget</class>
+ <widget class="QWidget" name="operatorWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>611</width>
+    <height>277</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Operator Manager</string>
+  </property>
+  <widget class="QGroupBox" name="OperatorManagerBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>171</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Operator Manager</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>160</width>
+      <height>98</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="addNewOperatorButton">
+       <property name="text">
+        <string>Add New Operator</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="editOperatorButton">
+       <property name="text">
+        <string>Edit Operator</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeOperatorButton">
+       <property name="text">
+        <string>Remove Operator</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>10</y>
+     <width>381</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Operator List</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>351</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>150</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Employee Number</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Operator Name</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0479</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>jRopotar</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>1542</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>jKettle</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>869</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>mDavis</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
