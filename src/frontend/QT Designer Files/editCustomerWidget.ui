@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditCustomerWidget</class>
+ <widget class="QWidget" name="EditCustomerWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>504</width>
+    <height>484</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit Customer</string>
+  </property>
+  <widget class="QPushButton" name="editCustomerButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>400</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edit Customer</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>481</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Edit Customer</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>461</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="accountInformationLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="editCustomerAccountSelectionBox">
+       <item>
+        <property name="text">
+         <string>Select...</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BC Tree Fruit Inc.</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SunRype Inc.</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tantalus Winery Inc.</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Account ID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="editCustomerId">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Street Address</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="editCustomerStreetAddressLine1">
+       <property name="toolTip">
+        <string>Street Address</string>
+       </property>
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Street Address Line 2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="editCustomerStreetAddressLine2">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>City</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="editCustomerCity">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Region</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="editCustomerRegion">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Postal Code</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="editCustomerPostalCode">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Country</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="editCustomerCountry">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Phone Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="editCustomerPhoneNumber">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="editCustomerEmail">
+       <property name="placeholderText">
+        <string>Auto-fills from Account Name</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
