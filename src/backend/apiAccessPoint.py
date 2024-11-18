@@ -9,8 +9,6 @@ class ApplicationHome():
         #initialize global user 
         a = 0
 
-
-
     def calculateMetrics(metricType):
         #takes in type of metric as an argument, processes
         a = 0
