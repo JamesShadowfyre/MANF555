@@ -20,9 +20,12 @@ class Schedule():
 
     
     def schedule_WorkOrder(self, workOrder, dueDate):
+        if(dueDate - workOrder.getDuration() < currentTime): 
+            return False
         for x in range(dueDate - workOrder.getDuaration(), dueDate):
             if self.getOpperatorCount() == 0:
                 break
             if x == dueDate:
                 self.schedule.append(workOrder)
-        
+                return True
+        return self.getSchedule(self, workOrder, dueDate - 1)
