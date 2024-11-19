@@ -7,25 +7,26 @@ class ApplicationHome():
         #Calendar Initialization 
         #database initialization
         #initialize global user 
-
-
+        a = 0
 
     def calculateMetrics(metricType):
         #takes in type of metric as an argument, processes
         a = 0
         #returns required functional value
 
-    def calendarFunction(functionType, args[]):
+    def calendarFunction(functionType, **kwargs):
         a = 0 
         #returns necessary object 
 
-    def inventoryFunction(functionType, args[]):
+    def inventoryFunction(functionType, **kwargs):
         a = 0
         #returns necessary object 
 
     def getWorkOrderList():
+        workOrderList = 0
         return workOrderList
     
+    #
     def userFunctions():
         a = 0
-        #returns a success case
+        return True
