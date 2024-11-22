@@ -1,8 +1,7 @@
 import AbstractMachine
 
 class DrillingMachine(AbstractMachine):
-    def b():
-        a = 0
+
     
     def execute():
         tagList = 0

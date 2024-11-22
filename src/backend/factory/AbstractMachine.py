@@ -1,15 +1,19 @@
 from abc import ABC
 
 class AbstractMachine(ABC):
+    def __init__(self):
+        super().__init__()
+        self.nodeMap = []
+        self.address = 0
     
-    def setNodeMap(self):
-        self.tag = 0
+    def setNodeMap(self, nodeMap):
+        self.nodeMap = nodeMap
     
     def getNodeMap(self):
-        return self.tag
+        return self.nodeMap
     
-    def setAddress(self):
-        self.address = 0
+    def setAddress(self, address):
+        self.address = address
 
     def getAddress(self):
         return self.address
