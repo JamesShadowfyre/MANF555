@@ -60,7 +60,7 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Task 0: Passthrough (no drilling)&lt;/p&gt;&lt;p&gt;Task 1: &lt;/p&gt;&lt;p&gt;Task 2: &lt;/p&gt;&lt;p&gt;Task 3: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Task 0: Passthrough (no drilling).&lt;/p&gt;&lt;p&gt;Task 1: Drill back two holes. &lt;/p&gt;&lt;p&gt;Task 2: Drill front two holes.&lt;/p&gt;&lt;p&gt;Task 3: Drill all four holes (two front, two back). &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
