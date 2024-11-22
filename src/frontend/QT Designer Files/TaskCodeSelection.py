@@ -12,12 +12,12 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(421, 291)
+        Form.resize(532, 317)
         self.groupBox = QtWidgets.QGroupBox(parent=Form)
-        self.groupBox.setGeometry(QtCore.QRect(50, 30, 321, 221))
+        self.groupBox.setGeometry(QtCore.QRect(50, 30, 441, 251))
         self.groupBox.setObjectName("groupBox")
         self.gridLayoutWidget = QtWidgets.QWidget(parent=self.groupBox)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(30, 40, 261, 151))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(30, 40, 381, 179))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -25,7 +25,7 @@ class Ui_Form(object):
         self.taskCodeSlider = QtWidgets.QSlider(parent=self.gridLayoutWidget)
         self.taskCodeSlider.setAcceptDrops(False)
         self.taskCodeSlider.setMinimum(0)
-        self.taskCodeSlider.setMaximum(2)
+        self.taskCodeSlider.setMaximum(3)
         self.taskCodeSlider.setProperty("value", 0)
         self.taskCodeSlider.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.taskCodeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
@@ -38,6 +38,7 @@ class Ui_Form(object):
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
         self.label_3 = QtWidgets.QLabel(parent=self.gridLayoutWidget)
+        self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 3, 0, 1, 1)
 
@@ -48,9 +49,8 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.groupBox.setTitle(_translate("Form", "Task Code Selection"))
-        self.label_2.setText(_translate("Form", "<html><head/><body><p>Task 0: </p><p>Task 1: </p><p>Task 2: </p></body></html>"))
-        self.label.setText(_translate("Form", "0                                        1                                        2"))
-        self.label_3.setText(_translate("Form", " "))
+        self.label_2.setText(_translate("Form", "<html><head/><body><p>Task 0: Passthrough (no drilling)</p><p>Task 1: </p><p>Task 2: </p><p>Task 3: </p></body></html>"))
+        self.label.setText(_translate("Form", "0                                        1                                       2                                       3"))
 
 
 if __name__ == "__main__":
