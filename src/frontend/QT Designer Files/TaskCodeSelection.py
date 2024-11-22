@@ -49,7 +49,7 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.groupBox.setTitle(_translate("Form", "Task Code Selection"))
-        self.label_2.setText(_translate("Form", "<html><head/><body><p>Task 0: Passthrough (no drilling)</p><p>Task 1: </p><p>Task 2: </p><p>Task 3: </p></body></html>"))
+        self.label_2.setText(_translate("Form", "<html><head/><body><p>Task 0: Passthrough (no drilling).</p><p>Task 1: Drill back two holes. </p><p>Task 2: Drill front two holes.</p><p>Task 3: Drill all four holes (two front, two back). </p></body></html>"))
         self.label.setText(_translate("Form", "0                                        1                                       2                                       3"))
 
 
