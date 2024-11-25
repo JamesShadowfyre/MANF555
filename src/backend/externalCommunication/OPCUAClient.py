@@ -3,9 +3,9 @@ from factory.AbstractMachine import AbstractMachine
 
 class OPCUAClient():
     
-    def connect(self, client):
+    def connect(self, client_address):
         try:
-            self.client = Client(client.get_address())
+            self.client = Client(client_address)
             self.client.connect()
             print(" INFO : Connected to OPC-UA server at", self.server_addr)
         except Exception as e:
@@ -34,6 +34,6 @@ class OPCUAClient():
         try:
             for machineNode in nodeMap.keys():
                 node = self.client.get_node(machineNode)
-                nodeMap.set(machineNode, node.get_value())
+                nodeMap.update({machineNode: node.get_value()})
         except Exception as e:
             print(e)
