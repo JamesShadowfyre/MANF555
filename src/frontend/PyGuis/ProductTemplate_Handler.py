@@ -49,7 +49,8 @@ class ProductTemplateHandler(qtw.QWidget):
 
     def convertToTaskCode(self,DrillingArrangement):
         if DrillingArrangement == "No Holes":
-            
+            pass
+
 
 
 
