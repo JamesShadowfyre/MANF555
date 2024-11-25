@@ -21,9 +21,7 @@ class UserManagerWidgetHandler(qtw.QWidget):
         self.setDisabled = (True)
         self.new_user_widget = NewUserWidget_Handler.NewUserWidgetHandler()
         self.new_user_widget.show()
-        self.setModal(True)
         self.setEnabled=(True)
-
 
     def exitUserManagerButtonClicked(self): 
         self.close()
