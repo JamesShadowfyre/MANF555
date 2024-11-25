@@ -27,7 +27,6 @@ class OPCUAClient():
             for machineNode in nodeMap.keys():
                 node = self.client.get_node(machineNode)
                 node.set_value(ua.DataValue(ua.Variant(nodeMap.get(machineNode), node.get_data_type_as_variant_type())))
-
         except Exception as e:
             print(e)
 
@@ -36,6 +35,5 @@ class OPCUAClient():
             for machineNode in nodeMap.keys():
                 node = self.client.get_node(machineNode)
                 nodeMap.set(machineNode, node.get_value())
-
         except Exception as e:
             print(e)
