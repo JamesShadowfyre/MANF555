@@ -107,21 +107,21 @@ class Ui_removeCustomerWidget(object):
         self.comboBox_2.setItemText(2, _translate("removeCustomerWidget", "SunRype Inc."))
         self.comboBox_2.setItemText(3, _translate("removeCustomerWidget", "Tantalus Winery Inc."))
         self.label_3.setText(_translate("removeCustomerWidget", "Account ID"))
-        self.removeCustomerId.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_2.setText(_translate("removeCustomerWidget", "Street Address"))
         self.removeCustomerStreetAddressLine1.setToolTip(_translate("removeCustomerWidget", "Street Address"))
-        self.removeCustomerStreetAddressLine1.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_4.setText(_translate("removeCustomerWidget", "Street Address Line 2"))
-        self.removeCustomerStreetAddressLine2.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_5.setText(_translate("removeCustomerWidget", "City"))
-        self.removeCustomerCity.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_8.setText(_translate("removeCustomerWidget", "Region"))
-        self.removeCustomerRegion.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_7.setText(_translate("removeCustomerWidget", "Postal Code"))
-        self.removeCustomerPostalCode.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_10.setText(_translate("removeCustomerWidget", "Country"))
-        self.removeCustomerCountry.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_6.setText(_translate("removeCustomerWidget", "Phone Number"))
-        self.removeCustomerPhoneNumber.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+
         self.label_9.setText(_translate("removeCustomerWidget", "Email"))
-        self.removeCustomerEmail.setPlaceholderText(_translate("removeCustomerWidget", "Auto-fills from Account Name"))
+

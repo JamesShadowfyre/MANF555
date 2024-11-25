@@ -81,12 +81,12 @@ class Ui_recieveInventoryWidget(object):
         self.groupBox.setTitle(_translate("recieveInventoryWidget", "Recieve Inventory"))
         self.label_3.setText(_translate("recieveInventoryWidget", "Item Name"))
         self.label_5.setText(_translate("recieveInventoryWidget", "Item Description"))
-        self.recieveInvDescription.setPlaceholderText(_translate("recieveInventoryWidget", "Auto-filled from Item ID"))
+   
         self.label_6.setText(_translate("recieveInventoryWidget", "Item Cost"))
-        self.recieveInvCost.setPlaceholderText(_translate("recieveInventoryWidget", "Auto-filled from Item ID"))
+
         self.label_4.setText(_translate("recieveInventoryWidget", "Quantity Received"))
         self.label_11.setText(_translate("recieveInventoryWidget", "Internal Part ID"))
-        self.recieveInvInternalPartID.setPlaceholderText(_translate("recieveInventoryWidget", "Internal Part ID"))
+
         self.label_2.setText(_translate("recieveInventoryWidget", "Item ID"))
         self.recieveInventoryNoteBox.setTitle(_translate("recieveInventoryWidget", "Notes:"))
         self.label_7.setText(_translate("recieveInventoryWidget", "Use this module while receiving new inventory."))

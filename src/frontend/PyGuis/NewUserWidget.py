@@ -54,9 +54,9 @@ class Ui_newUserWidget(object):
         self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
-
         self.retranslateUi(newUserWidget)
         QtCore.QMetaObject.connectSlotsByName(newUserWidget)
+
 
     def retranslateUi(self, newUserWidget):
         _translate = QtCore.QCoreApplication.translate
