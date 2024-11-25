@@ -16,7 +16,7 @@ class RemoveCustomerWidgetHandler(qtw.QWidget):
         self.ui.setupUi(self)
 
         self.ui.comboBox_2.setItemText = "test"
-        self.ui.removeCustomerCity.insert = "1"
+        self.ui.removeCustomerCity.setText = "1"
         self.ui.removeCustomerCountry.setText = "2"
         self.ui.removeCustomerEmail.setText = "3"
         self.ui.removeCustomerId.setText = "4"
