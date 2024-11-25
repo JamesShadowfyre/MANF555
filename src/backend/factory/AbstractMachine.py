@@ -3,7 +3,7 @@ from abc import ABC
 class AbstractMachine(ABC):
     def __init__(self):
         super().__init__()
-        self.nodeMap = []
+        self.nodeMap = {}
         self.address = 0
     
     def setNodeMap(self, nodeMap):

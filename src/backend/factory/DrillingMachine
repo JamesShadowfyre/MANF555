@@ -1,8 +1,0 @@
-import AbstractMachine
-
-class DrillingMachine(AbstractMachine):
-
-    
-    def execute():
-        tagList = 0
-        return tagList
