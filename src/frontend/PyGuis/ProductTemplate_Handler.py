@@ -13,7 +13,9 @@ class ProductTemplateHandler(qtw.QWidget):
         super().__init__()
         self.ui = Ui_ProductTemplateWidget()
         self.ui.setupUi(self)
-
+        self.BackCaseSelection = None
+        self.taskCode = None
+        self.DrillingAssignment = None
         self.ui.comboBox_2.addItems(["", "No drilling", "2x back holes", "2x front holes", "4x holes (2x front + 2x back)"])
         self.ui.backCaseComboBox.addItems(["","Black"])
   
@@ -60,26 +62,23 @@ class ProductTemplateHandler(qtw.QWidget):
             qtw.QMessageBox.information(self,"Error", "One or more datafields were not selected. Ensure each datafield is complete.")
         
         else:
-            DrillingArrangement = self.ui.comboBox_2.currentText()
-            BackCaseSelection = self.ui.backCaseComboBox.currentText()
-            print(DrillingArrangement)
-            print(BackCaseSelection)
-            self.convertToTaskCode(DrillingArrangement)
-
+            self.DrillingArrangement = self.ui.comboBox_2.currentText()
+            self.BackCaseSelection = self.ui.backCaseComboBox.currentText()
+            self.ProductTemplateReturn()
             self.close()
+            return self.taskCode, self.BackCaseSelection
+            
+    def ProductTemplateReturn(self):
 
-    def convertToTaskCode(self,DrillingArrangement):
-        if DrillingArrangement == "No drilling":
-            taskCode = 0
-        elif DrillingArrangement == "2x back holes":
-            taskCode = 1
-        elif DrillingArrangement == "2x front holes":
-            taskCode = 2
-        elif DrillingArrangement == "4x holes (2x front + 2x back)":
-            taskCode = 3
-
-        print("Task code = ", taskCode)
-                   
+        if self.DrillingArrangement == "No drilling":
+            self.taskCode = 0
+        elif self.DrillingArrangement == "2x back holes":
+            self.taskCode = 1
+        elif self.DrillingArrangement == "2x front holes":
+            self.taskCode = 2
+        elif self.DrillingArrangement == "4x holes (2x front + 2x back)":
+            self.taskCode = 3
+               
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

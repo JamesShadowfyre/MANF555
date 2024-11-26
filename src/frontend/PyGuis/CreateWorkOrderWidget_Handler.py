@@ -3,10 +3,11 @@
 """
 Remaining work:
 - Update local variables to use database table connections
-- open the product template widget
+- Not sure what trigger to use to get the checkbox to change... should probably just delete this feature
 """
-
+import ProductTemplate_Handler
 from CreateWorkOrderWidget import Ui_CreateWorkOrderWidget
+
 from PyQt5 import QtWidgets as qtw
 
 class CreateNewWorkOrderHandler(qtw.QWidget):
@@ -17,11 +18,12 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         self.ui = Ui_CreateWorkOrderWidget()
         self.ui.setupUi(self)
         self.ui.createWOCustomerSelection.addItems(["Steve", "Bob", "Joe"]) #change this with actual items from table
+        self.ui.checkBox.setDisabled(True)
 
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
         self.ui.productTemplateViewButton.clicked.connect(self.ProductTemplateButtonAction)
 
-
+        
     def SaveNewWorkWorder(self):    
         #qtw.QMessageBox.information(self, "New Work Order", "New Work Order Saved")
         msg_box = qtw.QMessageBox(self)
@@ -31,18 +33,20 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         if response == qtw.QMessageBox.Ok:
             self.savedataMethod()
             self.close()  # Close the widget if OK is clicked
-            
 
     def ProductTemplateButtonAction(self):
         print("Button pressed")
-
-
+        self.productTemplateWidget = ProductTemplate_Handler.ProductTemplateHandler()
+        self.productTemplateWidget.show()
+        
     def savedataMethod(self):
-        NewWOCustomer = self.ui.createWOCustomerSelection.currentText()
-        NewWoDate = self.ui.createWODateInput.date()
+        newWOCustomer = self.ui.createWOCustomerSelection.currentText()
+        newWoDate = self.ui.createWODateInput.date()
         newWOQty =  self.ui.createWOQuantityInput.value()
         newWOReqdByDate = self.ui.createWORequiredByDate.date()
-        NewWOProductionDate = self.ui.createWOProductionDateInput.date()
+        newWOProductionDate = self.ui.createWOProductionDateInput.date()
+        newTaskCode = self.productTemplateWidget.taskCode #passing from the pop-up widget back to this screen
+        newBackCaseSelection  = self.productTemplateWidget.BackCaseSelection #passing from the pop-up widget back to this screen
 
         # I know that there's a better way to do this, but it works. Shows understanding of using the radio button anyway
         if self.ui.createWODeliveryAoFRadioButton.isChecked():
@@ -54,12 +58,14 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
 
         #A new WO number will need to be created, this can be done by the table or adding 1 to the largest WO number in the system.
 
-        print(NewWOCustomer)
-        print(NewWoDate)
+        print(newWOCustomer)
+        print(newWoDate)
         print(newWOQty)
         print(newWOReqdByDate)
-        print(NewWOProductionDate)
+        print(newWOProductionDate)
         print(newWODeliveryMethod)
+        print(newTaskCode)
+        print(newBackCaseSelection)
 
         pass
 
