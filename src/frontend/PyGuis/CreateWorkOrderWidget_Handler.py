@@ -23,7 +23,6 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
 
 
     def SaveNewWorkWorder(self):    
-        #newLowInvSetpoint = self.ui.lowInventorySetInput.value() #change LHS to SQL table reference
         #qtw.QMessageBox.information(self, "New Work Order", "New Work Order Saved")
         msg_box = qtw.QMessageBox(self)
         msg_box.setWindowTitle("New Work Order")
