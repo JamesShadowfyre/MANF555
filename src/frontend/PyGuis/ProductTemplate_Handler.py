@@ -64,17 +64,22 @@ class ProductTemplateHandler(qtw.QWidget):
             BackCaseSelection = self.ui.backCaseComboBox.currentText()
             print(DrillingArrangement)
             print(BackCaseSelection)
+            self.convertToTaskCode(DrillingArrangement)
 
             self.close()
 
-
     def convertToTaskCode(self,DrillingArrangement):
-        if DrillingArrangement == "No Holes":
-            pass
+        if DrillingArrangement == "No drilling":
+            taskCode = 0
+        elif DrillingArrangement == "2x back holes":
+            taskCode = 1
+        elif DrillingArrangement == "2x front holes":
+            taskCode = 2
+        elif DrillingArrangement == "4x holes (2x front + 2x back)":
+            taskCode = 3
 
-
-
-
+        print("Task code = ", taskCode)
+                   
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
