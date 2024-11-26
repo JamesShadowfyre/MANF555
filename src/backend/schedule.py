@@ -30,7 +30,7 @@ class Schedule():
                 #Remember to remove operator for this set time
                 self.schedule.append(workOrder)
                 return True
-        return self.getSchedule(self, workOrder, dueDate - 1)
+        return self.schedule_WorkOrder(self, workOrder, dueDate - 1)
     
     #Bits for async call of scheduled action
         #import sched, time
