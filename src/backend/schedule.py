@@ -4,6 +4,7 @@ class Schedule():
             cls.instance = super(Schedule, cls).__new__(cls)
             return cls.instance
         return Schedule
+        
     def __init__(self) -> None:
         self.schedule = []
         self.operators = []
