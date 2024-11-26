@@ -18,5 +18,5 @@ class AbstractMachine(ABC):
     def getAddress(self):
         return self.address
     
-    def execute():
+    def execute(self, task, quantity):
         pass

@@ -19,7 +19,7 @@ class Schedule():
                 operatorCount = operatorCount + 1
         return operatorCount
 
-    
+    #DEFINE CURRENT TIME, UPDATAE the - 1 on recursive algorithm
     def schedule_WorkOrder(self, workOrder, dueDate):
         if(dueDate - workOrder.getDuration() < currentTime): 
             return False
@@ -27,6 +27,7 @@ class Schedule():
             if self.getOpperatorCount() == 0:
                 break
             if x == dueDate:
+                #Remember to remove operator for this set time
                 self.schedule.append(workOrder)
                 return True
         return self.getSchedule(self, workOrder, dueDate - 1)
