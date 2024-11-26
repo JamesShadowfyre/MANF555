@@ -31,3 +31,16 @@ class Schedule():
                 self.schedule.append(workOrder)
                 return True
         return self.getSchedule(self, workOrder, dueDate - 1)
+    
+    #Bits for async call of scheduled action
+        #import sched, time
+
+        # def action():
+        #     Task to call on 
+
+        # # Set up scheduler
+        # s = sched.scheduler(time.localtime, time.sleep)
+        # # Schedule when you want the action to occur
+        # s.enterabs(time.strptime('Tue May 01 11:05:17 2018'), 0, action)
+        # # Block until the action has been run
+        # s.run()
