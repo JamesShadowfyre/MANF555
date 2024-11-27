@@ -413,3 +413,12 @@ class Ui_productionSchedulerWiget(object):
         self.tableWidget_2.setSortingEnabled(__sortingEnabled)
         self.actionEdit.setText(_translate("productionSchedulerWiget", "Edit"))
         self.actionEdit.setToolTip(_translate("productionSchedulerWiget", "<html><head/><body><p>Edit a WO : opens the WO associated with a row</p></body></html>"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    productionSchedulerWiget = QtWidgets.QWidget()
+    ui = Ui_productionSchedulerWiget()
+    ui.setupUi(productionSchedulerWiget)
+    productionSchedulerWiget.show()
+    sys.exit(app.exec())
