@@ -3,6 +3,7 @@
 #New User Widget handler
 #Successfully can access the information entered by the user... only update required is to add save directories to SQL table for the 4 pieces of info
 
+import CreateWorkOrderWidget_Handler
 from ProductTemplate import Ui_ProductTemplateWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -13,6 +14,9 @@ class ProductTemplateHandler(qtw.QWidget):
         super().__init__()
         self.ui = Ui_ProductTemplateWidget()
         self.ui.setupUi(self)
+
+        self.CreateWOPassings = CreateWorkOrderWidget_Handler.CreateNewWorkOrderHandler()
+        
         self.BackCaseSelection = None
         self.taskCode = None
         self.DrillingAssignment = None
