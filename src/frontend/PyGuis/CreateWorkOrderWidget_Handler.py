@@ -30,7 +30,7 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         msg_box.setWindowTitle("New Work Order")
         msg_box.setText("New Work Order Completed")
         response = msg_box.exec_()
-        if response == qtw.QMessageBox.Ok:
+        if response == qtw.QMessageBox.Ok:  
             self.savedataMethod()
             self.close()  # Close the widget if OK is clicked
 
@@ -38,8 +38,9 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         print("Button pressed")
         self.productTemplateWidget = ProductTemplate_Handler.ProductTemplateHandler()
         self.productTemplateWidget.show()
+        self.ui.productTemplateViewButton.setDisabled(True)
         
-    def savedataMethod(self):
+    def savedataMethod(self, TASKCODE,BACKCASE):
         newWOCustomer = self.ui.createWOCustomerSelection.currentText()
         newWoDate = self.ui.createWODateInput.date()
         newWOQty =  self.ui.createWOQuantityInput.value()

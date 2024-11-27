@@ -1,31 +1,28 @@
-#Product Template Widget handler
+#Create Work Order Widget Handler
 
-#New User Widget handler
-#Successfully can access the information entered by the user... only update required is to add save directories to SQL table for the 4 pieces of info
+"""
+Remaining work:
+- Update local variables to use database table connections
+- Not sure what trigger to use to get the checkbox to change... should probably just delete this feature
+"""
 
-import CreateWorkOrderWidget_Handler
-from ProductTemplate import Ui_ProductTemplateWidget
+from CreateWorkOrderWidgetrev4 import Ui_CreateWorkOrderWidget
+
 from PyQt5 import QtWidgets as qtw
-from PyQt5 import QtCore as qtc
 
-class ProductTemplateHandler(qtw.QWidget):
+class CreateNewWorkOrderHandler(qtw.QWidget):
     
     def __init__(self):
         super().__init__()
-        self.ui = Ui_ProductTemplateWidget()
-        self.ui.setupUi(self)
 
-        self.CreateWOPassings = CreateWorkOrderWidget_Handler.CreateNewWorkOrderHandler()
-        
-        self.BackCaseSelection = None
-        self.taskCode = None
-        self.DrillingAssignment = None
+        self.ui = Ui_CreateWorkOrderWidget()
+        self.ui.setupUi(self)
+        self.ui.createWOCustomerSelection.addItems(["Steve", "Bob", "Joe"]) #change this with actual items from table
         self.ui.comboBox_2.addItems(["", "No drilling", "2x back holes", "2x front holes", "4x holes (2x front + 2x back)"])
         self.ui.backCaseComboBox.addItems(["","Black"])
-  
-        self.ui.productTemplateSave.clicked.connect(self.SaveNewTemplateWODate)
 
         #Drilling station is the only station that's setup, disabling all others except for case selection
+        self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
         self.ui.checkBox_3.setDisabled(True)
         self.ui.checkBox_4.setEnabled(True)
         self.ui.checkBox_5.setEnabled(True) 
@@ -44,7 +41,7 @@ class ProductTemplateHandler(qtw.QWidget):
         self.ui.backCaseComboBox.setEnabled(True)
         self.ui.comboBox_2.setEnabled(True)
 
-        #making the checkboxes function
+            #making the checkboxes function
         self.ui.backCaseComboBox.currentIndexChanged.connect(self.updateCheckBox1)
         self.ui.comboBox_2.currentIndexChanged.connect(self.updateCheckBox3)
 
@@ -59,8 +56,10 @@ class ProductTemplateHandler(qtw.QWidget):
             self.ui.checkBox_5.setChecked(True)
         else:
             self.ui.checkBox_5.setChecked(False)
-    
-    def SaveNewTemplateWODate(self):
+
+    def SaveNewWorkWorder(self):    
+        #qtw.QMessageBox.information(self, "New Work Order", "New Work Order Saved")
+        
         if self.ui.backCaseComboBox.currentIndex() <= 0 or self.ui.comboBox_2.currentIndex() <= 0:
             print("A box was not selected")
             qtw.QMessageBox.information(self,"Error", "One or more datafields were not selected. Ensure each datafield is complete.")
@@ -70,8 +69,17 @@ class ProductTemplateHandler(qtw.QWidget):
             self.BackCaseSelection = self.ui.backCaseComboBox.currentText()
             self.ProductTemplateReturn()
             self.close()
-            return self.taskCode, self.BackCaseSelection
-            
+        
+        
+        msg_box = qtw.QMessageBox(self)
+        msg_box.setWindowTitle("New Work Order")
+        msg_box.setText("New Work Order Completed")
+        response = msg_box.exec_()
+        if response == qtw.QMessageBox.Ok:  
+            self.savedataMethod()
+            self.close()  # Close the widget if OK is clicked
+
+
     def ProductTemplateReturn(self):
 
         if self.DrillingArrangement == "No drilling":
@@ -84,8 +92,38 @@ class ProductTemplateHandler(qtw.QWidget):
             self.taskCode = 3
                
 
+    def savedataMethod(self):
+        newWOCustomer = self.ui.createWOCustomerSelection.currentText()
+        newWoDate = self.ui.createWODateInput.date()
+        newWOQty =  self.ui.createWOQuantityInput.value()
+        newWOReqdByDate = self.ui.createWORequiredByDate.date()
+        newWOProductionDate = self.ui.createWOProductionDateInput.date()
+        newTaskCode = self.taskCode
+        newBackCaseSelection = self.ui.backCaseComboBox
+
+        # I know that there's a better way to do this, but it works. Shows understanding of using the radio button anyway
+        if self.ui.createWODeliveryAoFRadioButton.isChecked():
+            newWODeliveryMethod = "Address on File"
+        if self.ui.createWODeliveryOtherRadioButton.isChecked():
+            newWODeliveryMethod = "Other Address"
+        if self.ui.createWODeliveryPickupRadioButton.isChecked():
+            newWODeliveryMethod = "Customer pickup"
+
+        #A new WO number will need to be created, this can be done by the table or adding 1 to the largest WO number in the system.
+
+        print(newWOCustomer)
+        print(newWoDate)
+        print(newWOQty)
+        print(newWOReqdByDate)
+        print(newWOProductionDate)
+        print(newWODeliveryMethod)
+        print(newTaskCode)
+        print(newBackCaseSelection)
+
+        pass
+
 if __name__ == '__main__':
     app = qtw.QApplication([])
-    widget = ProductTemplateHandler()
+    widget = CreateNewWorkOrderHandler()
     widget.show()
     app.exec()
