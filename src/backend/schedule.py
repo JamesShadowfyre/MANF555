@@ -4,6 +4,7 @@ class Schedule():
             cls.instance = super(Schedule, cls).__new__(cls)
             return cls.instance
         return Schedule
+        
     def __init__(self) -> None:
         self.schedule = []
         self.operators = []
@@ -18,7 +19,7 @@ class Schedule():
                 operatorCount = operatorCount + 1
         return operatorCount
 
-    
+    #DEFINE CURRENT TIME, UPDATAE the - 1 on recursive algorithm
     def schedule_WorkOrder(self, workOrder, dueDate):
         if(dueDate - workOrder.getDuration() < currentTime): 
             return False
@@ -26,6 +27,20 @@ class Schedule():
             if self.getOpperatorCount() == 0:
                 break
             if x == dueDate:
+                #Remember to remove operator for this set time
                 self.schedule.append(workOrder)
                 return True
-        return self.getSchedule(self, workOrder, dueDate - 1)
+        return self.schedule_WorkOrder(self, workOrder, dueDate - 1)
+    
+    #Bits for async call of scheduled action
+        #import sched, time
+
+        # def action():
+        #     Task to call on 
+
+        # # Set up scheduler
+        # s = sched.scheduler(time.localtime, time.sleep)
+        # # Schedule when you want the action to occur
+        # s.enterabs(time.strptime('Tue May 01 11:05:17 2018'), 0, action)
+        # # Block until the action has been run
+        # s.run()
