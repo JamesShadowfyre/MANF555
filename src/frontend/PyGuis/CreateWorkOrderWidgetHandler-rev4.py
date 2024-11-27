@@ -4,10 +4,11 @@
 Remaining work:
 - Update local variables to use database table connections
 - Not sure what trigger to use to get the checkbox to change... should probably just delete this feature
+- need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
 """
 
-from CreateWorkOrderWidgetrev4 import Ui_CreateWorkOrderWidget
-
+from CreateWorkOrderWidgetrev6 import Ui_CreateWorkOrderWidget
+from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 
 class CreateNewWorkOrderHandler(qtw.QWidget):
@@ -59,25 +60,34 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
 
     def SaveNewWorkWorder(self):    
         #qtw.QMessageBox.information(self, "New Work Order", "New Work Order Saved")
-        
-        if self.ui.backCaseComboBox.currentIndex() <= 0 or self.ui.comboBox_2.currentIndex() <= 0:
+        #self.ui.createWODateInput or self.ui.createWORequiredByDateor self.ui.createWOProductionDateInput
+        #checking to confirm that all inputs are valid.
+        A = self.ui.backCaseComboBox.currentIndex()
+        B = self.ui.comboBox_2.currentIndex()
+        C = self.ui.createWOCustomerSelection.currentIndex()
+        D = int(self.ui.createWOQuantityInput)
+        today_date = QDate.currentDate()
+        print(today_date)
+
+        if A<=0 or B<=0 or C <=0:
             print("A box was not selected")
             qtw.QMessageBox.information(self,"Error", "One or more datafields were not selected. Ensure each datafield is complete.")
         
+        #if self.ui.createWOProductionDateInput < today_date:
+        #    qtw.QMessageBox.information(self,"Error", "Cannot enter dates in the past.")
+
         else:
             self.DrillingArrangement = self.ui.comboBox_2.currentText()
             self.BackCaseSelection = self.ui.backCaseComboBox.currentText()
             self.ProductTemplateReturn()
-            self.close()
         
-        
-        msg_box = qtw.QMessageBox(self)
-        msg_box.setWindowTitle("New Work Order")
-        msg_box.setText("New Work Order Completed")
-        response = msg_box.exec_()
-        if response == qtw.QMessageBox.Ok:  
-            self.savedataMethod()
-            self.close()  # Close the widget if OK is clicked
+            msg_box = qtw.QMessageBox(self)
+            msg_box.setWindowTitle("New Work Order")
+            msg_box.setText("New Work Order Completed")
+            response = msg_box.exec_()
+            if response == qtw.QMessageBox.Ok:  
+                self.savedataMethod()
+                self.close()  # Close the widget if OK is clicked
 
 
     def ProductTemplateReturn(self):
@@ -90,7 +100,7 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
             self.taskCode = 2
         elif self.DrillingArrangement == "4x holes (2x front + 2x back)":
             self.taskCode = 3
-               
+
 
     def savedataMethod(self):
         newWOCustomer = self.ui.createWOCustomerSelection.currentText()
