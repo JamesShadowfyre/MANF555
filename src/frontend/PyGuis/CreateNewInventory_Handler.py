@@ -25,13 +25,13 @@ class CreateNewInventoryHandler(qtw.QWidget):
 
         print("New Item Name: ")
         print(newItemName)
-        print("New Internal Part ID: ")
+        print("New Item Internal Part ID: ")
         print(newInvInternalPartID)
         print("New Item Description: ")
         print(newInvItemDescription)
         print("New Item Cost: ")
         print(newInvItemCost)
-        print("New Inventory Quantity: ")
+        print("New Item Quantity: ")
         print(newInvItemQty)
         self.close()
 
