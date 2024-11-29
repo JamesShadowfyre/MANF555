@@ -22,19 +22,26 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui = Ui_CreateWorkOrderWidget()
         self.ui.setupUi(self)
         
-        #setting the text of the boxes = the WO selected
-        self.ui.WorkOrderNumber.addItems(["","1","2","3","4"])
-        self.ui.createWODateInput.setText("hello")
-        self.ui.createWOQuantityInput.setText("hello")
-        self.ui.createWORequiredByDate.setText("hello")
-        self.ui.createWOProductionDateInput.setText("hello")
-        self.ui.backCaseComboBox.setText("hello")
-        self.ui.lineEdit_6.setText("hello")
-        taskcode = 1
+        #set all of these equal to database values
+        list = ["","1","2","3","4"]
+        self.ui.WorkOrderNumber.addItems(list)
+        
+        self.ui.createWOCustomerSelection.setText("")
+        self.ui.createWODateInput.setText("")
+        self.ui.createWOQuantityInput.setText("")
+        self.ui.createWOProductionDateInput.setText("")
+        self.ui.createWORequiredByDate.setText("")
+        self.ui.lineEdit_6.setText("")
+        self.ui.backCaseComboBox.setText("")
+        
+        taskcodeValue = 1 #set to taskCode from database - James
 
-        #Disable the entire UI except the "select WO combobox"
+        self.ProductTemplateReturn(taskcodeValue)
+
+        
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
 
+#Disable the entire UI except the "select WO combobox"
         self.ui.lineEdit.setDisabled(True)
         self.ui.lineEdit_2.setDisabled(True)
         self.ui.lineEdit_3.setDisabled(True)
@@ -54,68 +61,61 @@ class DeleteWorkOrderHandler(qtw.QWidget):
 
         self.ui.WorkOrderNumber.currentTextChanged.connect(self.updateUI)
 
-    def updateUI(self):
-        pass
+    def updateUI(self, taskcodeValue):
+     
+        #use taskCodeValue to search for other elements from the database to update UI
+        self.ProductTemplateReturn(2)
+        
+        customerfromTable = "string1"
+        WODatefromTable = "string2"
+        QtyfromTable = "string3"
+        woProddatefromTable  ="string4"
+        woreqdatefromTable = "string5"
+        shipmethodfromTable = "string6"
+        backCasefromTable = "string7"
 
-    def SaveNewWorkWorder(self):    
+        self.ui.createWOCustomerSelection.setText(customerfromTable)
+        self.ui.createWODateInput.setText(WODatefromTable)
+        self.ui.createWOQuantityInput.setText(QtyfromTable)
+        self.ui.createWOProductionDateInput.setText(woProddatefromTable)
+        self.ui.createWORequiredByDate.setText(woreqdatefromTable)
+        self.ui.lineEdit_6.setText(shipmethodfromTable)
+        self.ui.backCaseComboBox.setText(backCasefromTable)
+
+    def SaveNewWorkWorder(self, taskcodeValue):    
         #using if statements to confirm that all inputs are valid.
 
-            self.ProductTemplateReturn()
+            self.ProductTemplateReturn(taskcodeValue)
+            
             #provide user feedback
             msg_box = qtw.QMessageBox(self)
             msg_box.setWindowTitle("Delete Work Order")
             msg_box.setText("Are you sure you wish to delete the work order?")
             response = msg_box.exec_()
             if response == qtw.QMessageBox.Ok:   
-                self.savedataMethod() #Write data to table
+                self.savedataMethod(taskcodeValue) #Write data to table
                 self.close()  # Close the widget if OK is clicked
 
 
-    def ProductTemplateReturn(self, taskcode):
-        
+    def ProductTemplateReturn(self, taskcodeValue):
         #initialize
-        self.DrillingArrangement = self.ui.comboBox_2.currentText()
-
-        if self.taskCode == 0 :
-             self.DrillingArrangement = "No drilling"
-        elif self.taskCode == 1:
-            self.DrillingArrangement = "2x back holes"
-        elif self.taskCode == 2:
-            self.DrillingArrangement = "2x front holes"
-        elif self.taskCode == 3:
-            self.DrillingArrangement == "4x holes (2x front + 2x back)"
-            
-
-        self.DrillingArrangement = self.ui.comboBox_2.currentText()
-
-
-    def savedataMethod(self):
-        #****Update the LHS to be the data table save destination
-        newWOCustomer = self.ui.createWOCustomerSelection.currentText()
-        newWoDate = self.ui.createWODateInput.date()
-        newWOQty =  self.ui.createWOQuantityInput.value()
-        newWOReqdByDate = self.ui.createWORequiredByDate.date()
-        newWOProductionDate = self.ui.createWOProductionDateInput.date()
-        newTaskCode = self.taskCode
-        newBackCaseSelection = self.ui.backCaseComboBox.currentText()
-        newWODeliveryMethod = None
-
-
-        #confirming that all the fields work - comment this out for final code
-        #print(newWOCustomer)
-        #print("WO date")
-        #print(newWoDate)
-        #print(newWOQty)
-        #print("prod date")
-        #print(newWOProductionDate)
-        #print("required by")
-        #print(newWOReqdByDate)
-        #print(newWODeliveryMethod)
-        #print(newTaskCode)
-        #print(newBackCaseSelection)
-        #print("Today is:")
-
+        self.taskCode = taskcodeValue
         
+        if self.taskCode == 0 :
+             self.ui.comboBox_2.setText("No drilling")
+        elif self.taskCode == 1:
+            self.ui.comboBox_2.setText("2x back holes")
+        elif self.taskCode == 2:
+            self.ui.comboBox_2.setText("2x front holes")
+        elif self.taskCode == 3:
+            self.ui.comboBox_2.setText("4x holes (2x front + 2x back)")
+
+        taskcodeValue = self.taskCode
+        
+    def savedataMethod(self,taskcodeValue):
+        #****Update the LHS to be the data table save destination
+        datatablevalue = taskcodeValue
+        print("Data deleted")
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
