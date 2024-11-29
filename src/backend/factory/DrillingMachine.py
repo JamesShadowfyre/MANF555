@@ -3,8 +3,6 @@ from externalCommunication.OPCUAClient import OPCUAClient as OPCUAConnection
 
 class DrillingMachine(AbstractMachine.AbstractMachine):
     
-
-
     def __init__(self):
         AbstractMachine.AbstractMachine().__init__()
         address = 'opc.tcp://172.21.3.1:4840'
