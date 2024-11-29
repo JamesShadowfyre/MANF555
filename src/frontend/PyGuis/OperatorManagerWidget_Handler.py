@@ -1,6 +1,6 @@
 #OperatorManagerWidget Handler
 
-#Need to define what happens when users click buttons (will be opening the new widgets)
+#Need to define what happens when users click buttons (will be opening the new widgets) - completed
 #Need to replace the data that appears in the table with data from the database, in the INIT
 
 from OperatorManagerWidget import Ui_operatorWidget
@@ -47,6 +47,3 @@ if __name__ == '__main__':
     widget = OperatorManagerWidgetHandler()
     widget.show()
     app.exec()
-
-
-
