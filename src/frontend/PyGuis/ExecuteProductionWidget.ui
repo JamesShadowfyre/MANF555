@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExecuteProduction</class>
+ <widget class="QWidget" name="ExecuteProduction">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>572</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Execute</string>
+  </property>
+  <widget class="QPushButton" name="executeProductionButton">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>540</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Execute</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>621</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Work Order Selection</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>601</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>145</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Work Order No.</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Recieved</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date Finished</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Account ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Drilling Arrangement</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Qty</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Operator</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>0098</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>ACCT_0040</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>2L</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>322</string>
+     </property>
+    </item>
+    <item row="0" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>0099</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>Nov-18-2024</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>ACCT_0984</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>2R</string>
+     </property>
+    </item>
+    <item row="1" column="5">
+     <property name="text">
+      <string>16</string>
+     </property>
+    </item>
+    <item row="1" column="6">
+     <property name="text">
+      <string>jRopotar</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>0100</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>Nov-15-2024</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>ACCT_0732</string>
+     </property>
+    </item>
+    <item row="2" column="4">
+     <property name="text">
+      <string>0</string>
+     </property>
+    </item>
+    <item row="2" column="5">
+     <property name="text">
+      <string>88</string>
+     </property>
+    </item>
+    <item row="2" column="6">
+     <property name="text">
+      <string>jKettle</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>0101</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>Nov-16-2024</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>Nov-17-2024</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>ACCT_0869</string>
+     </property>
+    </item>
+    <item row="3" column="4">
+     <property name="text">
+      <string>ALL</string>
+     </property>
+    </item>
+    <item row="3" column="5">
+     <property name="text">
+      <string>192</string>
+     </property>
+    </item>
+    <item row="3" column="6">
+     <property name="text">
+      <string>mDavies</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="createNewWOBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>471</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Selection Confirmation</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>461</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Work Order Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Customer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="DeleteWOCustomerSelection">
+       <item>
+        <property name="text">
+         <string>Auto-fills from selection</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Order Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="createWODateInput"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Back Case Details</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="deleteWOBackCaseDetailsInput">
+       <item>
+        <property name="text">
+         <string>Auto-fills from selection</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Drilling Arrangement</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="deleteWODrillingArrangementSelection">
+       <item>
+        <property name="text">
+         <string>Auto-fills from selection</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>None</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Left</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Both</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Quantity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSpinBox" name="deleteWOQuantityInput"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Production Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QDateEdit" name="deleteWOProductionDateInput"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Shipping Method</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="deleteWOShippingMethod">
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Delievery (Address on File)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Delivery (Other)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Customer Pickup</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="deleteWONumberComboBox"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

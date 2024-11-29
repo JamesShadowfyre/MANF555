@@ -9,7 +9,7 @@ Remaining work:
 - need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
 """
 
-from DeleteWorkOrderRev3 import Ui_CreateWorkOrderWidget
+from DeleteWorkOrderRev4 import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore
@@ -30,37 +30,32 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui.createWOProductionDateInput.setText("hello")
         self.ui.backCaseComboBox.setText("hello")
         self.ui.lineEdit_6.setText("hello")
-        
+        taskcode = 1
 
         #Disable the entire UI except the "select WO combobox"
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
-        self.ui.checkBox_3.setDisabled(True)
-        self.ui.checkBox_4.setEnabled(True)
-        self.ui.checkBox_5.setEnabled(True) 
-        self.ui.checkBox_6.setDisabled(True)
-        self.ui.checkBox_7.setDisabled(True)
-        self.ui.checkBox_8.setDisabled(True)
-        self.ui.checkBox_9.setDisabled(True)
-        self.ui.checkBox_10.setDisabled(True)
+
         self.ui.lineEdit.setDisabled(True)
         self.ui.lineEdit_2.setDisabled(True)
         self.ui.lineEdit_3.setDisabled(True)
         self.ui.lineEdit_4.setDisabled(True)
         self.ui.lineEdit_5.setDisabled(True)
-        self.ui.comboBox_7.setDisabled(True)
+        self.ui.lineEdit_7.setDisabled(True)
         self.ui.comboBox_2.setEnabled(True)
         self.ui.backCaseComboBox.setEnabled(True)
-        self.ui.checkBox_10.setDisabled(True)
-        self.ui.checkBox_9.setDisabled(True)
-        self.ui.checkBox_8.setDisabled(True)
-        self.ui.checkBox_7.setDisabled(True)
-        self.ui.checkBox_6.setDisabled(True)
-        self.ui.checkBox_5.setDisabled(True)
-        self.ui.checkBox_4.setDisabled(True)
-        self.ui.checkBox_3.setDisabled(True)
+        self.ui.backCaseComboBox.setDisabled(True)
+        self.ui.createWOCustomerSelection.setDisabled(True)
+        self.ui.createWODateInput.setDisabled(True)
+        self.ui.createWOProductionDateInput.setDisabled(True)
+        self.ui.createWOQuantityInput.setDisabled(True)
+        self.ui.createWORequiredByDate.setDisabled(True)
+        self.ui.lineEdit_6.setDisabled(True)
+        self.ui.comboBox_2.setDisabled(True)
 
         self.ui.WorkOrderNumber.currentTextChanged.connect(self.updateUI)
 
+    def updateUI(self):
+        pass
 
     def SaveNewWorkWorder(self):    
         #using if statements to confirm that all inputs are valid.
@@ -76,7 +71,7 @@ class DeleteWorkOrderHandler(qtw.QWidget):
                 self.close()  # Close the widget if OK is clicked
 
 
-    def ProductTemplateReturn(self):
+    def ProductTemplateReturn(self, taskcode):
         
         #initialize
         self.DrillingArrangement = self.ui.comboBox_2.currentText()
@@ -104,13 +99,7 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         newTaskCode = self.taskCode
         newBackCaseSelection = self.ui.backCaseComboBox.currentText()
         newWODeliveryMethod = None
-        # I know that there's a better way to do this, but it works. Shows understanding of using the radio button anyway
-        if self.ui.createWODeliveryAoFRadioButton.isChecked():
-            newWODeliveryMethod = "Address on File"
-        if self.ui.createWODeliveryOtherRadioButton.isChecked():
-            newWODeliveryMethod = "Other Address"
-        if self.ui.createWODeliveryPickupRadioButton.isChecked():
-            newWODeliveryMethod = "Customer pickup"
+
 
         #confirming that all the fields work - comment this out for final code
         #print(newWOCustomer)
