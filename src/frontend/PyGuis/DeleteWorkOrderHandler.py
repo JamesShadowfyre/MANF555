@@ -1,3 +1,5 @@
+#Delete Work Order handler
+
 #Create Work Order Widget Handler
 
 """
@@ -7,26 +9,28 @@ Remaining work:
 - need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
 """
 
-from CreateWorkOrderWidgetrev6 import Ui_CreateWorkOrderWidget
+from DeleteWorkOrderRev3 import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtCore
 
-class CreateNewWorkOrderHandler(qtw.QWidget):
+class DeleteWorkOrderHandler(qtw.QWidget):
     
     def __init__(self):
         super().__init__()
         
         self.ui = Ui_CreateWorkOrderWidget()
         self.ui.setupUi(self)
-        self.ui.createWOCustomerSelection.addItems(["Steve", "Bob", "Joe"]) #change this with actual items from table
-        self.ui.comboBox_2.addItems(["", "No drilling", "2x back holes", "2x front holes", "4x holes (2x front + 2x back)"])
-        self.ui.backCaseComboBox.addItems(["","Black"])
         
-        #setting the screen dates
-        today = QDate.currentDate()
-        self.ui.createWORequiredByDate.setDate(today)
-        self.ui.createWOProductionDateInput.setDate(today)
-        self.ui.createWODateInput.setDate(today)
+        #setting the text of the boxes = the WO selected
+
+        self.ui.createWODateInput.setText("hello")
+        self.ui.createWOQuantityInput.setText("hello")
+        self.ui.createWORequiredByDate.setText("hello")
+        self.ui.createWOProductionDateInput.setText("hello")
+        self.ui.backCaseComboBox.setText("hello")
+        self.ui.lineEdit_6.setText("hello")
+        
 
         #Drilling station is the only station that's setup, disabling all others except for case selection
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
@@ -38,19 +42,27 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         self.ui.checkBox_8.setDisabled(True)
         self.ui.checkBox_9.setDisabled(True)
         self.ui.checkBox_10.setDisabled(True)
-        self.ui.comboBox.setDisabled(True)
-        self.ui.comboBox_3.setDisabled(True)
-        self.ui.comboBox_4.setDisabled(True)
-        self.ui.comboBox_5.setDisabled(True)
-        self.ui.comboBox_6.setDisabled(True)
+        self.ui.lineEdit.setDisabled(True)
+        self.ui.lineEdit_2.setDisabled(True)
+        self.ui.lineEdit_3.setDisabled(True)
+        self.ui.lineEdit_4.setDisabled(True)
+        self.ui.lineEdit_5.setDisabled(True)
         self.ui.comboBox_7.setDisabled(True)
         self.ui.comboBox_2.setEnabled(True)
         self.ui.backCaseComboBox.setEnabled(True)
-        self.ui.comboBox_2.setEnabled(True)
+        self.ui.checkBox_10.setDisabled(True)
+        self.ui.checkBox_9.setDisabled(True)
+        self.ui.checkBox_8.setDisabled(True)
+        self.ui.checkBox_7.setDisabled(True)
+        self.ui.checkBox_6.setDisabled(True)
+        self.ui.checkBox_5.setDisabled(True)
+        self.ui.checkBox_4.setDisabled(True)
+        self.ui.checkBox_3.setDisabled(True)
 
-        #making the checkboxes function
-        self.ui.backCaseComboBox.currentIndexChanged.connect(self.updateCheckBox1)
-        self.ui.comboBox_2.currentIndexChanged.connect(self.updateCheckBox3)
+
+
+
+
 
     def updateCheckBox1(self, index):
         if index > 0:
@@ -154,6 +166,6 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
-    widget = CreateNewWorkOrderHandler()
+    widget = DeleteWorkOrderHandler()
     widget.show()
     app.exec()
