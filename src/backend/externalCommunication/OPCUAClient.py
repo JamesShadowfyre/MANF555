@@ -1,5 +1,4 @@
 from opcua import Client, ua
-from factory.AbstractMachine import AbstractMachine
 
 class OPCUAClient():
     
@@ -7,7 +6,7 @@ class OPCUAClient():
         try:
             self.client = Client(client_address)
             self.client.connect()
-            print(" INFO : Connected to OPC-UA server at", self.server_addr)
+            print(" INFO : Connected to OPC-UA server at", client_address)
         except Exception as e:
             print(" INFO : Failed to connect to OPC-UA server:", e)
     
@@ -23,17 +22,18 @@ class OPCUAClient():
             print(" INFO : Error during disconnect:", e)
 
     def write(self, nodeMap):
-        try:
-            for machineNode in nodeMap.keys():
-                node = self.client.get_node(machineNode)
-                node.set_value(ua.DataValue(ua.Variant(nodeMap.get(machineNode), node.get_data_type_as_variant_type())))
-        except Exception as e:
-            print(e)
+        for machineNode in nodeMap.keys():
+            try:
+                    node = self.client.get_node(machineNode)
+                    print(node.get_browse_name())
+                    node.set_value(ua.DataValue(ua.Variant(nodeMap.get(machineNode), node.get_data_type_as_variant_type())))
+            except Exception as e:
+                print(e)
 
     def read(self, nodeMap):
-        try:
-            for machineNode in nodeMap.keys():
-                node = self.client.get_node(machineNode)
-                nodeMap.update({machineNode: node.get_value()})
-        except Exception as e:
-            print(e)
+        for machineNode in nodeMap.keys():
+            try:
+                    node = self.client.get_node(machineNode)
+                    nodeMap.update({machineNode: node.get_value()})
+            except Exception as e:
+                print(e)
