@@ -7,6 +7,10 @@ from OperatorManagerWidget import Ui_operatorWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
+# import secondary widget handlers
+from AddNewOperatorWidget_Handler import AddNewOperatorHandler
+from EditOperatorWidget_Handler import EditOperatorWidgetHandler
+from DeleteOperatorWidget_Handler import DeleteOperatorWidgetHandler
 
 class OperatorManagerWidgetHandler(qtw.QWidget):
     
@@ -22,11 +26,17 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
         self.ui.editOperatorButton.clicked.connect(self.editOperatorButtonClicked)
 
     def removeOperatorButtonClicked(self):
-        pass
+        self.deleteOperatorWidget = DeleteOperatorWidgetHandler()
+        self.deleteOperatorWidget.show()
+
     def addNewOperatorButtonClicked(self):
-        pass
+        self.addNewOperatorWidget = AddNewOperatorHandler()
+        self.addNewOperatorWidget.show()
+
     def editOperatorButtonClicked(self):
-        pass
+        self.editOperatorWidget = EditOperatorWidgetHandler()
+        self.editOperatorWidget.show()
+        
 
     def updateTableData(self):
         #I want to read the data from the QLineEdit fields here
