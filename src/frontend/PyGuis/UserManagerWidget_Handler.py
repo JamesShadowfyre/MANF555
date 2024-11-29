@@ -1,9 +1,13 @@
 #User Manager Widget
 #Need to connect this to open other screens... which need to be built still
 
-import NewUserWidget_Handler
+
 from UserManagerWidget import Ui_UserManagerWidget
 from PyQt5 import QtWidgets as qtw
+# import secondary widget handlers
+import NewUserWidget_Handler
+from ChangePasswordWidget_Handler import ChangePasswordWidgetHandler
+
 
 class UserManagerWidgetHandler(qtw.QWidget):
     
@@ -27,8 +31,8 @@ class UserManagerWidgetHandler(qtw.QWidget):
         self.close()
 
     def changeUserPasswordButtonClicked(self):
-        #self.change_password_widget = 
-        #self.change_password_widget.show()
+        self.change_password_widget = ChangePasswordWidgetHandler()
+        self.change_password_widget.show()
         print("change password button pressed")
 
     def removeUserButtonClicked(self):
