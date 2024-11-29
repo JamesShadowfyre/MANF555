@@ -1,4 +1,4 @@
-
+import workOrder
 
 class ApplicationHome():
     def init_app():
@@ -22,10 +22,14 @@ class ApplicationHome():
         a = 0
         #returns necessary object 
 
-    def getWorkOrderList():
-        workOrderList = 0
-        return workOrderList
+    def getWorkOrderList(self):
+        self.workOrderList = []
+        return self.workOrderList
     
+    def workOrderFunctions(self, functionType, **kwargs):
+        if functionType == "Create":
+            self.workOrderList.append(workOrder(kwargs['id'], kwargs['machineList'], kwargs['componentList']))
+                
     #
     def userFunctions():
         a = 0
