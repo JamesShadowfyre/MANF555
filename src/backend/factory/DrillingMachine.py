@@ -1,5 +1,3 @@
-import sys
-sys.path.append('./..')
 import AbstractMachine
 from externalCommunication.OPCUAClient import OPCUAClient as OPCUAConnection
 
@@ -50,7 +48,3 @@ class DrillingMachine(AbstractMachine.AbstractMachine):
         self.OPCUA.write(self.nodeMap)
         return returnedValues
 
-if __name__ == '__main__':
-    myMachine = DrillingMachine()
-    myMachine.execute(1, 1)
-    print('DONE')
