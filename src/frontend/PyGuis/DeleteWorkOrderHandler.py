@@ -23,7 +23,7 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui.setupUi(self)
         
         #setting the text of the boxes = the WO selected
-
+        self.ui.WorkOrderNumber.addItems(["","1","2","3","4"])
         self.ui.createWODateInput.setText("hello")
         self.ui.createWOQuantityInput.setText("hello")
         self.ui.createWORequiredByDate.setText("hello")
@@ -32,7 +32,7 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui.lineEdit_6.setText("hello")
         
 
-        #Drilling station is the only station that's setup, disabling all others except for case selection
+        #Disable the entire UI except the "select WO combobox"
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
         self.ui.checkBox_3.setDisabled(True)
         self.ui.checkBox_4.setEnabled(True)
@@ -59,59 +59,17 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui.checkBox_4.setDisabled(True)
         self.ui.checkBox_3.setDisabled(True)
 
+        self.ui.WorkOrderNumber.currentTextChanged.connect(self.updateUI)
 
-
-
-
-
-    def updateCheckBox1(self, index):
-        if index > 0:
-            self.ui.checkBox_4.setChecked(True)
-        else:
-            self.ui.checkBox_4.setChecked(False)
-
-    def updateCheckBox3(self, index):
-        if index > 0:
-            self.ui.checkBox_5.setChecked(True)
-        else:
-            self.ui.checkBox_5.setChecked(False)
 
     def SaveNewWorkWorder(self):    
         #using if statements to confirm that all inputs are valid.
-        print("today is")
-        today = QDate.currentDate()
-        print(today)
 
-        if self.ui.backCaseComboBox.currentIndex()<=0 or self.ui.comboBox_2.currentIndex()<=0 or self.ui.createWOCustomerSelection.currentIndex() <=0:
-            qtw.QMessageBox.information(self,"Error", "One or more datafields were not selected. Ensure each datafield is complete.")
-            return
-        
-        if self.ui.createWOQuantityInput.value() == 0:
-            qtw.QMessageBox.information(self,"Error", "Order quantity must be greater than zero.")
-            return
-
-        if not self.ui.createWODeliveryAoFRadioButton.isChecked() and not self.ui.createWODeliveryOtherRadioButton.isChecked() and not self.ui.createWODeliveryPickupRadioButton.isChecked():
-            qtw.QMessageBox.information(self,"Error", "Please select a shipping method.")
-            return
-
-        if self.ui.createWODateInput.date() < today:
-            qtw.QMessageBox.information(self,"Error", "One or more date fields have dates occuring in the past.")
-            return
-        
-        if self.ui.createWORequiredByDate.date() < today:
-            qtw.QMessageBox.information(self,"Error", "One or more date fields have dates occuring in the past.")
-            return
-
-        if self.ui.createWOProductionDateInput.date() < today :
-            qtw.QMessageBox.information(self,"Error", "One or more date fields have dates occuring in the past.")
-            return
-
-        else:
             self.ProductTemplateReturn()
             #provide user feedback
             msg_box = qtw.QMessageBox(self)
-            msg_box.setWindowTitle("New Work Order")
-            msg_box.setText("New Work Order Completed")
+            msg_box.setWindowTitle("Delete Work Order")
+            msg_box.setText("Are you sure you wish to delete the work order?")
             response = msg_box.exec_()
             if response == qtw.QMessageBox.Ok:   
                 self.savedataMethod() #Write data to table
@@ -119,15 +77,21 @@ class DeleteWorkOrderHandler(qtw.QWidget):
 
 
     def ProductTemplateReturn(self):
+        
+        #initialize
         self.DrillingArrangement = self.ui.comboBox_2.currentText()
-        if self.DrillingArrangement == "No drilling":
-            self.taskCode = 0
-        elif self.DrillingArrangement == "2x back holes":
-            self.taskCode = 1
-        elif self.DrillingArrangement == "2x front holes":
-            self.taskCode = 2
-        elif self.DrillingArrangement == "4x holes (2x front + 2x back)":
-            self.taskCode = 3
+
+        if self.taskCode == 0 :
+             self.DrillingArrangement = "No drilling"
+        elif self.taskCode == 1:
+            self.DrillingArrangement = "2x back holes"
+        elif self.taskCode == 2:
+            self.DrillingArrangement = "2x front holes"
+        elif self.taskCode == 3:
+            self.DrillingArrangement == "4x holes (2x front + 2x back)"
+            
+
+        self.DrillingArrangement = self.ui.comboBox_2.currentText()
 
 
     def savedataMethod(self):
@@ -149,18 +113,18 @@ class DeleteWorkOrderHandler(qtw.QWidget):
             newWODeliveryMethod = "Customer pickup"
 
         #confirming that all the fields work - comment this out for final code
-        print(newWOCustomer)
-        print("WO date")
-        print(newWoDate)
-        print(newWOQty)
-        print("prod date")
-        print(newWOProductionDate)
-        print("required by")
-        print(newWOReqdByDate)
-        print(newWODeliveryMethod)
-        print(newTaskCode)
-        print(newBackCaseSelection)
-        print("Today is:")
+        #print(newWOCustomer)
+        #print("WO date")
+        #print(newWoDate)
+        #print(newWOQty)
+        #print("prod date")
+        #print(newWOProductionDate)
+        #print("required by")
+        #print(newWOReqdByDate)
+        #print(newWODeliveryMethod)
+        #print(newTaskCode)
+        #print(newBackCaseSelection)
+        #print("Today is:")
 
         
 

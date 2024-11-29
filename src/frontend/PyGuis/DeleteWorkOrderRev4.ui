@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateWorkOrderWidget</class>
+ <widget class="QWidget" name="CreateWorkOrderWidget">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>504</width>
+    <height>558</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Delete Work Order</string>
+  </property>
+  <widget class="QPushButton" name="createNewWOSaveButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>520</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Work Order</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>481</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Shipping Method</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>375</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_6"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="createNewWOBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>481</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Delete Work Order</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>461</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Work Order Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Customer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Order Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Quantity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Production Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="requiredByDateLabel">
+       <property name="text">
+        <string>Required By: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="createWORequiredByDate"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="createWOProductionDateInput"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="createWOQuantityInput"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="createWODateInput"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="createWOCustomerSelection"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="WorkOrderNumber"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>280</y>
+     <width>481</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Product Template</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>461</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Back Case:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="backCaseComboBox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Quality Data Collection:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Drilling:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="comboBox_2"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Pick-by-Light:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="lineEdit_2"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Rear Shell Assembly:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="lineEdit_3"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Pressing:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="lineEdit_4"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Label</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="lineEdit_5"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Output</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="lineEdit_7"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
