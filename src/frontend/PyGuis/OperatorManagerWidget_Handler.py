@@ -16,7 +16,6 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
     
     def __init__(self):
         super().__init__()
-
         self.ui = Ui_operatorWidget()
         self.ui.setupUi(self)
         self.updateTableData()
@@ -42,6 +41,7 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
         #I want to read the data from the QLineEdit fields here
         pass
 
+# Widget execution code
 if __name__ == '__main__':
     app = qtw.QApplication([])
     widget = OperatorManagerWidgetHandler()

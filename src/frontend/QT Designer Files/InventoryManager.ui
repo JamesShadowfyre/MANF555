@@ -36,7 +36,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="addInventory">
        <property name="text">
         <string>Add Inventory</string>
        </property>
@@ -46,21 +46,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="performInvCycleCount">
        <property name="text">
         <string>Perform Inventory Cycle Count</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="createNewInventoryItem">
        <property name="text">
         <string>Create New Inventory Item</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="lowInvAlarmSettings">
        <property name="text">
         <string>Low Inventory Alarm Settings</string>
        </property>

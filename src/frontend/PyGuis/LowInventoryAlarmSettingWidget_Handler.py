@@ -30,8 +30,7 @@ class LowInventoryAlarmWidget(qtw.QWidget):
     def SaveNewInvAlarmSetpoint(self):
         newLowInvSetpoint = self.ui.lowInventorySetInput.value() #change LHS to SQL table reference
         qtw.QMessageBox.information(self, "Low Inventory Limit", "Low Inventory Limit updated.")
-        print(newLowInvSetpoint)
-
+        print("New Inventory Alarm Threshold Setting: ",newLowInvSetpoint)
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

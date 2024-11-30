@@ -33,12 +33,12 @@ class UserManagerWidgetHandler(qtw.QWidget):
     def changeUserPasswordButtonClicked(self):
         self.change_password_widget = ChangePasswordWidgetHandler()
         self.change_password_widget.show()
-        print("change password button pressed")
+        # print("change password button pressed")
 
     def removeUserButtonClicked(self):
         #self.remove_user_widget = 
         #self.remove_user_widget.show()
-       print("remove user button pressed")
+        print("remove user button pressed")
     
 
 
