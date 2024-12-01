@@ -14,6 +14,9 @@ class DeleteOperatorWidgetHandler(qtw.QWidget):
     def deleteOperatorButtonClicked(self):
         operatorName =  self.ui.deleteOperatorComboBox.currentText()
         employeeNumber = self.ui.deleteEmployeeNumberBox.text()
+
+        print("Deleted Operator Name: ",operatorName)
+        print("Deleted Employee Number: ",employeeNumber)
         self.close()
 
 # Code to launch widget

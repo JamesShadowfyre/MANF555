@@ -35,6 +35,7 @@ class CreateNewInventoryHandler(qtw.QWidget):
         print(newInvItemQty)
         self.close()
 
+# Widget execution code
 if __name__ == '__main__':
     app = qtw.QApplication([])
     widget = CreateNewInventoryHandler()

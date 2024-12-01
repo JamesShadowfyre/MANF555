@@ -19,13 +19,12 @@ class EditOperatorWidgetHandler(qtw.QWidget):
         operatorName =  self.ui.newOperatorNameInput.text()
         employeeNumber = self.ui.newEmployeeNumberInput.text()
 
-        print("New Operator Name: ")
-        print(operatorName)
-        print("New Employee Number: ")
-        print(employeeNumber)
+        print("New Operator Name: ",operatorName)
+        print("New Employee Number: ",employeeNumber)
         self.close()
         pass
 
+# Widget execution code
 if __name__ == '__main__':
     app = qtw.QApplication([])
     widget = EditOperatorWidgetHandler()

@@ -301,7 +301,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="DeleteWOCustomerSelection">
+      <widget class="QComboBox" name="executeWOCustomerSelection">
        <item>
         <property name="text">
          <string>Auto-fills from selection</string>
@@ -317,7 +317,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QDateEdit" name="createWODateInput"/>
+      <widget class="QDateEdit" name="executeWODateInput"/>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_3">
@@ -327,7 +327,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QComboBox" name="deleteWOBackCaseDetailsInput">
+      <widget class="QComboBox" name="executeWOBackCaseDetailsInput">
        <item>
         <property name="text">
          <string>Auto-fills from selection</string>
@@ -343,7 +343,7 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QComboBox" name="deleteWODrillingArrangementSelection">
+      <widget class="QComboBox" name="executeWODrillingArrangementSelection">
        <item>
         <property name="text">
          <string>Auto-fills from selection</string>
@@ -379,7 +379,7 @@
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="QSpinBox" name="deleteWOQuantityInput"/>
+      <widget class="QSpinBox" name="executeWOQuantityInput"/>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_7">
@@ -389,7 +389,7 @@
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="QDateEdit" name="deleteWOProductionDateInput"/>
+      <widget class="QDateEdit" name="executeWOProductionDateInput"/>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="label_8">
@@ -399,7 +399,7 @@
       </widget>
      </item>
      <item row="7" column="1">
-      <widget class="QComboBox" name="deleteWOShippingMethod">
+      <widget class="QComboBox" name="executeWOShippingMethod">
        <item>
         <property name="text">
          <string/>
@@ -423,7 +423,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="deleteWONumberComboBox"/>
+      <widget class="QComboBox" name="executeWONumberComboBox"/>
      </item>
     </layout>
    </widget>

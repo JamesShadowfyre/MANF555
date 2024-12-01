@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5 import QtWidgets as qtw
 
 class Ui_productionSystemsManagerWidget(object):
     def setupUi(self, productionSystemsManagerWidget):
@@ -450,3 +450,20 @@ class Ui_productionSystemsManagerWidget(object):
         self.currentOperatorLineEdit.setText(_translate("productionSystemsManagerWidget", "jKettle"))
         self.productionStateLabel.setText(_translate("productionSystemsManagerWidget", "Production State"))
         self.station1Status_9.setText(_translate("productionSystemsManagerWidget", "Producing"))
+
+# # Widget execution code
+# if __name__ == '__main__':
+#     import sys
+#     app = qtw.QApplication(sys.argv)
+#     widget = Ui_productionSystemsManagerWidget()
+#     widget.show()
+#     app.exec()
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    productionSystemsManagerWidget = QtWidgets.QWidget()
+    ui = Ui_productionSystemsManagerWidget()
+    ui.setupUi(productionSystemsManagerWidget)
+    productionSystemsManagerWidget.show()
+    sys.exit(app.exec())

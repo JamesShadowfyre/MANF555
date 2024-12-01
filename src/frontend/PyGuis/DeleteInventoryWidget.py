@@ -77,7 +77,7 @@ class Ui_DeleteInventoryWidget(object):
         DeleteInventoryWidget.setWindowTitle(_translate("DeleteInventoryWidget", "Delete Inventory"))
         self.deleteInventoryButton.setText(_translate("DeleteInventoryWidget", "Delete"))
         self.recieveInventoryNoteBox.setTitle(_translate("DeleteInventoryWidget", "Notes:"))
-        self.label_7.setText(_translate("DeleteInventoryWidget", "This action cannot be undone"))
+        self.label_7.setText(_translate("DeleteInventoryWidget", "      This action cannot be undone"))
         self.groupBox.setTitle(_translate("DeleteInventoryWidget", "Delete Inventory Item"))
         self.label_2.setText(_translate("DeleteInventoryWidget", "Item ID"))
         self.label_11.setText(_translate("DeleteInventoryWidget", "Internal Part ID"))

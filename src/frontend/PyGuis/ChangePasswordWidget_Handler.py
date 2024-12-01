@@ -20,12 +20,9 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         password = self.ui.changePasswordPassword.text()
 
         print("Password changed for following user: ")
-        print("Employee Number: ")
-        print(employeeNumber)
-        print("Username: ")
-        print(userName)
-        print("Password: ")
-        print("*" * len(password))
+        print("Employee Number: ", employeeNumber)
+        print("Username: ", userName)
+        print("Password: ", "*" * len(password))
         self.close()
 
 # Widget execution code
