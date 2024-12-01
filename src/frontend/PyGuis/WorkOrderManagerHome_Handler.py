@@ -1,5 +1,6 @@
 #Work Order Manager Handler
 #Need to construct a method to display the data from the tables that James is making
+#Need to construct "View completed work orders" screen & connect
 
 from WorkOrderManagerHome import Ui_WorkOrderManagerWidget
 from CreateWorkOrderWidget_Handler import CreateNewWorkOrderHandler
@@ -17,14 +18,15 @@ class WorkOrderManagerHomeHandler(qtw.QWidget):
 
         self.ui = Ui_WorkOrderManagerWidget()
         self.ui.setupUi(self)
-
-        self.showWorkOrderData()
+        self.refreshClickCount = 0
+        self.refreshWorkOrderData()
         
         self.ui.createWOButton.clicked.connect(self.createWorkOrderButtonClicked)
         self.ui.editWOButton.clicked.connect(self.editWorkOrderButtonClicked)
         self.ui.deleteWOButton.clicked.connect(self.deleteWorkOrderButtonClicked)
         self.ui.completedWOButton.clicked.connect(self.completedWorkOrdersButtonClicked)
         self.ui.customerManagerButton.clicked.connect(self.customerManagerButtonClicked)
+        self.ui.RefreshData.clicked.connect(self.refreshWorkOrderData)
 
     def createWorkOrderButtonClicked(self):
         self.CreateWO = CreateNewWorkOrderHandler()
@@ -46,7 +48,17 @@ class WorkOrderManagerHomeHandler(qtw.QWidget):
         self.Customers.show()
 
     def refreshWorkOrderData(self): #This updates the screen data
-        pass
+        if self.refreshClickCount != 0:
+            msg_box = qtw.QMessageBox(self)
+            msg_box.setWindowTitle("Refresh")
+            msg_box.setText("Customer Data Refreshed")
+            msg_box.exec()
+        
+        self.refreshClickCount += 1
+
+        #need to write the code here that connects table columns to database
+
+        
 
 
         

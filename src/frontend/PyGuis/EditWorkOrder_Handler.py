@@ -3,8 +3,7 @@
 """
 Remaining work:
 - Update local variables to use database table connections
-- Not sure what trigger to use to get the checkbox to change... should probably just delete this feature
-- need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
+- Need to change the edit fields for the two work order selections... this was an oversight during programming - change to combo boxes with potential items. Shouldn't be hard.
 """
 
 from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
@@ -62,6 +61,7 @@ class EditWorkOrderHandler(qtw.QWidget):
     def updateUI(self, taskcodeValue):
      
         #use taskCodeValue to search for other elements from the database to update UI
+        #Update the RHS of the arguments to the table entries
         self.ProductTemplateReturn(2)
         
         customerfromTable = "string1"
