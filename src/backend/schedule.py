@@ -8,6 +8,8 @@ class Schedule():
     def __init__(self) -> None:
         self.schedule = []
         self.operators = []
+        self.workOrders = []
+        self.completeWorkOrders = []
 
     def getSchedule(self):
         return self.schedule
