@@ -17,7 +17,7 @@ class WorkOrder:
         for machine in self.machineList:
             for item in self.componentMap:
                 if item.getMachine() == machine.nameString():
-                    self.stats.append(machine.execute(item.getTaskCode(), self.componentMap[self.quantity]))
+                    self.stats.append(machine.execute(item.getTaskCode(), self.componentMap[self.quantity]) / self.quantity)
 
 
 
