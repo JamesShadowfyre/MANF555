@@ -9,6 +9,7 @@ class WorkOrder:
         self.componentMap = componentMap
         self.quantity = quantity
         self.customer = WorkOrder.createCustomer(customer) #customer as JSON style object
+        self.duration = WorkOrder.setDuration(componentMap, quantity)
         self.db = 'db'
         self.operator = operator
         #SOMETHING TO SQL HERE
@@ -22,6 +23,9 @@ class WorkOrder:
                 if item.getMachine() == machine.nameString():
                     self.stats.append(machine.execute(item.getTaskCode(), self.componentMap[self.quantity]))
 
+    def getDuration(self):
+        return self.duration
+
     def loadWorkOrderFromDatabase():
         readfromDB = True
 
@@ -32,6 +36,10 @@ class WorkOrder:
     def createCustomer(customer):
         db = 'db'
         db.createTable(customer)
+
+    def setDuration(componentMap, quantity):
+        return 0
+        #This needs to cycle through all components and sum expected durations
 
 if __name__ == "__main__":
     myWorkOrder = WorkOrder(1)
