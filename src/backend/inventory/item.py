@@ -5,7 +5,7 @@ class item:
         self.name = name
         self.colour = colour
         self.taskCode = taskCode
-        self.machine: factory.AbstractMachine.AbstractMachine = self.setMachine(machine)
+        self.machine = machine
 
     def getName(self):
         return self.name
@@ -14,11 +14,9 @@ class item:
         return self.taskCode
     
     def getMachine(self):
-        return self.machine.nameString()
+        return self.machine
 
     def setName(self, name):
         self.name = name   
 
-    def setMachine(machine):
-        if machine == "Drilling":
-            return factory.DrillingMachine.DrillingMachine()
+        
