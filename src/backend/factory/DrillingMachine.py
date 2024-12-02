@@ -23,15 +23,16 @@ class DrillingMachine(AbstractMachine.AbstractMachine):
         self.nodeMap['ns=3;s="abstractMachine"."TaskCode"'] = 0
         self.nodeMap['ns=3;s="abstractMachine"."numPallets"'] = 0
         self.nodeMap['ns=3;s="abstractMachine"."complete"'] = 0
+        self.nodeMap['ns=3;s="abstractMachine"."totalTaskDuration"'] = 0
     
     def execute(self, taskCode, quantity):
         self.nodeMap['ns=3;s="abstractMachine"."TaskCode"'] = taskCode
         self.nodeMap['ns=3;s="abstractMachine"."numPallets"'] = quantity
         self.nodeMap['ns=3;s="abstractMachine"."complete"'] = 0
         self.nodeMap['ns=3;s="abstractMachine"."execOrder"' ] = True
+        returnedValues = {}
         execution = True
         #write num pallets to process and start order
-        print('Pre ORder')
         self.OPCUA.write(self.nodeMap)
         while execution: 
             #write RFID info
@@ -44,7 +45,7 @@ class DrillingMachine(AbstractMachine.AbstractMachine):
                 execution = False
         self.nodeMap['ns=3;s="abstractMachine"."execOrder"' ] = 0
         self.OPCUA.write(self.nodeMap)
-        return returnedValues
+        return returnedValues['ns=3;s="abstractMachine"."totalTaskDuration"']
 
     def nameString(self):
         return "Drilling"
