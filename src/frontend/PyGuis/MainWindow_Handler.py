@@ -1,4 +1,6 @@
 #MainWindow_Handler
+#The screen has been setup to regenerate all of the graphical screen elements every second using a threading approach 
+
 from MainWindow import Ui_MainWindow
 from ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
 from InventoryManager_Handler import inventoryManagerHandler
@@ -28,6 +30,14 @@ class MainWindow(QMainWindow):
         self.ui.mainMenuProductionSystemsManagerButton.clicked.connect(self.openFactoryManagerTab)
         self.ui.mainMenuInventoryManagerButton.clicked.connect(self.openInventoryManagerTab)
 
+        #setting elements to be READ ONLY be the user
+
+        self.ui.lineEdit.setReadOnly(True)
+        self.ui.lineEdit_2.setReadOnly(True)
+        self.ui.lineEdit_3.setReadOnly(True)
+        self.ui.lineEdit_4.setReadOnly(True)
+
+
         #menu navigation clicks
         self.ui.actionAbout.triggered.connect(self.openAbout)
         self.ui.actionAdd_Inventory.triggered.connect(self.disabledMenu)
@@ -48,7 +58,7 @@ class MainWindow(QMainWindow):
         self.ui.actionSign_Out.triggered.connect(self.disabledMenu)
         self.ui.actionScheduler.triggered.connect(self.openProductionSchedulerTab)
     
-
+###Screen navigations 
     def ExitFunction(self):
         self.close()
             
@@ -77,6 +87,16 @@ class MainWindow(QMainWindow):
         msg_box.setWindowTitle("Navigation Feature")
         msg_box.setText("This feature will be made available in future renditions of the software. A demonstration of the use of the toolbar is shown with the 'About' screen.")
         msg_box.exec_()
+
+### Updating the visual elements on the screen with data 
+
+    def MainScreenData(self):
+        pass
+
+
+
+
+
 
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
