@@ -93,7 +93,7 @@ class MainWindow(QMainWindow):
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
             print("Refreshing the GUI...")
-            threading.Timer(1, self.MainWindowGUIRefresh).start()
+            #threading.Timer(1, self.MainWindowGUIRefresh).start()
             #Call the functions here that are responsible for performing the GUI updates...
 
     def closeEvent(self, event):
