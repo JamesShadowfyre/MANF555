@@ -46,3 +46,5 @@ class DrillingMachine(AbstractMachine.AbstractMachine):
         self.OPCUA.write(self.nodeMap)
         return returnedValues
 
+    def nameString(self):
+        return "Drilling"

@@ -1,21 +1,22 @@
 import factory.AbstractMachine
+import inventory.item
 
 class WorkOrder:
-    
-    def __init__(self, id, machineList, componentMap):
+
+    def __init__(self, id, machineList, componentMap, quantity):
         self.id = id
         self.machineList = machineList
         self.componentMap = componentMap
+        self.quantity = quantity
         #SOMETHING TO SQL HERE
 
     def execute(self): 
         machine: factory.AbstractMachine.AbstractMachine
-        task = 1
-        quantity = 5
+        item: inventory.item.item
         for machine in self.machineList:
             for item in self.componentMap:
-                if item.machine == machine:
-                    machine.execute(item.taskCode, self.componentMap[quantity])
+                if item.getMachine() == machine.nameString():
+                    machine.execute(item.getTaskCode(), self.componentMap[self.quantity])
 
 
 
