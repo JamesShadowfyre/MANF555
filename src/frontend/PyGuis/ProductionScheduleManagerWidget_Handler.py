@@ -15,12 +15,17 @@ class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
         self.ui = Ui_productionSchedulerWiget()
         self.ui.setupUi(self)
 
+        self.ui.refreshButton.clicked.connect(self.refreshButtonClicked)
         self.ui.sManagerCustomerManagerButton.clicked.connect(self.customerManagerButtonClicked)
         self.ui.sManagerOperatorManagerButton.clicked.connect(self.operatorManagerButtonClicked)
         # modify schedule button clicked (UI not created yet)
         # self.ui.pushButton.clicked.connect(self.modifyScheduleButtonClicked)
         # # view schedule button clicked (UI not created yet)
         # self.ui.pushButton_2.clicked.connect(self.viewScheduleButtonClicked)
+        # self.printTodaysDataList()
+        # self.printOutstandingWorkOrderList()
+
+    def refreshButtonClicked(self):
         self.printTodaysDataList()
         self.printOutstandingWorkOrderList()
 
