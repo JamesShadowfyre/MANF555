@@ -1,7 +1,13 @@
 #MainWindow_Handler
 from MainWindow import Ui_MainWindow
+from ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
+from InventoryManager_Handler import inventoryManagerHandler
 from WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
-# from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
+from ProductionSystemsManagerWidget_Handler import FactoryHandler
+from AboutWidget_Handler import AboutWidgetHandler
+import threading
+
+
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -13,18 +19,78 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.keepRefreshing = True
+        self.MainWindowGUIRefresh()
+        
+
         self.ui.mainMenuWorkOrderManagerButton.clicked.connect(self.openWorkOrderTab)
+        self.ui.mainMenuScheduleManagerButton.clicked.connect(self.openProductionSchedulerTab)
+        self.ui.mainMenuProductionSystemsManagerButton.clicked.connect(self.openFactoryManagerTab)
+        self.ui.mainMenuInventoryManagerButton.clicked.connect(self.openInventoryManagerTab)
+
+        #menu navigation clicks
+        self.ui.actionAbout.triggered.connect(self.openAbout)
+        self.ui.actionAdd_Inventory.triggered.connect(self.disabledMenu)
+        self.ui.actionAdd_New_Customer.triggered.connect(self.disabledMenu)
+        self.ui.actionAdd_New_Operator.triggered.connect(self.disabledMenu)
+        self.ui.actionCustomers.triggered.connect(self.disabledMenu)
+        self.ui.actionAdd_Inventory.triggered.connect(self.disabledMenu)
+        self.ui.actionExit.triggered.connect(self.ExitFunction)
+        self.ui.actionFacility_Overview.triggered.connect(self.openFactoryManagerTab)
+        self.ui.actionMetrics.triggered.connect(self.disabledMenu)
+        self.ui.actionNew_Work_Order.triggered.connect(self.disabledMenu)
+        self.ui.actionFull_Window.triggered.connect(self.disabledMenu)
+        self.ui.actionMinimize.triggered.connect(self.disabledMenu)
+        self.ui.actionView_Operators.triggered.connect(self.disabledMenu)
+        self.ui.actionView_Work_Orders.triggered.connect(self.disabledMenu)
+        self.ui.actionView_Inventory.triggered.connect(self.disabledMenu)
+        self.ui.actionTutorials.triggered.connect(self.disabledMenu)
+        self.ui.actionSign_Out.triggered.connect(self.disabledMenu)
+        self.ui.actionScheduler.triggered.connect(self.openProductionSchedulerTab)
+    
+
+    def ExitFunction(self):
+        self.close()
+            
+    def openAbout(self):
+        self.about = AboutWidgetHandler()
+        self.about.show()
 
     def openWorkOrderTab(self):
         self.openWOTab = WorkOrderManagerHomeHandler()
         self.openWOTab.show()
 
-    #     self.ui.mainMenuInventoryManagerButton.clicked.connect(self.showNewWindow)
+    def openFactoryManagerTab(self):
+        self.openFactory = FactoryHandler()
+        self.openFactory.show()
 
+    def openInventoryManagerTab(self):
+        self.invmanage = inventoryManagerHandler()
+        self.invmanage.show()
+    
+    def openProductionSchedulerTab(self):
+        self.prodsched = ProductionScheduleManagerWidgetHandler()
+        self.prodsched.show()
 
-    # def showNewWindow(self,checked):
-    #     self.w = Ui_productionSchedulerWiget()
-    #     self.w.show()
+    def disabledMenu(self):
+        msg_box = qtw.QMessageBox(self)
+        msg_box.setWindowTitle("Navigation Feature")
+        msg_box.setText("This feature will be made available in future renditions of the software. A demonstration of the use of the toolbar is shown with the 'About' screen.")
+        msg_box.exec_()
+
+    def MainWindowGUIRefresh(self):
+        if self.keepRefreshing:
+            print("Refreshing the GUI...")
+            threading.Timer(1, self.MainWindowGUIRefresh).start()
+            #Call the functions here that are responsible for performing the GUI updates...
+
+    def closeEvent(self, event):
+        """Stop the timer when the user closes the program."""
+        print("Stopping the timer...")
+        self.keepRefreshing = False  # Prevent new timers from starting
+        event.accept()  # Allow the program to close
+        
+        
 
 # Widget execution code
 if __name__ == '__main__':

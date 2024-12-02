@@ -966,7 +966,7 @@ class Ui_MainWindow(object):
         self.FactoryImg = QtWidgets.QLabel(self.centralwidget)
         self.FactoryImg.setGeometry(QtCore.QRect(880, 120, 311, 261))
         self.FactoryImg.setText("")
-        self.FactoryImg.setPixmap(QtGui.QPixmap("../../../../../../../../../../OneDrive - UBC/University of British Columbia/Courses/MANF_555 Factory Planning/Software Design Document/Festo Complete System 408 - higher res.png"))
+        self.FactoryImg.setPixmap(QtGui.QPixmap(r"src\frontend\PyGUIs\FestoCompleteSystem408highres.png"))
         self.FactoryImg.setScaledContents(True)
         self.FactoryImg.setWordWrap(True)
         self.FactoryImg.setObjectName("FactoryImg")
