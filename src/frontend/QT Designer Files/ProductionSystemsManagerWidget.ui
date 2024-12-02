@@ -646,9 +646,16 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="kPIButton">
+      <widget class="QPushButton" name="kpiButton">
        <property name="text">
         <string>Key Performance Indicators</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="executeProductionButton">
+       <property name="text">
+        <string>Execute Production</string>
        </property>
       </widget>
      </item>

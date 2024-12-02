@@ -20,3 +20,6 @@ class AbstractMachine(ABC):
     
     def execute(self, task, quantity):
         pass
+
+    def nameString(self):
+        pass

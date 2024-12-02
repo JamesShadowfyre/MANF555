@@ -10,6 +10,7 @@ Remaining work:
 from CreateWorkOrderWidgetrev6 import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
+import backend.apiAccessPoint as api
 
 class CreateNewWorkOrderHandler(qtw.QWidget):
     
@@ -135,6 +136,16 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
             newWODeliveryMethod = "Other Address"
         if self.ui.createWODeliveryPickupRadioButton.isChecked():
             newWODeliveryMethod = "Customer pickup"
+
+        api.ApplicationHome.workOrderFunctions('create', 
+                                               customer=newWOCustomer, 
+                                               orderDate=newWoDate, 
+                                               quantity=newWOQty, 
+                                               dueDate=newWOReqdByDate, 
+                                               taskCode=newTaskCode,
+                                               case=newBackCaseSelection,
+                                               delivery=newWODeliveryMethod
+                                               )
 
         #confirming that all the fields work - comment this out for final code
         print(newWOCustomer)
