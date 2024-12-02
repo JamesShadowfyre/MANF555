@@ -1,6 +1,13 @@
-import workOrder.workOrder as workOrder
+from backend.workOrder.workOrder import WorkOrder
 
-class ApplicationHome():
+class ApplicationHome:
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(ApplicationHome, cls).__new__(cls)
+            return cls.instance
+        return cls.instance
+    def __init__(self):
+        a = 0
     def init_app(self):
         #Inventory Manager Initializaiton
         #WorkOrder List initialization 
@@ -8,7 +15,7 @@ class ApplicationHome():
         #database initialization
         #initialize global user 
         a = 0
-        self.workOrderList = []
+        self.workOrderList = ['test value']
         self.workOrderID = self.workOrderList.__len__()
 
     def calculateMetrics(metricType):
@@ -27,11 +34,11 @@ class ApplicationHome():
     def getWorkOrderList(self):
         return self.workOrderList
     
-    def workOrderFunctions(self, functionType, **kwargs):
+    def setWorkOrderFunctions(self, functionType, **kwargs):
         if functionType == 'create':
-            self.workOrderList.append(workOrder.WorkOrder(id=(self.workOrderID + 1), 
+            self.workOrderList.append(WorkOrder(id=(self.workOrderID + 1), 
                                                 machineList=['Drilling'], 
-                                                componentMap={kwargs['case']: kwargs['newTaskCode']},
+                                                componentMap={kwargs['case']: kwargs['taskCode']},
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
                                                 operator=None

@@ -9,7 +9,7 @@ Remaining work:
 - need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
 """
 
-from DeleteWorkOrderRev4 import Ui_CreateWorkOrderWidget
+from frontend.PyGuis.DeleteWorkOrderRev4 import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore

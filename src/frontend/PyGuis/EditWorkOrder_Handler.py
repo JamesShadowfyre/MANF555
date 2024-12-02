@@ -6,7 +6,7 @@ Remaining work:
 - Need to change the edit fields for the two work order selections... this was an oversight during programming - change to combo boxes with potential items. Shouldn't be hard.
 """
 
-from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
+from frontend.PyGuis.EditWorkOrderWidget import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore

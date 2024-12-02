@@ -2,11 +2,11 @@
 #Need to construct a method to display the data from the tables that James is making
 #Need to construct "View completed work orders" screen & connect
 
-from WorkOrderManagerHome import Ui_WorkOrderManagerWidget
-from CreateWorkOrderWidget_Handler import CreateNewWorkOrderHandler
-from DeleteWorkOrderHandler import DeleteWorkOrderHandler
-from EditWorkOrder_Handler import EditWorkOrderHandler
-from CustomerManager_Handler import CustomerManagerHandler
+from frontend.PyGuis.WorkOrderManagerHome import Ui_WorkOrderManagerWidget
+from frontend.PyGuis.CreateWorkOrderWidget_Handler import CreateNewWorkOrderHandler
+from frontend.PyGuis.DeleteWorkOrderHandler import DeleteWorkOrderHandler
+from frontend.PyGuis.EditWorkOrder_Handler import EditWorkOrderHandler
+from frontend.PyGuis.CustomerManager_Handler import CustomerManagerHandler
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc

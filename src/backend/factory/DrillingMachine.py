@@ -1,5 +1,5 @@
-import AbstractMachine
-from externalCommunication.OPCUAClient import OPCUAClient as OPCUAConnection
+import backend.factory.AbstractMachine as AbstractMachine
+from backend.externalCommunication.OPCUAClient import OPCUAClient as OPCUAConnection
 
 class DrillingMachine(AbstractMachine.AbstractMachine):
     
