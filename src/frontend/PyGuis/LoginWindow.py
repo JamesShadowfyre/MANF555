@@ -40,7 +40,7 @@ class Ui_loginWindow(object):
         sizePolicy.setHeightForWidth(self.BackgroundPhoto.sizePolicy().hasHeightForWidth())
         self.BackgroundPhoto.setSizePolicy(sizePolicy)
         self.BackgroundPhoto.setText("")
-        self.BackgroundPhoto.setPixmap(QtGui.QPixmap(r"src/frontend/PyGUIs/JonGUIs/LoginPhoto.jpg"))
+        self.BackgroundPhoto.setPixmap(QtGui.QPixmap(r"src\frontend\PyGUIs\LoginPhoto.jpg"))
         self.BackgroundPhoto.setScaledContents(True)
         self.BackgroundPhoto.setObjectName("BackgroundPhoto")
         self.label_3 = QtWidgets.QLabel(loginWindow)
