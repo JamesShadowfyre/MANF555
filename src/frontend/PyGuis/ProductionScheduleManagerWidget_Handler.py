@@ -45,7 +45,7 @@ class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
     #     self.editOperatorWidget = <>()
     #     self.editOperatorWidget.show()
 
-    # Today table code
+    # Today Production Schedule table to list code
     def extractTodaysDataToList(self):
         TodayData_list = []
         tableWidget = self.ui.tableWidget
@@ -69,7 +69,7 @@ class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
         for row in data_list:
             print(row)
     
-# Outstanding Work Order list code
+# Outstanding Work Order table to list code
     def extractOutstandingWorkOrderToList(self):
         OutstandingWorkOrder_list = []
         tableWidget2 = self.ui.tableWidget_2
