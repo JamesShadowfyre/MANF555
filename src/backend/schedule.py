@@ -1,9 +1,11 @@
+from datetime import datetime
+
 class Schedule():
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(Schedule, cls).__new__(cls)
             return cls.instance
-        return Schedule
+        return cls.instance
         
     def __init__(self) -> None:
         self.schedule = []
@@ -23,7 +25,8 @@ class Schedule():
 
     #DEFINE CURRENT TIME, UPDATAE the - 1 on recursive algorithm
     def schedule_WorkOrder(self, workOrder, dueDate):
-        if(dueDate - workOrder.getDuration() < currentTime): 
+        #update dates to be Time Objects
+        if(dueDate - workOrder.getDuration() < datetime.now().strftime('%H:%M:%S')): 
             return False
         for x in range(dueDate - workOrder.getDuaration(), dueDate):
             if self.getOpperatorCount() == 0:
@@ -32,7 +35,7 @@ class Schedule():
                 #Remember to remove operator for this set time
                 self.schedule.append(workOrder)
                 return True
-        return self.schedule_WorkOrder(self, workOrder, dueDate - 1)
+        return self.schedule_WorkOrder(self, workOrder, dueDate - 1) #1 should be minute based on our average time scale
     
     #Bits for async call of scheduled action
         #import sched, time

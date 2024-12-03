@@ -3,10 +3,9 @@
 """
 Remaining work:
 - Update local variables to use database table connections
-- Need to change the edit fields for the two work order selections... this was an oversight during programming - change to combo boxes with potential items. Shouldn't be hard.
 """
 
-from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
+from frontend.PyGuis.EditWorkOrderWidget import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore
@@ -20,22 +19,23 @@ class EditWorkOrderHandler(qtw.QWidget):
         self.ui.setupUi(self)
         
         #set all of these equal to database values
-        list = ["","1","2","3","4"]
+        list = ["","1","2","3","4"] #WO number - update with sql data
+        customers = ["cust1", "cust2", "cust3"] #update with sql data
+
         self.ui.WorkOrderNumber.addItems(list)
-        
-        self.ui.createWOCustomerSelection.setText("")
+        self.ui.comboBox_3.addItems(customers)
         self.ui.createWODateInput.setText("")
         self.ui.createWOQuantityInput.setText("")
         self.ui.createWOProductionDateInput.setText("")
         self.ui.createWORequiredByDate.setText("")
-        self.ui.lineEdit_6.setText("")
-        self.ui.backCaseComboBox.setText("")
+        self.ui.comboBox.setCurrentText("")
+        self.ui.comboBox_2.setCurrentText("")
+        self.ui.comboBox_4.setCurrentText("")
         
-        taskcodeValue = 1 #set to taskCode from database - James
+        taskcodeValue = None #set to taskCode from database - James
 
         self.ProductTemplateReturn(taskcodeValue)
 
-        
         self.ui.createNewWOSaveButton.clicked.connect(self.SaveNewWorkWorder)
 
 #Disable the entire UI except the "select WO combobox"
@@ -46,14 +46,14 @@ class EditWorkOrderHandler(qtw.QWidget):
         self.ui.lineEdit_5.setDisabled(True)
         self.ui.lineEdit_7.setDisabled(True)
         self.ui.comboBox_2.setEnabled(True)
-        self.ui.backCaseComboBox.setEnabled(True)
-        self.ui.backCaseComboBox.setDisabled(True)
-        self.ui.createWOCustomerSelection.setDisabled(True)
+        self.ui.comboBox_2.setEnabled(True)
+        self.ui.comboBox_4.setDisabled(True)
+        self.ui.comboBox_2.setDisabled(True)
         self.ui.createWODateInput.setDisabled(True)
         self.ui.createWOProductionDateInput.setDisabled(True)
         self.ui.createWOQuantityInput.setDisabled(True)
         self.ui.createWORequiredByDate.setDisabled(True)
-        self.ui.lineEdit_6.setDisabled(True)
+        self.ui.comboBox_3.setDisabled(True)
         self.ui.comboBox_2.setDisabled(True)
 
         self.ui.WorkOrderNumber.currentTextChanged.connect(self.updateUI)
@@ -62,7 +62,7 @@ class EditWorkOrderHandler(qtw.QWidget):
      
         #use taskCodeValue to search for other elements from the database to update UI
         #Update the RHS of the arguments to the table entries
-        self.ProductTemplateReturn(2)
+        self.ProductTemplateReturn(taskcodeValue)
         
         customerfromTable = "string1"
         WODatefromTable = "string2"
@@ -72,13 +72,13 @@ class EditWorkOrderHandler(qtw.QWidget):
         shipmethodfromTable = "string6"
         backCasefromTable = "string7"
 
-        self.ui.createWOCustomerSelection.setText(customerfromTable)
+        self.ui.comboBox_3.setCurrentText(customerfromTable)
         self.ui.createWODateInput.setText(WODatefromTable)
         self.ui.createWOQuantityInput.setText(QtyfromTable)
         self.ui.createWOProductionDateInput.setText(woProddatefromTable)
         self.ui.createWORequiredByDate.setText(woreqdatefromTable)
-        self.ui.lineEdit_6.setText(shipmethodfromTable)
-        self.ui.backCaseComboBox.setText(backCasefromTable)
+        self.ui.comboBox.setCurrentText(shipmethodfromTable)
+        self.ui.comboBox_2.setCurrentText(backCasefromTable)
 
 #Enable the entire UI except the "select WO combobox"
         self.ui.lineEdit.setDisabled(False)
@@ -88,15 +88,14 @@ class EditWorkOrderHandler(qtw.QWidget):
         self.ui.lineEdit_5.setDisabled(False)
         self.ui.lineEdit_7.setDisabled(False)
         self.ui.comboBox_2.setEnabled(False)
-        self.ui.backCaseComboBox.setEnabled(False)
-        self.ui.backCaseComboBox.setDisabled(False)
-        self.ui.createWOCustomerSelection.setDisabled(False)
+        self.ui.comboBox_4.setDisabled(False)
+        self.ui.comboBox.setDisabled(False)
         self.ui.createWODateInput.setDisabled(False)
         self.ui.createWOProductionDateInput.setDisabled(False)
         self.ui.createWOQuantityInput.setDisabled(False)
         self.ui.createWORequiredByDate.setDisabled(False)
-        self.ui.lineEdit_6.setDisabled(False)
         self.ui.comboBox_2.setDisabled(False)
+        self.ui.comboBox_3.setDisabled(False)
 
     def SaveNewWorkWorder(self, taskcodeValue):    
         #using if statements to confirm that all inputs are valid.
@@ -117,14 +116,18 @@ class EditWorkOrderHandler(qtw.QWidget):
         #initialize
         self.taskCode = taskcodeValue
         
+
+
         if self.taskCode == 0 :
-             self.ui.comboBox_2.setText("No drilling")
+             self.ui.comboBox_4.setCurrentText("No drilling")
         elif self.taskCode == 1:
-            self.ui.comboBox_2.setText("2x back holes")
+            self.ui.comboBox_4.setCurrentText("2x back holes")
         elif self.taskCode == 2:
-            self.ui.comboBox_2.setText("2x front holes")
+            self.ui.comboBox_4.setCurrentText("2x front holes")
         elif self.taskCode == 3:
-            self.ui.comboBox_2.setText("4x holes (2x front + 2x back)")
+            self.ui.comboBox_4.setCurrentText("4x holes (2x front + 2x back)")
+        elif self.taskCode == None:
+            self.ui.comboBox_4.setCurrentText("")
 
         taskcodeValue = self.taskCode
         

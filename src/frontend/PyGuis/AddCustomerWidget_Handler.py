@@ -2,7 +2,7 @@
 
 #Work remaining on this Handler:
 
-from AddCustomerWidget import Ui_AddNewCustomerWidget
+from frontend.PyGuis.AddCustomerWidget import Ui_AddNewCustomerWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -17,6 +17,22 @@ class AddCustomerWidgetHandler(qtw.QWidget):
 
         self.ui.groupBox.setDisabled(False)
         self.ui.checkBox.stateChanged.connect(self.changeBillingVis)
+        self.ui.pushButton.clicked.connect(self.AddNewCustSave)
+
+    def AddNewCustSave(self, state):
+        
+        msg_box = qtw.QMessageBox(self)
+        msg_box.setWindowTitle("Add Customer")
+        msg_box.setText("Please confirm that all entered information is correct. No error trapping has been implemented to this screen.")
+        msg_box.setStandardButtons(qtw.QMessageBox.Ok | qtw.QMessageBox.Cancel)
+        response = msg_box.exec_()
+        if response == qtw.QMessageBox.Ok:
+            self.saveNewCustData(state)
+            self.close()  # Close the widget if OK is clicked
+            #Code to modify the entry from the database
+        elif response == qtw.QMessageBox.Cancel:
+            pass  # Do nothing if Cancel is clicked
+
 
     def changeBillingVis(self, state): #state is changed by stateChanged. Did not need to be assigned becase there's only one checkbox
         if state == 2: #"billing info is the same as account info"
@@ -54,8 +70,8 @@ class AddCustomerWidgetHandler(qtw.QWidget):
             self.ui.billingPhoneNumberInput.setText("")
             self.ui.billingEmailInput.setText("")
 
-    def saveNewCustData(self):
-        self.changeBillingVis() #Update the UI accordingly
+    def saveNewCustData(self, state):
+        self.changeBillingVis(state) #Update the UI accordingly before written data is saved
 
         field1 = self.ui.accountNameInput.text()
         field2 = self.ui.streetAddressLine1Input.text()
@@ -77,25 +93,27 @@ class AddCustomerWidgetHandler(qtw.QWidget):
         field18 = self.ui.billingPhoneNumberInput.text()
         field19 = self.ui.billingEmailInput.text()
 
-        self.ui.accountNameInput.text()
-        self.ui.streetAddressLine1Input.text()
-        self.ui.billingStreetAddressLine2Input.text()
-        self.ui.lineEdit_4.text()
-        self.ui.regionInput.currentText()
-        self.ui.postalCodeInput.text()
-        self.ui.comboBox.currentText()
-        self.ui.phoneNumberInput.text()
-        self.ui.emailInput.text()
-        self.ui.comboBox_2.currentText()
-        self.ui.billingNameInput.text()
-        self.ui.billingStreetAddressLine1Input.text()
-        self.ui.billingStreetAddressLine2Input.text()
-        self.ui.billingCityInput.text()
-        self.ui.billingRegionInput.currentText()
-        self.ui.billingPostalCodeInput_2.text()
-        self.ui.billingCountryInput.currentText()
-        self.ui.billingPhoneNumberInput.text()
-        self.ui.billingEmailInput.text()
+        # self.ui.accountNameInput.text()
+        # self.ui.streetAddressLine1Input.text()
+        # self.ui.billingStreetAddressLine2Input.text()
+        # self.ui.lineEdit_4.text()
+        # self.ui.regionInput.currentText()
+        # self.ui.postalCodeInput.text()
+        # self.ui.comboBox.currentText()
+        # self.ui.phoneNumberInput.text()
+        # self.ui.emailInput.text()
+        # self.ui.comboBox_2.currentText()
+        # self.ui.billingNameInput.text()
+        # self.ui.billingStreetAddressLine1Input.text()
+        # self.ui.billingStreetAddressLine2Input.text()
+        # self.ui.billingCityInput.text()
+        # self.ui.billingRegionInput.currentText()
+        # self.ui.billingPostalCodeInput_2.text()
+        # self.ui.billingCountryInput.currentText()
+        # self.ui.billingPhoneNumberInput.text()
+        # self.ui.billingEmailInput.text()
+
+
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

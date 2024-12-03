@@ -7,10 +7,10 @@ Remaining work:
 - need to get the error trapping working better for checking for valid inputs on the date functions, and the check for the 0 qty. Qspin Box to int conversion?
 """
 
-from CreateWorkOrderWidgetrev6 import Ui_CreateWorkOrderWidget
+from frontend.PyGuis.CreateWorkOrderWidgetrev6 import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
-
+from backend.apiAccessPoint import ApplicationHome
 class CreateNewWorkOrderHandler(qtw.QWidget):
     
     def __init__(self):
@@ -135,6 +135,16 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
             newWODeliveryMethod = "Other Address"
         if self.ui.createWODeliveryPickupRadioButton.isChecked():
             newWODeliveryMethod = "Customer pickup"
+        api = ApplicationHome()
+        api.setWorkOrderFunctions(functionType='create', 
+                                               customer=newWOCustomer, 
+                                               orderDate=newWoDate, 
+                                               quantity=newWOQty, 
+                                               dueDate=newWOReqdByDate, 
+                                               taskCode=newTaskCode,
+                                               case=newBackCaseSelection,
+                                               delivery=newWODeliveryMethod
+                                               )
 
         #confirming that all the fields work - comment this out for final code
         print(newWOCustomer)

@@ -4,8 +4,8 @@
 #I've ensured the field is enabled, I've tried setting focus to the object, I've set read only to False,changed exec_ to show_ for the Qmessage, 
 #I ran the code thorugh chatgpt, didn't resolve the issue, worked through all 7 suggested remedies and none of them worked.
 #There is something fundamentally wrong here that i have no idea how to fix. I would've killed to have had more in-class instruction.  
-
-from LoginWindow import Ui_loginWindow
+from frontend.PyGuis.MainWindow_Handler import MainWindow
+from frontend.PyGuis.LoginWindow import Ui_loginWindow
 from PyQt5 import QtWidgets as qtw
 
 class loginWindowHandler(qtw.QWidget):
@@ -27,8 +27,38 @@ class loginWindowHandler(qtw.QWidget):
         qtw.QMessageBox.information(self,"Forgot Password", "Please contact Administrator for password reset")
 
     def loginAction(self): 
-        pass
-  
+        loginEntry = self.ui.usernameInput.text() 
+        passwordEntry = self.ui.passwordInput.text()
+
+        # Define the login data
+        loginUserdata = {"jonk": 123, "morganm": 456, "jamesr": 789}
+
+# Validate the username and password
+        try:
+            if loginEntry in loginUserdata:
+                # Ensure type consistency before comparison
+                if int(passwordEntry) == loginUserdata[loginEntry]:
+
+                    self.login = MainWindow()
+                    self.login.show()
+                else:
+                    msg_box = qtw.QMessageBox(self)
+                    msg_box.setWindowTitle("GMES Login")
+                    msg_box.setText("Incorrect Username or password")
+                    msg_box.exec_()
+            else:
+                
+                msg_box = qtw.QMessageBox(self)
+                msg_box.setWindowTitle("GMES Login")
+                msg_box.setText("Incorrect Username or password")
+                msg_box.exec_()
+
+        except (ValueError, KeyError) as e:
+            msg_box = qtw.QMessageBox(self)
+            msg_box.setWindowTitle("GMES Login")
+            msg_box.setText("Incorrect Username or password")
+            msg_box.exec_()
+
 if __name__ == "__main__":
     app = qtw.QApplication([])
     widget = loginWindowHandler()

@@ -2,7 +2,7 @@
 #Outstanding work:
 #Change connection of data to table  - beyond this everything appears fully functional - JK
 
-from RemoveCustomerWidget import Ui_removeCustomerWidget
+from frontend.PyGuis.RemoveCustomerWidget import Ui_removeCustomerWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
