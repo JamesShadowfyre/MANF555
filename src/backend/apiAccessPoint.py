@@ -16,7 +16,7 @@ class ApplicationHome:
         #initialize global user 
         self.database = Database()
         self.database.connect()
-        self.workOrderList = ['test value']
+        self.workOrderList = []
         self.workOrderID = self.workOrderList.__len__()
 
     def calculateMetrics(metricType):
