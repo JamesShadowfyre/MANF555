@@ -4,8 +4,8 @@
 #I've ensured the field is enabled, I've tried setting focus to the object, I've set read only to False,changed exec_ to show_ for the Qmessage, 
 #I ran the code thorugh chatgpt, didn't resolve the issue, worked through all 7 suggested remedies and none of them worked.
 #There is something fundamentally wrong here that i have no idea how to fix. I would've killed to have had more in-class instruction.  
-from MainWindow_Handler import MainWindow
-from LoginWindow import Ui_loginWindow
+from frontend.PyGuis.MainWindow_Handler import MainWindow
+from frontend.PyGuis.LoginWindow import Ui_loginWindow
 from PyQt5 import QtWidgets as qtw
 
 class loginWindowHandler(qtw.QWidget):

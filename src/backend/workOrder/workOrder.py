@@ -16,8 +16,8 @@ class WorkOrder:
         self.stats = []
 
     def execute(self): 
-        machine: factory.AbstractMachine.AbstractMachine
-        item: inventory.item.item
+        machine: backend.factory.AbstractMachine.AbstractMachine
+        item: backend.inventory.item.item
         for machine in self.machineList:
             for item in self.componentMap:
                 if item.getMachine() == machine.nameString():
