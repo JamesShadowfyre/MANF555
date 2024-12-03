@@ -1,5 +1,6 @@
 from backend.workOrder.workOrder import WorkOrder
 from backend.loginSystem.User import User
+from backend.externalCommunication.database import Database
 
 class ApplicationHome:
     def __new__(cls):
@@ -7,15 +8,14 @@ class ApplicationHome:
             cls.instance = super(ApplicationHome, cls).__new__(cls)
             return cls.instance
         return cls.instance
-    def __init__(self):
-        a = 0
     def init_app(self):
         #Inventory Manager Initializaiton
         #WorkOrder List initialization 
         #Calendar Initialization 
         #database initialization
         #initialize global user 
-        a = 0
+        self.database = Database()
+        self.database.connect()
         self.workOrderList = ['test value']
         self.workOrderID = self.workOrderList.__len__()
 
@@ -45,6 +45,7 @@ class ApplicationHome:
                                                 operator=None
                                                 ))
             self.workOrderID = self.workOrderList.__len__()
+            return True
         elif functionType == 'getList':
             return self.getWorkOrderList()
                 

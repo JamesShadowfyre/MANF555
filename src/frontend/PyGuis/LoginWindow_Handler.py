@@ -6,12 +6,13 @@
 #There is something fundamentally wrong here that i have no idea how to fix. I would've killed to have had more in-class instruction.  
 from frontend.PyGuis.MainWindow_Handler import MainWindow
 from frontend.PyGuis.LoginWindow import Ui_loginWindow
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 
 class loginWindowHandler(qtw.QWidget):
     def __init__(self):
         super().__init__()
-
+        self.api = ApplicationHome()
         self.ui = Ui_loginWindow()
         self.ui.setupUi(self)
         
@@ -35,19 +36,13 @@ class loginWindowHandler(qtw.QWidget):
 
 # Validate the username and password
         try:
-            if loginEntry in loginUserdata:
+            if self.api.userFunctions('login', username=loginEntry, password=passwordEntry):
                 # Ensure type consistency before comparison
-                if int(passwordEntry) == loginUserdata[loginEntry]:
+                
 
                     self.login = MainWindow()
                     self.login.show()
-                else:
-                    msg_box = qtw.QMessageBox(self)
-                    msg_box.setWindowTitle("GMES Login")
-                    msg_box.setText("Incorrect Username or password")
-                    msg_box.exec_()
             else:
-                
                 msg_box = qtw.QMessageBox(self)
                 msg_box.setWindowTitle("GMES Login")
                 msg_box.setText("Incorrect Username or password")

@@ -7,8 +7,6 @@ from PyQt5 import QtWidgets as qtw
 
 
 api = ApplicationHome()
-database = Database()
-database.connect()
 api.init_app()
 app = qtw.QApplication([])
 widget = loginWindowHandler()

@@ -14,7 +14,12 @@ class Database:
         self.db.executescript(sql_script)
 
     def select(self, **kwargs):
+        if kwargs['fields'] == None:
+            kwargs['fields'] = '*'
+        return self.db.execute('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions'])
+
+    def insert(self, **kwargs):
         self.db.execute
 
-    def write(self, **kwargs):
+    def update(self, **kwargs):
         self.db.execute
