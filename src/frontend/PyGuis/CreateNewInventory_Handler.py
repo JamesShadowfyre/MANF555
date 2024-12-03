@@ -23,16 +23,11 @@ class CreateNewInventoryHandler(qtw.QWidget):
         newInvItemCost =  self.ui.newInvItemCost.text()
         newInvItemQty =  self.ui.newInvItemQty.text()
 
-        print("New Item Name: ")
-        print(newItemName)
-        print("New Item Internal Part ID: ")
-        print(newInvInternalPartID)
-        print("New Item Description: ")
-        print(newInvItemDescription)
-        print("New Item Cost: ")
-        print(newInvItemCost)
-        print("New Item Quantity: ")
-        print(newInvItemQty)
+        print("New Item Name: ",newItemName)
+        print("New Item Internal Part ID: ",newInvInternalPartID)
+        print("New Item Description: ",newInvItemDescription)
+        print("New Item Cost: ",newInvItemCost)
+        print("New Item Quantity: ",newInvItemQty)
         self.close()
 
 # Widget execution code
