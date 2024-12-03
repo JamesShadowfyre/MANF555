@@ -18,12 +18,9 @@ class EditUserWidgetHandler(qtw.QWidget):
         userRights = self.ui.editUserRights.currentText()
 
         print("Following User Edited: ")
-        print("Employee Number: ")
-        print(employeeNumber)
-        print("Username: ")
-        print(userName)
-        print("Rights: ")
-        print(userRights)
+        print("Employee Number: ",employeeNumber)
+        print("Username: ",userName)
+        print("Rights: ",userRights)
         self.close()
         
 # Widget execution code
