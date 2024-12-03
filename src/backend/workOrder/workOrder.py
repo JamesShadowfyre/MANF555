@@ -1,5 +1,5 @@
-import factory.AbstractMachine
-import inventory.item
+import backend.factory.AbstractMachine
+import backend.inventory.item
 
 class WorkOrder:
 

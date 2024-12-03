@@ -1,4 +1,5 @@
 #MainWindow_Handler
+<<<<<<< HEAD
 #The screen has been setup to regenerate all of the graphical screen elements every second using a threading approach 
 
 from MainWindow import Ui_MainWindow
@@ -10,6 +11,11 @@ from AboutWidget_Handler import AboutWidgetHandler
 import threading
 
 
+=======
+from frontend.PyGuis.MainWindow import Ui_MainWindow
+from frontend.PyGuis.WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
+# from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
+>>>>>>> 4a42bebd37b4c2d09e113da1041d0c5a50922fce
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -130,7 +136,7 @@ class MainWindow(QMainWindow):
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
             print("Refreshing the GUI...")
-            threading.Timer(1, self.MainWindowGUIRefresh).start()
+            #threading.Timer(1, self.MainWindowGUIRefresh).start()
             #Call the functions here that are responsible for performing the GUI updates...
 
     def closeEvent(self, event):

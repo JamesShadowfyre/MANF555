@@ -1,5 +1,5 @@
-import factory.AbstractMachine
-import factory.DrillingMachine
+import backend.factory.AbstractMachine
+import backend.factory.DrillingMachine
 class item:
     def __init__(self, name, colour, taskCode, machine):
         self.name = name

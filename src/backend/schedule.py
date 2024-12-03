@@ -5,7 +5,7 @@ class Schedule():
         if not hasattr(cls, 'instance'):
             cls.instance = super(Schedule, cls).__new__(cls)
             return cls.instance
-        return Schedule
+        return cls.instance
         
     def __init__(self) -> None:
         self.schedule = []

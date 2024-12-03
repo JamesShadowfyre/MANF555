@@ -1,10 +1,10 @@
 #Customer Manager Handler
 #Code for "refresh Customer Data" needs to be completed
 
-from CustomerManager import Ui_CustomerManagerWidget
-from RemoveCustomerWidget_Handler import RemoveCustomerWidgetHandler
-from EditCustomerWidget_Handler import EditCustomerWidgetHandler
-from AddCustomerWidget_Handler import AddCustomerWidgetHandler
+from frontend.PyGuis.CustomerManager import Ui_CustomerManagerWidget
+from frontend.PyGuis.RemoveCustomerWidget_Handler import RemoveCustomerWidgetHandler
+from frontend.PyGuis.EditCustomerWidget_Handler import EditCustomerWidgetHandler
+from frontend.PyGuis.AddCustomerWidget_Handler import AddCustomerWidgetHandler
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
