@@ -16,6 +16,7 @@ class MainWindow(QMainWindow):
         self.keepRefreshing = True
         self.MainWindowGUIRefresh()
         
+        self.MainScreenData()
 
         self.ui.mainMenuWorkOrderManagerButton.clicked.connect(self.openWorkOrderTab)
         self.ui.mainMenuScheduleManagerButton.clicked.connect(self.openProductionSchedulerTab)
@@ -28,6 +29,11 @@ class MainWindow(QMainWindow):
         self.ui.lineEdit_2.setReadOnly(True)
         self.ui.lineEdit_3.setReadOnly(True)
         self.ui.lineEdit_4.setReadOnly(True)
+        self.ui.lineEdit_5.setReadOnly(True)
+        self.ui.lineEdit_6.setReadOnly(True)
+        self.ui.lineEdit_7.setReadOnly(True)
+        self.ui.lineEdit_8.setReadOnly(True)
+        
 
 
         #menu navigation clicks
@@ -49,8 +55,37 @@ class MainWindow(QMainWindow):
         self.ui.actionTutorials.triggered.connect(self.disabledMenu)
         self.ui.actionSign_Out.triggered.connect(self.disabledMenu)
         self.ui.actionScheduler.triggered.connect(self.openProductionSchedulerTab)
+
+
+    ### Updating the visual elements on the screen with data 
+
+    def MainScreenData(self,OEE,FPFY,TSP):
+        pass
+        #KPIs
+        self.KPIMethod()
+        self.ui.OEEValue.display(OEE)
+        self.ui.FPFYValue.display(FPFY)
+        self.ui.TSP_Value.display(TSP)
+
+
+    def KPIMethod(self):
+        OEE = 1
+        FPFY = 2
+        TSP = 3
+        
+
     
-###Screen navigations 
+
+
+
+
+
+
+
+
+
+
+    ###Screen navigations 
     def ExitFunction(self):
         self.close()
             
@@ -59,8 +94,9 @@ class MainWindow(QMainWindow):
         self.about.show()
 
     def openWorkOrderTab(self):
-        self.openWOTab = WorkOrderManagerHomeHandler()
-        self.openWOTab.show()
+        pass
+    #     self.openWOTab = WorkOrderManagerHomeHandler()
+    #     self.openWOTab.show()
 
     def openFactoryManagerTab(self):
         self.openFactory = FactoryHandler()
@@ -80,16 +116,9 @@ class MainWindow(QMainWindow):
         msg_box.setText("This feature will be made available in future renditions of the software. A demonstration of the use of the toolbar is shown with the 'About' screen.")
         msg_box.exec_()
 
-### Updating the visual elements on the screen with data 
-
-    def MainScreenData(self):
-        pass
 
 
-
-
-
-
+    #Data Refresh for the main Screen
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
             print("Refreshing the GUI...")
