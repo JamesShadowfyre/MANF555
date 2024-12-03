@@ -1,21 +1,7 @@
 #MainWindow_Handler
-<<<<<<< HEAD
-#The screen has been setup to regenerate all of the graphical screen elements every second using a threading approach 
-
-from MainWindow import Ui_MainWindow
-from ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
-from InventoryManager_Handler import inventoryManagerHandler
-#from WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
-from ProductionSystemsManagerWidget_Handler import FactoryHandler
-from AboutWidget_Handler import AboutWidgetHandler
-import threading
-
-
-=======
 from frontend.PyGuis.MainWindow import Ui_MainWindow
 from frontend.PyGuis.WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
 # from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
->>>>>>> 4a42bebd37b4c2d09e113da1041d0c5a50922fce
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
