@@ -4,4 +4,13 @@ Create Table IF NOT EXISTS user (
     password NOT NULL
 );
 
+Create Table IF NOT EXISTS workOrder (
+    id integer PRIMARY KEY autoincrement
+    clientid integer
+    createdBy integer
+    operatorid integer
+    duration decimal
+    quantity decimal
+);
+
 
