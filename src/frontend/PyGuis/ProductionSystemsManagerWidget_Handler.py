@@ -2,10 +2,10 @@
 
 #MainWindow_Handler
 
-from ProductionSystemsManagerWidget import Ui_productionSystemsManagerWidget
-from ExecuteProductionWidget_Handler import ExecuteProductionWidgetHandler
-from OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
-from KPI_Handler import KPIHandler 
+from frontend.PyGuis.ProductionSystemsManagerWidget import Ui_productionSystemsManagerWidget
+from frontend.PyGuis.ExecuteProductionWidget_Handler import ExecuteProductionWidgetHandler
+from frontend.PyGuis.OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
+from frontend.PyGuis.KPI_Handler import KPIHandler 
 from PyQt5 import QtWidgets as qtw
 
 from PyQt5 import QtCore as qtc

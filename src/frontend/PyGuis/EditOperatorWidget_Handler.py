@@ -1,4 +1,4 @@
-from EditOperatorWidget import Ui_editOperatorWidget
+from frontend.PyGuis.EditOperatorWidget import Ui_editOperatorWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc

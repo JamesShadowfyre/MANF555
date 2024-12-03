@@ -1,13 +1,13 @@
-from InventoryManager import Ui_InventoryManager
+from frontend.PyGuis.InventoryManager import Ui_InventoryManager
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
 
 # import secondary widget handlers
-from RecieveInventoryWidget_Handler import RecieveInventoryWidgetHandler
-from PerformCycleCounts_Handler import updateInventoryHandler
-from CreateNewInventory_Handler import CreateNewInventoryHandler
-from LowInventoryAlarmSettingWidget_Handler import LowInventoryAlarmWidget
+from frontend.PyGuis.RecieveInventoryWidget_Handler import RecieveInventoryWidgetHandler
+from frontend.PyGuis.PerformCycleCounts_Handler import updateInventoryHandler
+from frontend.PyGuis.CreateNewInventory_Handler import CreateNewInventoryHandler
+from frontend.PyGuis.LowInventoryAlarmSettingWidget_Handler import LowInventoryAlarmWidget
 
 class inventoryManagerHandler(qtw.QWidget):
 

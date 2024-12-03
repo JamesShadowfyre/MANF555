@@ -1,7 +1,7 @@
 #Recieve Inventory Widget Handler
 
 
-from RecieveInventoryWidget import Ui_recieveInventoryWidget
+from frontend.PyGuis.RecieveInventoryWidget import Ui_recieveInventoryWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc

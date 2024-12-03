@@ -3,14 +3,14 @@
 #Need to define what happens when users click buttons (will be opening the new widgets) - completed
 #Need to replace the data that appears in the table with data from the database, in the INIT
 
-from OperatorManagerWidget import Ui_operatorWidget
+from frontend.PyGuis.OperatorManagerWidget import Ui_operatorWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
 # import secondary widget handlers
-from AddNewOperatorWidget_Handler import AddNewOperatorHandler
-from EditOperatorWidget_Handler import EditOperatorWidgetHandler
-from DeleteOperatorWidget_Handler import DeleteOperatorWidgetHandler
+from frontend.PyGuis.AddNewOperatorWidget_Handler import AddNewOperatorHandler
+from frontend.PyGuis.EditOperatorWidget_Handler import EditOperatorWidgetHandler
+from frontend.PyGuis.DeleteOperatorWidget_Handler import DeleteOperatorWidgetHandler
 
 class OperatorManagerWidgetHandler(qtw.QWidget):
     

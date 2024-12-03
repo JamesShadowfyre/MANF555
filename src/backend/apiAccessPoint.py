@@ -48,9 +48,26 @@ class ApplicationHome:
             return True
         elif functionType == 'getList':
             return self.getWorkOrderList()
-                
+        elif functionType == 'edit':
+            a = 0
+        elif functionType == 'delete':
+            a = 0
+        elif functionType == 'getCompleted':
+            a = 0
+
     #
     def userFunctions(self, functionType, **kwargs):
         if functionType == 'login':
             return User.verify(username=kwargs['username'], password=kwargs['password'])
-        
+        elif functionType == 'get':
+            return User.getUser()
+    
+    def customerFunctions(self, functionType, **kwargs):
+        if functionType == 'create':
+            a = 0
+        elif functionType == 'edit':
+            a = 0
+        elif functionType == 'remove':
+            a = 0
+        elif functionType == 'get':
+            a = 0

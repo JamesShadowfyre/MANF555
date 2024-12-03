@@ -1,6 +1,11 @@
 #MainWindow_Handler
 from frontend.PyGuis.MainWindow import Ui_MainWindow
 from frontend.PyGuis.WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
+from frontend.PyGuis.ProductionSystemsManagerWidget_Handler import ExecuteProductionWidgetHandler
+from frontend.PyGuis.ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
+from frontend.PyGuis.InventoryManager_Handler import inventoryManagerHandler
+from backend.apiAccessPoint import ApplicationHome
+
 # from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui
@@ -12,6 +17,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
+        self.api = ApplicationHome()
         self.ui.setupUi(self)
         self.keepRefreshing = True
         self.MainWindowGUIRefresh()
@@ -66,6 +72,7 @@ class MainWindow(QMainWindow):
         self.ui.OEEValue.display(OEE)
         self.ui.FPFYValue.display(FPFY)
         self.ui.TSP_Value.display(TSP)
+        self.ui.userIdTextBrowser.setText(self.api.userFunctions('get'))
 
 
     def KPIMethod(self):
@@ -94,12 +101,11 @@ class MainWindow(QMainWindow):
         self.about.show()
 
     def openWorkOrderTab(self):
-        pass
-    #     self.openWOTab = WorkOrderManagerHomeHandler()
-    #     self.openWOTab.show()
+         self.openWOTab = WorkOrderManagerHomeHandler()
+         self.openWOTab.show()
 
     def openFactoryManagerTab(self):
-        self.openFactory = FactoryHandler()
+        self.openFactory = ExecuteProductionWidgetHandler()
         self.openFactory.show()
 
     def openInventoryManagerTab(self):

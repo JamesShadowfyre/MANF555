@@ -1,4 +1,4 @@
-from CreateNewInventory import Ui_createNewInventorWidget
+from frontend.PyGuis.CreateNewInventory import Ui_createNewInventorWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc

@@ -1,10 +1,10 @@
-from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
+from frontend.PyGuis.ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
 # import secondary widget handlers
-from CustomerManager_Handler import CustomerManagerHandler
-from OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
+from frontend.PyGuis.CustomerManager_Handler import CustomerManagerHandler
+from frontend.PyGuis.OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
 # from <> import <> (no modify schedule UI file)
 # from <> import <> (no view schedule UI file)
 
