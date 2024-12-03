@@ -1,4 +1,5 @@
 from backend.workOrder.workOrder import WorkOrder
+from backend.loginSystem.User import User
 
 class ApplicationHome:
     def __new__(cls):
@@ -48,6 +49,7 @@ class ApplicationHome:
             return self.getWorkOrderList()
                 
     #
-    def userFunctions():
-        a = 0
-        return True
+    def userFunctions(self, functionType, **kwargs):
+        if functionType == 'login':
+            return User.verify(username=kwargs['username'], password=kwargs['password'])
+        
