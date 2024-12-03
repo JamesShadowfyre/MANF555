@@ -41,6 +41,7 @@ class loginWindowHandler(qtw.QWidget):
                 
 
                     self.login = MainWindow()
+                    self.hide()
                     self.login.show()
             else:
                 msg_box = qtw.QMessageBox(self)

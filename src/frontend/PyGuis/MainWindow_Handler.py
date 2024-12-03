@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
         self.keepRefreshing = True
         self.MainWindowGUIRefresh()
         
-        self.MainScreenData()
+        self.MainScreenData(45, 20, 40)
 
         self.ui.mainMenuWorkOrderManagerButton.clicked.connect(self.openWorkOrderTab)
         self.ui.mainMenuScheduleManagerButton.clicked.connect(self.openProductionSchedulerTab)
