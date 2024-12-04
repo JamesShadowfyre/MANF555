@@ -13,8 +13,23 @@ class ViewScheudleWidgetHandler(qtw.QWidget):
         self.ui.refreshButton.clicked.connect(self.refreshButtonClicked)
 
     def refreshButtonClicked(self):
+        new_data = self.fetchWorkOrderData()  # Assuming you have a method to fetch data
+
+        for row_data in new_data:
+            current_row_count = self.allWorkOrderTable.rowCount()
+            self.allWorkOrderTable.insertRow(current_row_count)
+
+            for col, value in enumerate(row_data):
+                item = qtw.QTableWidgetItem(value)
+                self.allWorkOrderTable.setItem(current_row_count, col, item)
         pass
 
+    def fetchWorkOrderData(self):
+        # Example placeholder for fetching work order data
+        return [
+            ["WO002", "Nov-16-2024", "Completed", "Operator2"],
+            ["WO003", "Nov-17-2024", "Pending", "Operator3"],
+        ]
 
      # Today Production Schedule table to list code
     def extractWorkOrderTableToList(self):
