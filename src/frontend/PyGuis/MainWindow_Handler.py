@@ -4,8 +4,8 @@ from frontend.PyGuis.WorkOrderManagerHome_Handler import WorkOrderManagerHomeHan
 from frontend.PyGuis.ProductionSystemsManagerWidget_Handler import ExecuteProductionWidgetHandler
 from frontend.PyGuis.ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
 from frontend.PyGuis.InventoryManager_Handler import inventoryManagerHandler
+from frontend.PyGuis.AboutWidget_Handler import AboutWidgetHandler
 from backend.apiAccessPoint import ApplicationHome
-
 # from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui

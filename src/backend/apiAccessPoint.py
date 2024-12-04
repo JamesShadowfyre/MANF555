@@ -16,37 +16,50 @@ class ApplicationHome:
         #initialize global user 
         self.database = Database()
         self.database.connect()
-        self.workOrderList = []
-        self.workOrderID = self.workOrderList.__len__()
+        self.workOrderMap = {}
+        self.workOrderID = self.workOrderMap.keys().__len__()
 
     def calculateMetrics(metricType):
-        #takes in type of metric as an argument, processes
-        a = 0
-        #returns required functional value
+        if metricType == 'OEE':
+            a = 0
+        elif metricType == 'KPI':
+            a = 0
+        elif metricType == 'FPFY':
+            a = 0
+        elif metricType == 'TSP':
+            a = 0
 
     def calendarFunction(functionType, **kwargs):
         a = 0 
         #returns necessary object 
 
     def inventoryFunction(functionType, **kwargs):
-        a = 0
-        #returns necessary object 
+        if functionType == 'create':
+            a = 0
+        elif functionType == 'edit':
+            a = 0
+        elif functionType == 'remove':
+            a = 0
+        elif functionType == 'get':
+            a = 0
 
     def getWorkOrderList(self):
         return self.workOrderList
     
     def setWorkOrderFunctions(self, functionType, **kwargs):
         if functionType == 'create':
-            self.workOrderList.append(WorkOrder(id=(self.workOrderID + 1), 
+            self.workOrderMap[self.workOrderID + 1] = (WorkOrder(id=(self.workOrderID + 1), 
                                                 machineList=['Drilling'], 
                                                 componentMap={kwargs['case']: kwargs['taskCode']},
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
                                                 operator=None
                                                 ))
-            self.workOrderID = self.workOrderList.__len__()
+            self.workOrderID = self.workOrderMap.keys().__len__()
             return True
         elif functionType == 'getList':
+            return self.getWorkOrderList()
+        elif functionType == 'getDateRange':
             return self.getWorkOrderList()
         elif functionType == 'edit':
             a = 0
