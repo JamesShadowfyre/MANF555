@@ -1,16 +1,16 @@
 #MainWindow_Handler
 from frontend.PyGuis.MainWindow import Ui_MainWindow
 from frontend.PyGuis.WorkOrderManagerHome_Handler import WorkOrderManagerHomeHandler
-from frontend.PyGuis.ProductionSystemsManagerWidget_Handler import ExecuteProductionWidgetHandler
+from frontend.PyGuis.ProductionSystemsManagerWidget_Handler import FactoryHandler
 from frontend.PyGuis.ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
 from frontend.PyGuis.InventoryManager_Handler import inventoryManagerHandler
 from frontend.PyGuis.AboutWidget_Handler import AboutWidgetHandler
 from backend.apiAccessPoint import ApplicationHome
-# from ProductionScheduleManagerWidget import Ui_productionSchedulerWiget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
 from PyQt5.QtWidgets import QApplication, QMainWindow
+import threading
 
 class MainWindow(QMainWindow):
     
@@ -105,7 +105,7 @@ class MainWindow(QMainWindow):
          self.openWOTab.show()
 
     def openFactoryManagerTab(self):
-        self.openFactory = ExecuteProductionWidgetHandler()
+        self.openFactory = FactoryHandler()
         self.openFactory.show()
 
     def openInventoryManagerTab(self):
@@ -128,7 +128,7 @@ class MainWindow(QMainWindow):
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
             print("Refreshing the GUI...")
-            #threading.Timer(1, self.MainWindowGUIRefresh).start()
+            threading.Timer(1, self.MainWindowGUIRefresh).start()
             #Call the functions here that are responsible for performing the GUI updates...
 
     def closeEvent(self, event):
