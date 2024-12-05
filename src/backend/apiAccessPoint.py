@@ -1,6 +1,7 @@
 from backend.workOrder.workOrder import WorkOrder
 from backend.loginSystem.User import User
 from backend.externalCommunication.database import Database
+from backend.metrics import metrics
 import datetime
 import atexit
 
@@ -20,18 +21,20 @@ class ApplicationHome:
     def calculateMetrics(self, metricType):
         totalWorkTime = 0
         totalitems = 0
+        totalExpectedDuration = 0
         x: WorkOrder
         for x in self.workOrderMap.values():
             totalWorkTime += float(x.getStats())
             if x.getCompleted() == True:
                 totalitems += x.getQuantity()
+                totalExpectedDuration += x.getDuration()
 
         if metricType == 'OEE':
-            a = 0
+            return metrics.calculateOEE(totalitems, totalWorkTime, totalExpectedDuration)
         elif metricType == 'FPFY':
-            a = 0
+            return 1
         elif metricType == 'TSP':
-            a = 0
+            return totalitems
         elif metricType == 'Idle':
             return float(float(datetime.datetime.now() - self.startTime - totalWorkTime) / float(datetime.datetime.now() - self.startTime))
         elif metricType == 'ScheduledDown':
