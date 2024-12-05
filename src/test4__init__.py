@@ -1,5 +1,5 @@
 from backend.apiAccessPoint import ApplicationHome
-from frontend.PyGuis.ExecuteProductionWidget_HandlerV2 import ExecuteProductionWidgetHandler
+from frontend.PyGuis.ExecuteProductionWidget_Handler import ExecuteProductionWidgetHandler
 from PyQt5 import QtWidgets as qtw
 
 
