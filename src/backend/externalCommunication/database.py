@@ -20,7 +20,7 @@ class Database:
         return self.db.execute('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions']) 
 
     def insert(self, **kwargs):
-        self.db.execute('INSERT INTO ' + kwargs['table'] + ' (' + kwargs['columns'] + ') values ()' + kwargs['conditions'] + ')') 
+        self.db.execute('INSERT INTO ' + kwargs['table'] + ' (' + kwargs['columns'] + ') values (' + kwargs['values'] + ')') 
         self.db.commit()
 
     def update(self, **kwargs):

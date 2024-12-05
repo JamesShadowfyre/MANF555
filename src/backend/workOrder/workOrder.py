@@ -1,6 +1,7 @@
 import backend.factory.AbstractMachine
 import backend.inventory.item
 from backend.externalCommunication.database import Database
+from backend.loginSystem.User import User
 
 class WorkOrder:
     db: Database 
@@ -33,15 +34,17 @@ class WorkOrder:
     def getStats(self):
         return self.stats
     
-    #database function, customer as JSON style object
-    def getCustomer(self, customer):
-        WorkOrder.db.createTable(customer)
-
-        return WorkOrder.db.select(table='customer', fields=r'accountName', conditions=('username = \'' + customer + '\'')).fetchone()[0]
-
     def setDuration(componentMap, quantity):
         return 0
         #This needs to cycle through all components and sum expected durations
 
     def save(self):
-        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity', values='')
+        clientid = '1'#WorkOrder.db.select(table='customer', fields=r'id', conditions=('accountName = \'' + self.customer + '\'')).fetchone()[0]
+        userid = str(User.getId())
+        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity', 
+                            values=(str('\'' + clientid + '\',' + 
+                                        '\'' + userid + '\',' + 
+                                        '\'' + str(self.operator) + '\',' + 
+                                        '\'' + str(self.duration) + '\',' + 
+                                        '\'' +  str(self.quantity) +'\''
+                                        )))

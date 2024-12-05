@@ -1,15 +1,17 @@
 from backend.externalCommunication.database import Database
 class User:
     currentUser: str
+    userid: int
     admin: bool
 
     def verify(username, password):
         db = Database()
-        returnedUser = db.select(table='USER', fields=r'username, password, admin', conditions=('username = \'' + username + '\''))
+        returnedUser = db.select(table='USER', fields=r'id, username, password, admin', conditions=('username = \'' + username + '\''))
         try:
             loggingUser = returnedUser.fetchone()
-            if (loggingUser[1] == password):
-                User.admin = loggingUser[2]
+            if (loggingUser[2] == password):
+                User.admin = loggingUser[3]
+                User.userid = loggingUser[0]
                 User.currentUser = username
                 return True
         except Exception as e:
@@ -19,5 +21,7 @@ class User:
 
     def getUser(): #called by other classes to return the username ]
         return User.currentUser
+    def getId():
+        return User.userid
 
 
