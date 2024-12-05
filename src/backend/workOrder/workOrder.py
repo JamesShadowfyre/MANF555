@@ -15,6 +15,7 @@ class WorkOrder:
         self.customer = customer 
         self.duration = WorkOrder.setDuration(componentMap, quantity)
         self.operator = operator
+        self.completed = False
         self.stats = []
 
     def execute(self): 
@@ -24,15 +25,21 @@ class WorkOrder:
             for item in self.componentMap:
                 if item.getMachine() == machine.nameString():
                     self.stats.append(machine.execute(item.getTaskCode(), self.componentMap[self.quantity]))
+        self.completed = True
 
     def getDuration(self):
         return self.duration
 
-    def loadWorkOrderFromDatabase():
-        readfromDB = True
-
     def getStats(self):
-        return self.stats
+        sum = 0
+        for x in self.stats:
+            sum += float(x)
+        return sum
+    
+    def getCompleted(self):
+        return self.completed
+    def getQuantity(self):
+        return self.quantity
     
     def setDuration(componentMap, quantity):
         return 0

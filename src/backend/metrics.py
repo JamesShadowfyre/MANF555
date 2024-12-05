@@ -11,6 +11,3 @@ class metrics:
     def calculateTSP():
         return 1 #return total produced units
     
-    def calculateDownTime():
-        #Return a list, in order, Scheduled downtime (0), Unexpected Downtime (0), Idle time (Real Time - Expected time >= 0), Total (Sum of other elements)
-        return []
