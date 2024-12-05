@@ -17,9 +17,6 @@ class ApplicationHome:
         self.workOrderID = self.workOrderMap.keys().__len__()
         self.startTime = datetime.datetime.now()
 
-    
-
-
     def calculateMetrics(self, metricType):
         totalWorkTime = 0
         totalitems = 0
