@@ -16,10 +16,8 @@ class ApplicationHome:
         self.workOrderMap = WorkOrder.loadMap()
         self.workOrderID = self.workOrderMap.keys().__len__()
         self.startTime = datetime.datetime.now()
-        atexit.register(self.exit_handler)
-    
-        
 
+    
 
 
     def calculateMetrics(self, metricType):
@@ -126,4 +124,6 @@ class ApplicationHome:
         elif functionType == 'remove':
             self.database.delete(table='customer', conditions='accountName = ' + kwargs['accountName'])
         elif functionType == 'get':
-            self.database.select(table='customer', fields=r'*', conditions=('accountName = \'' + kwargs['accountName'] + '\''))
+            customers = self.database.select(table='customer', fields=r'*', conditions=('accountName = \'' + kwargs['accountName'] + '\''))
+            return customers.fetchall()
+
