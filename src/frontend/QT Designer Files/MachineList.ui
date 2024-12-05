@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MachineList</class>
+ <widget class="QWidget" name="MachineList">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>289</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Machine List</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>391</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Machine List</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>351</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>160</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Machine</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Time Estimate Per Product</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>Drilling</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>12 seconds</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
