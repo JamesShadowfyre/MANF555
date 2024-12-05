@@ -4,7 +4,9 @@ from backend.externalCommunication.database import Database
 from backend.loginSystem.User import User
 
 class WorkOrder:
-    db: Database 
+    db: Database
+    db = Database()
+
     def __init__(self, id, machineList, componentMap, quantity, customer, operator):
         self.id = id
         self.machineList = machineList
@@ -12,10 +14,8 @@ class WorkOrder:
         self.quantity = quantity
         self.customer = customer 
         self.duration = WorkOrder.setDuration(componentMap, quantity)
-        WorkOrder.db = Database()
         self.operator = operator
         self.stats = []
-        self.save()
 
     def execute(self): 
         machine: backend.factory.AbstractMachine.AbstractMachine
@@ -48,3 +48,11 @@ class WorkOrder:
                                         '\'' + str(self.duration) + '\',' + 
                                         '\'' +  str(self.quantity) +'\''
                                         )))
+    
+    def loadMap():
+        workOrderMap = {}
+        workOrders = WorkOrder.db.select(table='workOrder', fields=r'*', conditions='1 = 1')
+        workOrders = workOrders.fetchall()
+        for x in range(workOrders.__len__()):
+            workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], [], workOrders[x][4], '', '')
+        return workOrderMap
