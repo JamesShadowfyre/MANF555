@@ -60,3 +60,4 @@ Create Table IF NOT EXISTS customer (
     billingphoneNumber TEXT,
     billingEmail TEXT
 );
+
