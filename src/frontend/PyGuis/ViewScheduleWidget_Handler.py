@@ -13,22 +13,22 @@ class ViewScheudleWidgetHandler(qtw.QWidget):
         self.ui.refreshButton.clicked.connect(self.refreshButtonClicked)
 
     def refreshButtonClicked(self):
-        new_data = self.fetchWorkOrderData()  # Assuming you have a method to fetch data
+        new_data = self.fetchWorkOrderData()
+        tableWidget = self.ui.allWorkOrderTable
 
         for row_data in new_data:
-            current_row_count = self.allWorkOrderTable.rowCount()
-            self.allWorkOrderTable.insertRow(current_row_count)
+            current_row_count = tableWidget.rowCount()
+            tableWidget.insertRow(current_row_count)
 
             for col, value in enumerate(row_data):
                 item = qtw.QTableWidgetItem(value)
-                self.allWorkOrderTable.setItem(current_row_count, col, item)
-        pass
+                tableWidget.setItem(current_row_count, col, item)
 
     def fetchWorkOrderData(self):
         # Example placeholder for fetching work order data
         return [
-            ["WO002", "Nov-16-2024", "Completed", "Operator2"],
-            ["WO003", "Nov-17-2024", "Pending", "Operator3"],
+            ["0001", "2024-12-06", "11:00 AM", "10 mins"],
+            ["0002", "2024-12-08", "2:30 PM", "13 mins"],
         ]
 
      # Today Production Schedule table to list code
@@ -48,10 +48,10 @@ class ViewScheudleWidgetHandler(qtw.QWidget):
 
         return WorkOrder_list
 
-    def printTodaysDataList(self):
+    def printWorkOrderList(self):
         # Print data from tableWidget
         data_list = self.extractWorkOrderTableToList()
-        print("Today's Production Schedule table data as list:")
+        print("Work Order table data as list:")
         for row in data_list:
             print(row)
 

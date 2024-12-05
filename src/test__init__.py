@@ -9,4 +9,3 @@ app = qtw.QApplication([])
 widget = ViewScheudleWidgetHandler()
 widget.show()
 app.exec()
-
