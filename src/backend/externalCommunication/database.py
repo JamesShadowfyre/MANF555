@@ -13,13 +13,16 @@ class Database:
             sql_script = sql_file.read()
         self.db.executescript(sql_script)
 
+
     def select(self, **kwargs):
         if kwargs['fields'] == None:
             kwargs['fields'] = '*'
-        return self.db.execute('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions'])
+        return self.db.execute('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions']) 
 
     def insert(self, **kwargs):
-        self.db.execute
+        self.db.execute('INSERT INTO ' + kwargs['table'] + ' (' + kwargs['columns'] + ') values ()' + kwargs['conditions'] + ')') 
+        self.db.commit()
 
     def update(self, **kwargs):
-        self.db.execute
+        self.db.execute('UPDATE ' + kwargs['table'] + ' SET ' + kwargs['arguments'] + ' WHERE ' + kwargs['conditions'])
+        self.db.commit()

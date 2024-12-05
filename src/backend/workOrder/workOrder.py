@@ -3,17 +3,18 @@ import backend.inventory.item
 from backend.externalCommunication.database import Database
 
 class WorkOrder:
-
+    db: Database 
     def __init__(self, id, machineList, componentMap, quantity, customer, operator):
         self.id = id
         self.machineList = machineList
         self.componentMap = componentMap
         self.quantity = quantity
-        self.customer = WorkOrder.createCustomer(customer) #customer as JSON style object
+        self.customer = customer 
         self.duration = WorkOrder.setDuration(componentMap, quantity)
-        self.db = Database()
+        WorkOrder.db = Database()
         self.operator = operator
         self.stats = []
+        self.save()
 
     def execute(self): 
         machine: backend.factory.AbstractMachine.AbstractMachine
@@ -33,10 +34,14 @@ class WorkOrder:
         return self.stats
     
     #database function, customer as JSON style object
-    def createCustomer(self, customer):
-        self.db.createTable(customer)
+    def getCustomer(self, customer):
+        WorkOrder.db.createTable(customer)
+
+        return WorkOrder.db.select(table='customer', fields=r'accountName', conditions=('username = \'' + customer + '\'')).fetchone()[0]
 
     def setDuration(componentMap, quantity):
         return 0
         #This needs to cycle through all components and sum expected durations
 
+    def save(self):
+        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity', values='')
