@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>632</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>591</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Scheduled Work Orders</string>
+   </property>
+   <widget class="QTableWidget" name="allWorkOrderTable">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>531</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>125</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Work Order No.</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Scheduled Start Date</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Scheduled Start Time</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Estimated Time</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="refreshButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

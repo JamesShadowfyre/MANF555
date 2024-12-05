@@ -5,7 +5,7 @@ from PyQt5 import QtCore as qtc
 # import secondary widget handlers
 from frontend.PyGuis.CustomerManager_Handler import CustomerManagerHandler
 from frontend.PyGuis.OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
-# from <> import <> (no modify schedule UI file)
+from frontend.PyGuis.ViewScheduleWidget_Handler import ViewScheudleWidgetHandler 
 # from <> import <> (no view schedule UI file)
 
 class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
@@ -20,8 +20,8 @@ class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
         self.ui.sManagerOperatorManagerButton.clicked.connect(self.operatorManagerButtonClicked)
         # modify schedule button clicked (UI not created yet)
         # self.ui.pushButton.clicked.connect(self.modifyScheduleButtonClicked)
-        # # view schedule button clicked (UI not created yet)
-        # self.ui.pushButton_2.clicked.connect(self.viewScheduleButtonClicked)
+        # view schedule button clicked (UI not created yet)
+        self.ui.pushButton_2.clicked.connect(self.viewScheduleButtonClicked)
         # self.printTodaysDataList()
         # self.printOutstandingWorkOrderList()
 
@@ -41,9 +41,9 @@ class ProductionScheduleManagerWidgetHandler(qtw.QWidget):
     #     self.editOperatorWidget = <>()
     #     self.editOperatorWidget.show()
 
-    # def viewScheduleButtonClicked(self):
-    #     self.editOperatorWidget = <>()
-    #     self.editOperatorWidget.show()
+    def viewScheduleButtonClicked(self):
+        self.viewScheduleWidget = ViewScheudleWidgetHandler()
+        self.viewScheduleWidget.show()
 
     # Today Production Schedule table to list code
     def extractTodaysDataToList(self):
