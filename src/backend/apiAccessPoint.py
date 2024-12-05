@@ -53,10 +53,20 @@ class ApplicationHome:
             return True
         elif functionType == 'getList':
             return self.getWorkOrderList()
+        elif functionType == 'get':
+            return self.workOrderMap.get(kwargs['id'])
         elif functionType == 'getDateRange':
             return self.getWorkOrderList()
         elif functionType == 'edit':
-            a = 0
+            self.database.delete(table='workOrder', conditions='id = ' + kwargs['id'])
+            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=kwargs['id'], 
+                                                machineList=['Drilling'], 
+                                                componentMap={kwargs['case']: kwargs['taskCode']},
+                                                quantity=kwargs['quantity'],
+                                                customer=kwargs['customer'],
+                                                operator=None
+                                                ))
+            self.workOrderMap.get(kwargs['id']).save()
         elif functionType == 'delete':
             a = 0
         elif functionType == 'getCompleted':
