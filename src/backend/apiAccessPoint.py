@@ -9,20 +9,13 @@ class ApplicationHome:
             return cls.instance
         return cls.instance
     def init_app(self):
-        #Inventory Manager Initializaiton
-        #WorkOrder List initialization 
-        #Calendar Initialization 
-        #database initialization
-        #initialize global user 
         self.database = Database()
         self.database.connect()
-        self.workOrderMap = {}
+        self.workOrderMap = WorkOrder.loadMap()
         self.workOrderID = self.workOrderMap.keys().__len__()
 
     def calculateMetrics(metricType):
         if metricType == 'OEE':
-            a = 0
-        elif metricType == 'KPI':
             a = 0
         elif metricType == 'FPFY':
             a = 0
@@ -55,14 +48,25 @@ class ApplicationHome:
                                                 customer=kwargs['customer'],
                                                 operator=None
                                                 ))
+            self.workOrderMap.get(self.workOrderID + 1).save()
             self.workOrderID = self.workOrderMap.keys().__len__()
             return True
         elif functionType == 'getList':
             return self.getWorkOrderList()
+        elif functionType == 'get':
+            return self.workOrderMap.get(kwargs['id'])
         elif functionType == 'getDateRange':
             return self.getWorkOrderList()
         elif functionType == 'edit':
-            a = 0
+            self.database.delete(table='workOrder', conditions='id = ' + kwargs['id'])
+            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=kwargs['id'], 
+                                                machineList=['Drilling'], 
+                                                componentMap={kwargs['case']: kwargs['taskCode']},
+                                                quantity=kwargs['quantity'],
+                                                customer=kwargs['customer'],
+                                                operator=None
+                                                ))
+            self.workOrderMap.get(kwargs['id']).save()
         elif functionType == 'delete':
             a = 0
         elif functionType == 'getCompleted':

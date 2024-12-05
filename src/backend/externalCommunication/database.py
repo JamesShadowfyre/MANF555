@@ -26,3 +26,8 @@ class Database:
     def update(self, **kwargs):
         self.db.execute('UPDATE ' + kwargs['table'] + ' SET ' + kwargs['arguments'] + ' WHERE ' + kwargs['conditions'])
         self.db.commit()
+
+    def delete(self, **kwargs):
+        self.db.execute('DELETE FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions'])
+        self.db.commit()
+
