@@ -10,6 +10,7 @@ from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5 import QtCore as qtc
+from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import threading
 
@@ -22,10 +23,15 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.keepRefreshing = True
 
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.MainWindowGUIRefresh)
+        self.timer.start(1000) 
+
         #widget data
-        self.KPIMethod(45,20,40)
+        self.KPIMethod()
         self.prod_data()
         self.LoggedInUserData()
+        self.MainWindowGUIRefresh()
 
         self.ui.mainMenuWorkOrderManagerButton.clicked.connect(self.openWorkOrderTab)
         self.ui.mainMenuScheduleManagerButton.clicked.connect(self.openProductionSchedulerTab)
@@ -75,7 +81,7 @@ class MainWindow(QMainWindow):
         self.ui.userIdTextBrowser.setText(self.api.userFunctions('get'))
 
 
-    def KPIMethod(self, OEE, FPFY, TSP):
+    def KPIMethod(self):
         OEE = 1
         FPFY = 2
         TSP = 3
@@ -177,8 +183,11 @@ class MainWindow(QMainWindow):
     def MainWindowGUIRefresh(self):
         if self.keepRefreshing:
             print("Refreshing the GUI...")
-            threading.Timer(1, self.MainWindowGUIRefresh).start()
             #Call the functions here that are responsible for performing the GUI updates...
+            self.KPIMethod()  # Example update
+            self.prod_data()  # Example update
+            #threading.Timer(1, self.MainWindowGUIRefresh).start()
+            
 
     def closeEvent(self, event):
         """Stop the timer when the user closes the program."""
