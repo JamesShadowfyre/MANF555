@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'CreateWorkOrderWidget.ui'
+""" # Form implementation generated from reading ui file 'CreateWorkOrderWidget.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -125,3 +125,4 @@ if __name__ == "__main__":
     ui.setupUi(CreateWorkOrderWidget)
     CreateWorkOrderWidget.show()
     sys.exit(app.exec())
+ """

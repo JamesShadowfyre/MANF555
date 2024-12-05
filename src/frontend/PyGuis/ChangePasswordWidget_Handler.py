@@ -1,6 +1,6 @@
 # needs to be connected to database to retrieve employee number list
 
-from ChangePasswordWidget import Ui_ChangePasswordWidget
+from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc

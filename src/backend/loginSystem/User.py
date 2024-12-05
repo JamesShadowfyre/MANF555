@@ -23,5 +23,9 @@ class User:
         return User.currentUser
     def getId():
         return User.userid
-
+    
+    #Jon's additions start, please modify if they cause issue   
+    def getAdmin(): 
+        return User.admin
+    #Jon's additions end
 

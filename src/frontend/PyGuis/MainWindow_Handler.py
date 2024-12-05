@@ -5,6 +5,7 @@ from frontend.PyGuis.ProductionSystemsManagerWidget_Handler import FactoryHandle
 from frontend.PyGuis.ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
 from frontend.PyGuis.InventoryManager_Handler import inventoryManagerHandler
 from frontend.PyGuis.AboutWidget_Handler import AboutWidgetHandler
+from frontend.PyGuis.UserManagerWidget_Handler import UserManagerWidgetHandler
 from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtGui import QPalette, QColor
@@ -65,13 +66,14 @@ class MainWindow(QMainWindow):
         self.ui.menuProduction_Systems_Manager.triggered.connect(self.openFactoryManagerTab)
         self.ui.menuSchedule_Manager.triggered.connect(self.openProductionSchedulerTab)
         self.ui.menuWork_Order_Manager.triggered.connect(self.openWorkOrderTab)
+        self.ui.menuUser_Manager.triggered.connect(self.openUserManager)
         self.ui.actionExit.triggered.connect(self.ExitFunction)
-
 
     ### Updating the visual elements on the screen with data 
 
     def LoggedInUserData(self):
         self.ui.userIdTextBrowser.setText(self.api.userFunctions('get'))
+
 
     def KPIMethod(self, OEE, FPFY, TSP):
         OEE = 1
@@ -151,6 +153,19 @@ class MainWindow(QMainWindow):
     def openProductionSchedulerTab(self):
         self.prodsched = ProductionScheduleManagerWidgetHandler()
         self.prodsched.show()
+
+    def openUserManager(self):
+        
+        adminBool = "Admin" if self.api.userFunctions2() else "User"
+        
+        if adminBool == "Admin":
+            self.usermanager = UserManagerWidgetHandler()
+            self.usermanager.show()
+        else:
+            msg_box = qtw.QMessageBox(self)
+            msg_box.setWindowTitle("Access Denied")
+            msg_box.setText("Restricted to Admin use only")
+            msg_box.exec_()
 
     def disabledMenu(self):
         msg_box = qtw.QMessageBox(self)

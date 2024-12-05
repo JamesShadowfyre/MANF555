@@ -101,6 +101,13 @@ class ApplicationHome:
             return User.verify(username=kwargs['username'], password=kwargs['password'])
         elif functionType == 'get':
             return User.getUser()
+
+    #Jon's additions start, please modify if they cause issue   
+    def userFunctions2(self):
+            return User.getAdmin()
+    #Jon's additions end
+        
+    
     
     def customerFunctions(self, functionType, **kwargs):
         if functionType == 'create':

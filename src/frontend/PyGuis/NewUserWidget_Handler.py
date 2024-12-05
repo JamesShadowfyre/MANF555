@@ -1,7 +1,7 @@
 #New User Widget handler
 #Successfully can access the information entered by the user... only update required is to add save directories to SQL table for the 4 pieces of info
 
-from NewUserWidget import Ui_newUserWidget
+from frontend.PyGuis.NewUserWidget import Ui_newUserWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
