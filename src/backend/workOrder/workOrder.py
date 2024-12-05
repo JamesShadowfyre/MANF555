@@ -1,5 +1,6 @@
 import backend.factory.AbstractMachine
 import backend.inventory.item
+from backend.externalCommunication.database import Database
 
 class WorkOrder:
 
@@ -10,9 +11,8 @@ class WorkOrder:
         self.quantity = quantity
         self.customer = WorkOrder.createCustomer(customer) #customer as JSON style object
         self.duration = WorkOrder.setDuration(componentMap, quantity)
-        self.db = 'db'
+        self.db = Database()
         self.operator = operator
-        #SOMETHING TO SQL HERE
         self.stats = []
 
     def execute(self): 
@@ -33,14 +33,10 @@ class WorkOrder:
         return self.stats
     
     #database function, customer as JSON style object
-    def createCustomer(customer):
-        db = 'db'
-        db.createTable(customer)
+    def createCustomer(self, customer):
+        self.db.createTable(customer)
 
     def setDuration(componentMap, quantity):
         return 0
         #This needs to cycle through all components and sum expected durations
 
-if __name__ == "__main__":
-    myWorkOrder = WorkOrder(1)
-    myWorkOrder.execute()
