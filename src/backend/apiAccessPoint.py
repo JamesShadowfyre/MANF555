@@ -50,15 +50,18 @@ class ApplicationHome:
         a = 0 
         #returns necessary object 
 
-    def inventoryFunction(functionType, **kwargs):
+    def inventoryFunction(self, functionType, **kwargs):
         if functionType == 'create':
-            a = 0
+            self.database.insert(table='item', columns='clientid, createdby, operatorid, duration, quantity', 
+                            values=(str('\'' + kwargs['clientid'] + '\',' + 
+                                        '\'' + kwargs['userid'] + '\'' 
+                                        )))
         elif functionType == 'edit':
-            a = 0
+            self.database.delete(table='item', conditions='name = ' + kwargs['name'])
         elif functionType == 'remove':
-            a = 0
+            self.database.delete(table='item', conditions='accountName = ' + kwargs['accountName'])
         elif functionType == 'get':
-            a = 0
+            self.database.select()
 
     def getWorkOrderList(self):
         return self.workOrderMap
