@@ -141,8 +141,8 @@ class ApplicationHome:
             User.createUser(kwargs['employeeNumber'], kwargs['operatorName'])
         elif functionType == 'delete':
             User.delete(kwargs['id'])
-        elif functionType=='passwordchange':
-            User.changePassword(kwargs['id'], kwargs['password'])
+        elif functionType=='employeeNumberChange':
+            User.changePassword(kwargs['id'], kwargs['employeeNumber'])
         
     # Morgan's additions end
 
