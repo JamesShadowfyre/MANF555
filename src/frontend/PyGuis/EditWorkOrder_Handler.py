@@ -71,7 +71,7 @@ class EditWorkOrderHandler(qtw.QWidget):
     def updateUI(self, taskcodeValue):
         #use taskCodeValue to search for other elements from the database to update UI
         #Update the RHS of the arguments to the table entries
-        self.ProductTemplateReturn(taskcodeValue)
+        
         chosenWO = self.WOs.get(int(taskcodeValue))
         customerfromTable = chosenWO.getCustomer()
         WODatefromTable = ""
@@ -84,7 +84,7 @@ class EditWorkOrderHandler(qtw.QWidget):
             backCasefromTable = items[0]
         except:
             backCasefromTable = ""
-
+        self.ProductTemplateReturn(chosenWO.getTaskCode())
         self.ui.comboBox_3.setCurrentText(customerfromTable)
         self.ui.createWODateInput.setText(WODatefromTable)
         self.ui.createWOQuantityInput.setText(QtyfromTable)

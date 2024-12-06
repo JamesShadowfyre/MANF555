@@ -1,3 +1,4 @@
+
 Create Table IF NOT EXISTS user (
     id integer PRIMARY KEY autoincrement,
     username TEXT UNIQUE NOT NULL,
@@ -12,6 +13,7 @@ Create Table IF NOT EXISTS workOrder (
     operatorid integer,
     duration decimal,
     quantity decimal,
+    taskCode integer,
     FOREIGN KEY (clientid) REFERENCES customer(id),
     FOREIGN KEY (createdBy) REFERENCES user(id),
     FOREIGN KEY (operatorid) REFERENCES operator(id)

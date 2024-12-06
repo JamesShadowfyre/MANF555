@@ -73,7 +73,8 @@ class ApplicationHome:
                                                 componentMap={kwargs['case']: kwargs['taskCode']},
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
-                                                operator=None
+                                                operator=None,
+                                                taskcode=kwargs['taskCode']
                                                 ))
             self.workOrderMap.get(self.workOrderID + 1).save()
             self.workOrderID = self.workOrderMap.keys().__len__()
