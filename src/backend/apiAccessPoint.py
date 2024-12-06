@@ -74,7 +74,8 @@ class ApplicationHome:
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
                                                 operator=None,
-                                                taskcode=kwargs['taskCode']
+                                                taskcode=kwargs['taskCode'],
+                                                startDate=kwargs['date']
                                                 ))
             self.workOrderMap.get(self.workOrderID + 1).save()
             self.workOrderID = self.workOrderMap.keys().__len__()
@@ -85,12 +86,14 @@ class ApplicationHome:
             return self.workOrderMap.get(kwargs['id'])
         elif functionType == 'edit':
             self.database.delete(table='workOrder', conditions='id = ' + kwargs['id'])
-            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=kwargs['id'], 
+            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=(self.workOrderID + 1), 
                                                 machineList=['Drilling'], 
                                                 componentMap={kwargs['case']: kwargs['taskCode']},
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
-                                                operator=None
+                                                operator=None,
+                                                taskcode=kwargs['taskCode'],
+                                                startDate=kwargs['date']
                                                 ))
             self.workOrderMap.get(kwargs['id']).save()
         elif functionType == 'delete':

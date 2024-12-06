@@ -8,7 +8,7 @@ class WorkOrder:
     db: Database
     db = Database()
 
-    def __init__(self, id, machineList, componentMap, quantity, customer, operator, taskcode):
+    def __init__(self, id, machineList, componentMap, quantity, customer, operator, taskcode, startDate):
         self.id = id
         self.machineList = machineList
         self.componentMap = componentMap
@@ -18,6 +18,7 @@ class WorkOrder:
         self.taskCode = taskcode
         self.operator = operator
         self.completed = False
+        self.startDate = startDate
         self.stats = []
 
     def execute(self): 
@@ -64,7 +65,7 @@ class WorkOrder:
                                         '\'' + str(self.duration) + '\',' + 
                                         '\'' +  str(self.quantity) +'\',' + 
                                         '\'' +  str(self.taskCode) +'\',' + 
-                                        '\'' +  str(datetime.date.today()) +'\''
+                                        '\'' +  str(self.startDate) +'\''
                                         )))
     
     def loadMap():
@@ -73,7 +74,7 @@ class WorkOrder:
         workOrders = workOrders.fetchall()
         print(workOrders)
         for x in range(workOrders.__len__()):
-            workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], {'B': workOrders[x][6]}, workOrders[x][5], '', '', taskcode=workOrders[x][6])
+            workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], {'B': workOrders[x][6]}, workOrders[x][5], '', '', taskcode=workOrders[x][6], startDate=workOrders[x][7])
         return workOrderMap
     
     def loadmain():
