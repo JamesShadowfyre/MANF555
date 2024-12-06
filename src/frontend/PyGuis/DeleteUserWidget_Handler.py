@@ -1,6 +1,7 @@
 # needs to be connected to database to retrieve user  list
 
 from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
+from backend.apiAccessPoint import ApplicationHome
 #from DeleteUserWidget import Ui_ChangePasswordWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -16,9 +17,10 @@ class DeleteWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #[User ID, Username]
         #----------------------------------------------------- 
-        self.userData = [["ID1", "user1"], ["ID2", "user2"], ["ID3", "user3"]]
+        self.api = ApplicationHome()
+        self.userData = self.api.userFunctions('loadall')
         IDs = [item[0] for item in self.userData]
-
+        IDs = map(str, IDs)
 
         # Disable the password and username fields initially
         self.ui.changePasswordPassword.setDisabled(True)
@@ -75,6 +77,7 @@ class DeleteWidgetHandler(qtw.QWidget):
         msg_box = qtw.QMessageBox(self)
         msg_box.setWindowTitle("Delete User")
         msg_box.setText("Are you sure you wish to delete this user? This action cannot be undone?")
+        self.api.userFunctions('delete', id=employeeSaveData[0])
         response = msg_box.exec_()
         if response == qtw.QMessageBox.Ok:   
             self.close()  # Close the widget if OK is clicked

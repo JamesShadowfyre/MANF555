@@ -2,6 +2,7 @@
 #Successfully can access the information entered by the user... only update required is to add save directories to SQL table for the 4 pieces of info
 
 from frontend.PyGuis.NewUserWidget import Ui_newUserWidget
+from backend.apiAccessPoint import ApplicationHome
 #from NewUserWidget import Ui_newUserWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
@@ -31,7 +32,9 @@ class NewUserWidgetHandler(qtw.QWidget):
         userData[0] = self.ui.lineEdit_3.text()
         userData[1] = self.ui.newUserUsername.text()
         userData[3] = self.ui.lineEdit_2.text()
-
+        
+        self.api = ApplicationHome()
+        self.api.userFunctions('create', id=userData[0], username=userData[1], password=userData[3],admin=userData[2])
         self.close()
 
 

@@ -114,6 +114,14 @@ class ApplicationHome:
             return User.verify(username=kwargs['username'], password=kwargs['password'])
         elif functionType == 'get':
             return User.getUser()
+        elif functionType == 'loadall':
+            return User.loadAll()
+        elif functionType == 'create':
+            User.createUser(kwargs['username'], kwargs['password'], kwargs['admin'])
+        elif functionType == 'delete':
+            User.delete(kwargs['id'])
+        elif functionType=='passwordchange':
+            User.changePassword(kwargs['id'], kwargs['password'])
 
     #Jon's additions start, please modify if they cause issue   
     def userFunctions2(self):
