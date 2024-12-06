@@ -31,7 +31,7 @@ class AddNewOperatorHandler(qtw.QWidget):
             pass  # Do nothing if Cancel is clicked
     
     def saveNewOperatorData(self, state):
-        field = ["","","","","","","","",""]
+        field = ["",""]
         field[0] = self.ui.newOperatorNameInput.text()
         field[1] = self.ui.newEmployeeNumberInput.text()
                
