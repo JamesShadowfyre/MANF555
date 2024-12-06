@@ -109,6 +109,8 @@ class ApplicationHome:
             return WorkOrder.loadmain()
         elif functionType == 'loadOverview':
             return WorkOrder.loadOverviewTable()
+        elif functionType=='execute':
+            self.workOrderMap.get(kwargs['id']).execute()
     def userFunctions(self, functionType, **kwargs):
         if functionType == 'login':
             return User.verify(username=kwargs['username'], password=kwargs['password'])
