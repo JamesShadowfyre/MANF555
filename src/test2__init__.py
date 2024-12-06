@@ -1,11 +1,11 @@
 from backend.apiAccessPoint import ApplicationHome
-from frontend.PyGuis.ProductionScheduleManagerWidget_Handler import ProductionScheduleManagerWidgetHandler
+from frontend.PyGuis.AddNewOperatorWidget_Handler import AddNewOperatorHandler
 from PyQt5 import QtWidgets as qtw
 
 
 api = ApplicationHome()
 api.init_app()
 app = qtw.QApplication([])
-widget = ProductionScheduleManagerWidgetHandler()
+widget = AddNewOperatorHandler()
 widget.show()
 app.exec()
