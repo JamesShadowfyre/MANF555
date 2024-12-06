@@ -142,7 +142,7 @@ class ApplicationHome:
                                         # '\'' +  str(self.quantity) +'\''
                                         )))
         elif functionType == 'edit':
-            self.database.delete(table='customer', conditions='accountName = ' + kwargs['accountName'])
+            self.database.delete(table='customer', conditions='id = ' + '\'' + kwargs['id'] + '\'')
             self.database.insert(table='customer', columns='accountName', 
                             values=(str('\'' + kwargs['accountName'] + '\'' #+ 
                                         # '\'' + userid + '\',' + 
@@ -156,6 +156,7 @@ class ApplicationHome:
             customers = self.database.select(table='customer', fields=r'*', conditions=('accountName = \'' + kwargs['accountName'] + '\''))
             return customers.fetchall()
         elif functionType == 'getall':
-            customers = self.database.select(table='customer', fields=r'accountName', conditions=('1 = 1'))
+            customers = self.database.select(table='customer', fields=r'id, accountName', conditions=('1 = 1'))
             return customers.fetchall()
+
 

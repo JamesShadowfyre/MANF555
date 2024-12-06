@@ -29,6 +29,7 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         list =  self.WOs.keys()
         self.ui.WorkOrderNumber.addItems(map(str, list))
         
+        
         self.ui.createWOCustomerSelection.setText("")
         self.ui.createWODateInput.setText("")
         self.ui.createWOQuantityInput.setText("")
