@@ -36,7 +36,7 @@ class NewUserWidgetHandler(qtw.QWidget):
 
 
   #-----------------------------------------------------
-        #write user to database
+        #write userData to database
         #[User ID, Username, rights, password] - rights is boolean, the rest are strings
   #-----------------------------------------------------     
 
