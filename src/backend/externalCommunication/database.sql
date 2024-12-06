@@ -14,6 +14,8 @@ Create Table IF NOT EXISTS workOrder (
     duration decimal,
     quantity decimal,
     taskCode integer,
+    startDate date,
+    startTime decimal,
     FOREIGN KEY (clientid) REFERENCES customer(id),
     FOREIGN KEY (createdBy) REFERENCES user(id),
     FOREIGN KEY (operatorid) REFERENCES operator(id)

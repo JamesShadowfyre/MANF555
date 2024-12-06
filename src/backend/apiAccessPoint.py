@@ -102,6 +102,8 @@ class ApplicationHome:
                 if workOrder.getCompleted() == True:
                     completedList.append(workOrder)
             return completedList
+        elif functionType =='loadmain':
+            return WorkOrder.loadmain()
     def userFunctions(self, functionType, **kwargs):
         if functionType == 'login':
             return User.verify(username=kwargs['username'], password=kwargs['password'])
