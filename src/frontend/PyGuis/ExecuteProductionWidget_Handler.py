@@ -1,4 +1,5 @@
 from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
+from backend.apiAccessPoint import ApplicationHome
 #from ExecuteProductionWidget import Ui_ExecuteProduction
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtCore import QDate
@@ -15,15 +16,16 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]
         #-----------------------------------------------------
-        self.workOrdersData = [
-            ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
-            ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
-            ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
-        ]
-        
-
+        self.api = ApplicationHome()
+        # self.workOrdersData = [
+        #     ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
+        #     ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
+        #     ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
+        # ]
+        self.workOrdersData = self.api.setWorkOrderFunctions('loadOverview')
         # Populate work order combo box
         workOrderIDs = [order[0] for order in self.workOrdersData]
+        workOrderIDs = map(str, workOrderIDs)
         self.ui.executeWONumberComboBox.addItems(workOrderIDs)  # Add work order IDs to the combo box
 
         # Populate customer, drilling arrangement, and back case details combo boxes initially
@@ -88,12 +90,13 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         self.ui.executeWOCustomerSelection.addItems(customers)
         
         # Populate drilling arrangement with unique arrangements
-        drillingArrangements = list(set(order[5] for order in self.workOrdersData))
+        drillingArrangements = list(set(order[4] for order in self.workOrdersData))
+        drillingArrangements = map(str, drillingArrangements)
         self.ui.executeWODrillingArrangementSelection.addItems(drillingArrangements)
         
         # Populate back case details with unique details
-        backCaseDetails = list(set(order[6] for order in self.workOrdersData))
-        self.ui.executeWOBackCaseDetailsInput.addItems(backCaseDetails)
+        # backCaseDetails = list(set(order[6] for order in self.workOrdersData))
+        # self.ui.executeWOBackCaseDetailsInput.addItems(backCaseDetails)
 
     def updateUI(self, workOrderNumber):
         print(f"Updating UI for work order number: {workOrderNumber}")  # Debugging line
@@ -158,6 +161,7 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         print(f"Quantity: {quantity}")
         print(f"Production Date: {productionDate}")
         print(f"Shipping Method: {shippingMethod}")
+        self.api.setWorkOrderFunctions('execute', id=int(workOrderNumber))
 
         # Close the widget after execution
         self.close()

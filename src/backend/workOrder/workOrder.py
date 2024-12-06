@@ -1,6 +1,7 @@
 import backend.factory.AbstractMachine
 import backend.inventory.item
 from backend.externalCommunication.database import Database
+from backend.factory.DrillingMachine import DrillingMachine
 from backend.loginSystem.User import User
 import datetime
 
@@ -10,7 +11,7 @@ class WorkOrder:
 
     def __init__(self, id, machineList, componentMap, quantity, customer, operator, taskcode, startDate):
         self.id = id
-        self.machineList = machineList
+        self.machineList = [DrillingMachine()]
         self.componentMap = componentMap
         self.quantity = quantity
         self.customer = customer 
@@ -26,8 +27,8 @@ class WorkOrder:
         item: backend.inventory.item.item
         for machine in self.machineList:
             for item in self.componentMap:
-                if item.getMachine() == machine.nameString():
-                    self.stats.append(machine.execute(self.taskCode, self.componentMap[self.quantity]))
+               # if item.getMachine() == machine.nameString():
+                    self.stats.append(machine.execute(self.taskCode, self.quantity))
         self.completed = True
 
     def getDuration(self):
