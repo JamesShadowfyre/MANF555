@@ -31,7 +31,6 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         self.ui.savePasswordButton.clicked.connect(self.savePasswordButtonClicked)
         self.ui.changePasswordEmployeeNumber.currentTextChanged.connect(self.updateUI)
 
-        
         #this does the initial check to populate the screen employee user field
         selectedUserID = self.ui.changePasswordEmployeeNumber.currentText()
 
@@ -56,7 +55,7 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         # Clear the username field if no match is found
             self.ui.changePasswordUsername.clear()
             print(matching_id)
-            self.ui.changePasswordUsername.setText(matching_id)
+
 
     def savePasswordButtonClicked(self):
         employeeSaveData = ["","",""]
