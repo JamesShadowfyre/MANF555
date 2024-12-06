@@ -49,3 +49,6 @@ class DrillingMachine(AbstractMachine.AbstractMachine):
 
     def nameString(self):
         return "Drilling"
+    
+    def disconnect(self):
+        self.OPCUA.disconnect()

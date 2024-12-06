@@ -86,3 +86,7 @@ class WorkOrder:
         workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, clientid, taskcode', conditions='1 = 1')
         workOrders = workOrders.fetchall()
         return workOrders
+    
+    def disconnect(self):
+        for machine in self.machineList:
+            machine.disconnect()

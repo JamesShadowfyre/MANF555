@@ -23,3 +23,5 @@ class AbstractMachine(ABC):
 
     def nameString(self):
         pass
+    def disconnect(self):
+        pass
