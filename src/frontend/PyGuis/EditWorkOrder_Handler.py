@@ -26,7 +26,7 @@ class EditWorkOrderHandler(qtw.QWidget):
         #Read list of all WO IDs and Customer Account IDs from tables
         #Then read the list of work order information
         #-----------------------------------------------------    
-        api = ApplicationHome()
+        api = ApplicationHome() 
         self.WOs = api.getWorkOrderList()
         list =  self.WOs.keys() #WO number - update with sql data
          # acct idupdate with sql data
