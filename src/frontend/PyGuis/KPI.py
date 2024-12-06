@@ -7,10 +7,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from backend.apiAccessPoint import ApplicationHome
 
 class Ui_Form(object):
     def setupUi(self, Form):
+        self.api = ApplicationHome()
         Form.setObjectName("Form")
         Form.resize(390, 450)
         self.groupBox = QtWidgets.QGroupBox(Form)
@@ -172,7 +173,7 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.OEEValue.setPalette(palette)
-        self.OEEValue.setProperty("value", 45.0)
+        self.OEEValue.setProperty("value", self.api.calculateMetrics('OEE'))
         self.OEEValue.setObjectName("OEEValue")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.OEEValue)
         self.label_4 = QtWidgets.QLabel(self.formLayoutWidget)
@@ -325,7 +326,7 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.FPFYValue.setPalette(palette)
-        self.FPFYValue.setProperty("intValue", 98)
+        self.FPFYValue.setProperty("intValue", self.api.calculateMetrics('FPFY')*100)
         self.FPFYValue.setObjectName("FPFYValue")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.FPFYValue)
         self.label_5 = QtWidgets.QLabel(self.formLayoutWidget)
@@ -478,7 +479,7 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.TSP_Value.setPalette(palette)
-        self.TSP_Value.setProperty("intValue", 5000)
+        self.TSP_Value.setProperty("intValue", self.api.calculateMetrics('TSP'))
         self.TSP_Value.setObjectName("TSP_Value")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.TSP_Value)
         self.label_32 = QtWidgets.QLabel(self.formLayoutWidget)
@@ -638,8 +639,8 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.OEEValue_5.setPalette(palette)
-        self.OEEValue_5.setProperty("value", 120.0)
-        self.OEEValue_5.setProperty("intValue", 120)
+        self.OEEValue_5.setProperty("value", self.api.calculateMetrics('ScheduledDown'))
+        self.OEEValue_5.setProperty("intValue", self.api.calculateMetrics('ScheduledDown'))
         self.OEEValue_5.setObjectName("OEEValue_5")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.ItemRole.FieldRole, self.OEEValue_5)
         self.label_34 = QtWidgets.QLabel(self.formLayoutWidget)
@@ -792,8 +793,8 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.OEEValue_7.setPalette(palette)
-        self.OEEValue_7.setProperty("value", 7.0)
-        self.OEEValue_7.setProperty("intValue", 7)
+        self.OEEValue_7.setProperty("value", self.api.calculateMetrics('Unexpected'))
+        self.OEEValue_7.setProperty("intValue", self.api.calculateMetrics('Unexpected'))
         self.OEEValue_7.setObjectName("OEEValue_7")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.ItemRole.FieldRole, self.OEEValue_7)
         self.OEEValue_6 = QtWidgets.QLCDNumber(self.formLayoutWidget)
@@ -943,8 +944,8 @@ class Ui_Form(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
         self.OEEValue_6.setPalette(palette)
-        self.OEEValue_6.setProperty("value", 18.0)
-        self.OEEValue_6.setProperty("intValue", 18)
+        self.OEEValue_6.setProperty("value", self.api.calculateMetrics('Idle'))
+        self.OEEValue_6.setProperty("intValue", self.api.calculateMetrics('Idle'))
         self.OEEValue_6.setObjectName("OEEValue_6")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.ItemRole.FieldRole, self.OEEValue_6)
         self.label_8 = QtWidgets.QLabel(self.formLayoutWidget)

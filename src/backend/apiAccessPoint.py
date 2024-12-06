@@ -36,7 +36,7 @@ class ApplicationHome:
         elif metricType == 'TSP':
             return totalitems
         elif metricType == 'Idle':
-            return float(float(datetime.datetime.now() - self.startTime - totalWorkTime) / float(datetime.datetime.now() - self.startTime))
+            return float(float((datetime.datetime.now() - self.startTime).total_seconds() / 60 - totalWorkTime)) # / float((datetime.datetime.now() - self.startTime).total_seconds() / 60)
         elif metricType == 'ScheduledDown':
             return 0
         elif metricType == 'Unexpected':
