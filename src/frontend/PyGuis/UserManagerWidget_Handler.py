@@ -6,6 +6,11 @@ from frontend.PyGuis.UserManagerWidget import Ui_UserManagerWidget
 from frontend.PyGuis.NewUserWidget_Handler import NewUserWidgetHandler
 from frontend.PyGuis.ChangePasswordWidget_Handler import ChangePasswordWidgetHandler
 from frontend.PyGuis.DeleteUserWidget_Handler import DeleteWidgetHandler
+
+# from UserManagerWidget import Ui_UserManagerWidget
+# from NewUserWidget_Handler import NewUserWidgetHandler
+# from ChangePasswordWidget_Handler import ChangePasswordWidgetHandler
+# from DeleteUserWidget_Handler import DeleteWidgetHandler
 from PyQt5 import QtWidgets as qtw
 
 

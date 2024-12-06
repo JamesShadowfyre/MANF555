@@ -16,7 +16,6 @@ class DeleteWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #[User ID, Username]
         #----------------------------------------------------- 
-        #user data format: key : [User ID, Username]
         self.userData = [["ID1", "user1"], ["ID2", "user2"], ["ID3", "user3"]]
         IDs = [item[0] for item in self.userData]
 

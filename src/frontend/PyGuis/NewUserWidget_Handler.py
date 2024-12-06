@@ -2,6 +2,7 @@
 #Successfully can access the information entered by the user... only update required is to add save directories to SQL table for the 4 pieces of info
 
 from frontend.PyGuis.NewUserWidget import Ui_newUserWidget
+#from NewUserWidget import Ui_newUserWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -18,19 +19,27 @@ class NewUserWidgetHandler(qtw.QWidget):
         self.ui.lineEdit_3.setValidator(QIntValidator())  # Accept any integer value
 
     def SaveNewUserButtonClicked(self):
-        #read data from user inputs
-        employeeNumber = self.ui.lineEdit_3.text()
-        username = self.ui.newUserUsername.text()
-        rights = self.ui.editUserRights_2.currentText()
-        password = self.ui.lineEdit_2.text()
-        
-        #confirming that this works
-        print("Following User Added: ")
-        print("Employee Number: ",employeeNumber)
-        print("Username: ",username)
-        print("Rights: ",rights)
-        print("Password: ",  "*" * len(password))
-        pass
+        userData = ["","",False,""]
+
+        if  self.ui.editUserRights_2.currentText() == "Admin":
+            userData[2] = True
+        if self.ui.editUserRights_2.currentText() == "User":
+            userData[2] = False
+        if self.ui.editUserRights_2.currentText() != "User" and self.ui.editUserRights_2.currentText() != "Admin":
+            print("error")
+
+        userData[0] = self.ui.lineEdit_3.text()
+        userData[1] = self.ui.newUserUsername.text()
+        userData[3] = self.ui.lineEdit_2.text()
+
+        self.close()
+
+
+  #-----------------------------------------------------
+        #write user to database
+        #[User ID, Username, rights, password] - rights is boolean, the rest are strings
+  #-----------------------------------------------------     
+
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
