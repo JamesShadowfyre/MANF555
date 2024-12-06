@@ -3,7 +3,7 @@ from backend.loginSystem.User import User
 from backend.externalCommunication.database import Database
 from backend.metrics import metrics
 import datetime
-import atexit
+
 
 class ApplicationHome:
     def __new__(cls):
@@ -18,13 +18,15 @@ class ApplicationHome:
         self.workOrderID = self.workOrderMap.keys().__len__()
         self.startTime = datetime.datetime.now()
 
+
     def calculateMetrics(self, metricType):
         totalWorkTime = 0
         totalitems = 0
         totalExpectedDuration = 0
         x: WorkOrder
         for x in self.workOrderMap.values():
-            totalWorkTime += float(x.getStats())
+            totalWorkTime += float(x.getStats())/1000
+            print(x.getStats())
             if x.getCompleted() == True:
                 totalitems += x.getQuantity()
                 totalExpectedDuration += x.getDuration()
