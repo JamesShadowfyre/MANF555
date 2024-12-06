@@ -1,5 +1,6 @@
 #Recieve Inventory Widget Handler
 from frontend.PyGuis.RecieveInventoryWidget import Ui_recieveInventoryWidget
+#from RecieveInventoryWidget import Ui_recieveInventoryWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
 
@@ -18,75 +19,55 @@ class RecieveInventoryWidgetHandler(qtw.QWidget):
         self.ui.recieveInvQty.setDisabled(True)
         self.ui.recieveInvInternalPartID.setDisabled(True)
 
+        #-----------------------------------------------------
+        #James: 
+        # read self.invData_all field as SQL query with the below columns in the order stated:
+        ##["Internal Part ID", "Quantity", "Name", "Description", "Unit Cost ($)"] assuming cost is a float
+  #-----------------------------------------------------
+
+        self.invData = [["0111", 5, "Back Cover", "Black", 1],["0222", 6, "Back Cover", "Blue", "11"]]
+        invIDs = [item[0] for item in self.invData]
         # Connect Item ID selection to autofill function
-        self.ui.recieveInvItemID.addItems(["----", "0001", "0002", "0003"])  # Replace with real items
+        self.ui.recieveInvItemID.addItems(invIDs) 
+
         self.ui.recieveInvItemID.currentIndexChanged.connect(self.on_selection_change)
         self.ui.recieveInvItemID.currentTextChanged.connect(self.autofillFields)
 
         # Connect Save button to save function
         self.ui.recieveInventorySaveButton.clicked.connect(self.receiveInventorySaveButtonClicked)
-
-        # Mock data to simulate fetching from a database
-        self.selectItemID = {
-            "0001": {
-                "internalPartID": "95317",
-                "inventoryItemName": "Back Case - Black",
-                "invetoryDescription": "Back Case - Black",
-                "inventoryCost": "10",
-                "quantity": "20"
-            },
-            "0002": {
-                "internalPartID": "95318",
-                "inventoryItemName": "Back Case - Blue",
-                "invetoryDescription": "Back Case - Blue",
-                "inventoryCost": "10",
-                "quantity": "15"
-            },
-            "0003": {
-                "internalPartID": "95319",
-                "inventoryItemName": "Back Case - Red",
-                "invetoryDescription": "Back Case - Red",
-                "inventoryCost": "10",
-                "quantity": "30"
-            }
-        }
-
-        # Item Names for ComboBox
-        self.itemName = ["", "Back Case - Black", "Back Case - Blue", "Back Case - Red"]
-        self.ui.recieveInvItemName.addItems(self.itemName)
-
+        self.ui.recieveInvQty.setDisabled(True)
         # Disable fields initially
         self.disableFields()
+        self.autofillFields()
+
 
     def disableFields(self):
         self.ui.recieveInvInternalPartID.setDisabled(True)
         self.ui.recieveInvItemName.setDisabled(True)
         self.ui.recieveInvDescription.setDisabled(True)
         self.ui.recieveInvCost.setDisabled(True)
-        self.ui.recieveInvQty.setDisabled(True)
 
     def autofillFields(self):
         # Get the selected Item ID
-        ItemIDCode = self.ui.recieveInvItemID.currentText()
+        selectedItemID = self.ui.recieveInvItemID.currentText()
 
-        # If a valid item ID is selected and it's not empty
-        if ItemIDCode and ItemIDCode in self.selectItemID:
-            # Get corresponding data for the item
-            data = self.selectItemID[ItemIDCode]
-
-            # Autofill fields
-            self.ui.recieveInvInternalPartID.setText(data["internalPartID"])
-            self.ui.recieveInvItemName.setCurrentText(data["inventoryItemName"])  # Use setCurrentText for comboboxes
-            self.ui.recieveInvDescription.setText(data["invetoryDescription"])
-            self.ui.recieveInvCost.setText(data["inventoryCost"])
-            self.ui.recieveInvQty.setValue(int(data["quantity"]))  # Use setValue for spinboxes
-
+        #Find matching user data from self.userData
+        matching_inv = next((item for item in self.invData if item[0] == selectedItemID), None)
+        
+        # If a matching customer is found, populate the UI fields
+        if matching_inv:
+            self.ui.recieveInvInternalPartID.setText(matching_inv[0])
+            self.ui.recieveInvItemName.setText(matching_inv[2])  # Inv part Name
+            self.ui.recieveInvDescription.setText(matching_inv[3])  # Description
+            self.ui.recieveInvCost.setText(str(matching_inv[4]))  # cost
             # Enable the fields after autofilling
             self.enableFields()
         else:
             # Clear and disable fields if no valid selection
             self.clearFields()
             self.disableFields()
+
+        self.disableFields()
 
     def enableFields(self):
         self.ui.recieveInvInternalPartID.setEnabled(True)
@@ -110,22 +91,6 @@ class RecieveInventoryWidgetHandler(qtw.QWidget):
             print("No item selected.")
 
     def receiveInventorySaveButtonClicked(self):
-        inventoryItemID = self.ui.recieveInvItemID.currentText()
-        internalPartID = self.ui.recieveInvInternalPartID.text()
-        inventoryItemName = self.ui.recieveInvItemName.currentText()
-        invetoryDescription = self.ui.recieveInvDescription.text()
-        inventoryCost = self.ui.recieveInvCost.text()
-        quantity = self.ui.recieveInvQty.text()
-
-        print("Following item(s) recieved: ")
-        print("Item ID: ", inventoryItemID)
-        print("Internal Part ID: ", internalPartID)
-        print("Item Name: ", inventoryItemName)
-        print("Item Description: ", invetoryDescription)
-        print("Item Cost: ", inventoryCost)
-        print("Quantity Recieved: ", quantity)
-        # self.close()
-
         msg_box = qtw.QMessageBox(self)
         msg_box.setWindowTitle("Receive Inventory")
         msg_box.setText("Click OK to receive the shipment to inventory")
@@ -133,10 +98,35 @@ class RecieveInventoryWidgetHandler(qtw.QWidget):
         response = msg_box.exec_()
 
         if response == qtw.QMessageBox.Ok:
+
+            field = ["",0,"","",0] #initialize
+            field[0] = self.ui.recieveInvInternalPartID.text()
+            field[1] = int(self.ui.recieveInvQty.value())
+            field[2] = self.ui.recieveInvItemName.text()
+            field[3] = self.ui.recieveInvDescription.text()
+            field[4] = float(self.ui.recieveInvCost.text())
+
+
+        #-----------------------------------------------------
+        #James: 
+        # write field to database - note that this one doesn't have the account ID as the 0th element!
+        ##["Internal Part ID", "Quantity", "Name", "Description", "Unit Cost ($)"] assuming cost is a float, qty as int
+        #-----------------------------------------------------
+
+
+
             self.close()  # Close the widget if OK is clicked
             # Code to update database
         elif response == qtw.QMessageBox.Cancel:
             pass  # Do nothing if Cancel is clicked
+        
+ 
+
+
+       
+        # self.close()
+
+
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

@@ -1,4 +1,5 @@
 from frontend.PyGuis.CreateNewInventory import Ui_createNewInventorWidget
+#from CreateNewInventory import Ui_createNewInventorWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -17,17 +18,21 @@ class CreateNewInventoryHandler(qtw.QWidget):
         self.ui.newInvItemQty.setValidator(QIntValidator())  # Accept any integer value
 
     def newInventorySaveButtonClicked(self):
-        newItemName = self.ui.newInvItemName.text()
-        newInvInternalPartID =  self.ui.newInvInternalPartID.text()
-        newInvItemDescription =  self.ui.newInvItemDescription.text()
-        newInvItemCost =  self.ui.newInvItemCost.text()
-        newInvItemQty =  self.ui.newInvItemQty.text()
+        field = ["","","","",""]
 
-        print("New Item Name: ",newItemName)
-        print("New Item Internal Part ID: ",newInvInternalPartID)
-        print("New Item Description: ",newInvItemDescription)
-        print("New Item Cost: ",newInvItemCost)
-        print("New Item Quantity: ",newInvItemQty)
+        field[0] =  self.ui.newInvInternalPartID.text()
+        field[1] = self.ui.newInvItemName.text()
+        field[2] =  self.ui.newInvItemDescription.text()
+        field[3] =  float(self.ui.newInvItemCost.text())
+        field[4] =  self.ui.newInvItemQty.text()
+
+
+  #-----------------------------------------------------
+        #James: 
+        # write field to database - note that this one doesn't have the account ID as the 0th element!
+        #[Part ID, Part Name, Part Description, Cost, Qty] assuming cost is a float
+  #-----------------------------------------------------
+
         self.close()
 
 # Widget execution code

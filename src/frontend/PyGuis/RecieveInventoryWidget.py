@@ -51,7 +51,7 @@ class Ui_recieveInventoryWidget(object):
         self.recieveInvQty = QtWidgets.QSpinBox(self.formLayoutWidget)
         self.recieveInvQty.setObjectName("recieveInvQty")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.recieveInvQty)
-        self.recieveInvItemName = QtWidgets.QComboBox(self.formLayoutWidget)
+        self.recieveInvItemName = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.recieveInvItemName.setObjectName("recieveInvItemName")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.recieveInvItemName)
         self.label_11 = QtWidgets.QLabel(self.formLayoutWidget)
