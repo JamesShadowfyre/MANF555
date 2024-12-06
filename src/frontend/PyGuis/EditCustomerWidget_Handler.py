@@ -119,7 +119,7 @@ class EditCustomerWidgetHandler(qtw.QWidget):
 
   #-----------------------------------------------------
         #James: 
-        # write fieldx to database - note that this one doesn't have the account ID as the 0th element!
+        # write field to database - note that this one doesn't have the account ID as the 0th element!
         #[Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email]
   #-----------------------------------------------------
 
