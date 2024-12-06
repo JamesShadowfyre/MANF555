@@ -18,14 +18,13 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
     
     def __init__(self):
         super().__init__()
+        
         self.ui = Ui_operatorWidget()
         self.ui.setupUi(self)
         self.updateTableData()
-
         self.ui.removeOperatorButton.clicked.connect(self.removeOperatorButtonClicked)
         self.ui.addNewOperatorButton.clicked.connect(self.addNewOperatorButtonClicked)
         self.ui.editOperatorButton.clicked.connect(self.editOperatorButtonClicked)
-
 
 
         #-----------------------------------------------------
@@ -34,7 +33,7 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
         #----------------------------------------------------- 
         #self.userData = [["ID1", "user1",0], ["ID2", "user2",0], ["ID3", "user3",0]]
         api = ApplicationHome()
-        self.userData = api.userFunctions('loadall')
+        self.userData = api.operatorFunctions('loadall')
         
         #Table Operations Begin -----
         # Clear the table before populating
@@ -43,8 +42,8 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
 
         # Set new row count and populate the table with new data
         self.ui.tableWidget.setRowCount(len(self.userData))
-        self.ui.tableWidget.setColumnCount(3)  # Adjust columns if necessary
-        self.ui.tableWidget.setHorizontalHeaderLabels(["Employee Number", "Username", "Admin Rights"]) 
+        self.ui.tableWidget.setColumnCount(2)  # Adjust columns if necessary
+        self.ui.tableWidget.setHorizontalHeaderLabels(["Employee Number", "Operator Name"]) 
 
         # Populate the table
         for row, data in enumerate(self.userData):
@@ -58,16 +57,6 @@ class OperatorManagerWidgetHandler(qtw.QWidget):
                 self.ui.tableWidget.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.Stretch)
         #Table Operations End -----
         #  
-
-
-
-
-
-
-
-
-
-
 
 
     def removeOperatorButtonClicked(self):
