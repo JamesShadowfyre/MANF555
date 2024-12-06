@@ -25,7 +25,12 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
         # read customer data from table
         #[Customer ID, Customer Acct name, Addr 1, Addr 2, City, Region, Postal code, Country, Phone number, Email] all strings
         #-----------------------------------------------------
-        self.ui.createWOCustomerSelection.addItems(["Steve", "Bob", "Joe"]) #change this with actual items from table
+        self.api = ApplicationHome()
+        customers = self.api.customerFunctions('getall')
+        newCustomers = []
+        for customer in customers:
+            newCustomers.append(customer[0])
+        self.ui.createWOCustomerSelection.addItems(newCustomers) #change this with actual items from table
         self.ui.comboBox_2.addItems(["", "No drilling", "2x back holes", "2x front holes", "4x holes (2x front + 2x back)"])
         self.ui.backCaseComboBox.addItems(["","Black"])
         

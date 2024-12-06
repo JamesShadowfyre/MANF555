@@ -33,6 +33,7 @@ class User:
     def loadAll():
         users = User.db.select(table='user', fields=r'id, username, admin', conditions='1 = 1')
         users = users.fetchall()
+        print(str(users))
         return users
     
     def createUser(username, password, admin):
