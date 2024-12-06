@@ -1,4 +1,5 @@
-from frontend.PyGuis.PerformCycleCounts import Ui_updateInventoryWidget
+#from frontend.PyGuis.PerformCycleCounts import Ui_updateInventoryWidget
+from PerformCycleCounts import Ui_updateInventoryWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -16,12 +17,19 @@ class updateInventoryHandler(qtw.QWidget):
         self.ui.updateInternalPartID.setValidator(QIntValidator())  # Accept any integer value
         self.ui.updateInvCost.setValidator(QIntValidator())  # Accept any integer value
 
-        # Update the RHS of these entities to correspond to the table entries
+        self.ui.updateInternalPartID.setDisabled(True)
+        self.ui.updateInvName.setDisabled(True)
+        self.ui.updateInvDescription.setDisabled(True)
+        self.ui.updateInvName.setDisabled(True)
+        self.ui.updateInvCost.setDisabled(True)
+
+        # Update the RHS of these entities t o correspond to the table entries
         #-----------------------------------------------------
-        #read customer data from table
-        # [Item ID, Internal Part ID, Item Name, Item Description, Item Cost] all strings
+        # read customer data from table
+        # [Item ID, Internal Part ID, Item Name, Item Description, Item Cost, Item Qty] all strings
+        # I've assumed COST is FLOAT
         #-----------------------------------------------------
-        self.userData = [["0001", "321798", "Back Case - Black", "Back Case - Black", "10"], ["0002", "90639", "Back Case - Blue", "Back Case - Blue", "10"]]
+        self.userData = [["0001", "321798", "Back Case - Black", "Back Case - Black", "10", 11], ["0002", "90639", "Back Case - Blue", "Back Case - Blue", "10", 12]]
         IDs = [item[0] for item in self.userData]
 
         self.refreshEditCustomerData()
@@ -44,10 +52,11 @@ class updateInventoryHandler(qtw.QWidget):
         
         # If a matching customer is found, populate the UI fields
         if matching_item:
-            self.ui.updateInternalPartID.setText(matching_item[1])  # Customer ID
-            self.ui.updateInvName.setCurrentText(matching_item[2])  # Street Address Line 1
-            self.ui.updateInvDescription.setText(matching_item[3])  # Street Address Line 2
-            self.ui.updateInvCost.setText(matching_item[4])  # City
+            self.ui.updateInternalPartID.setText(matching_item[1])  
+            self.ui.updateInvName.setCurrentText(matching_item[2])  
+            self.ui.updateInvDescription.setText(matching_item[3])  
+            self.ui.updateInvCost.setText(str(matching_item[4])) 
+            self.ui.updateInvQtyRecieved.setValue(matching_item[5])
         else:
             # Clear all fields if no matching item is found
             self.ui.updateInternalPartID.clear()
@@ -55,11 +64,6 @@ class updateInventoryHandler(qtw.QWidget):
             self.ui.updateInvDescription.clear()
             self.ui.updateInvCost.clear()
             print("No matching item found")
-
-        #update screen visibilities
-        self.ui.updateInvDescription.setDisabled(False)
-        self.ui.updateInvCost.setDisabled(False)
-
 
     def updateInventoryCountsButtonClicked(self):
         msg_box = qtw.QMessageBox(self)
@@ -73,7 +77,6 @@ class updateInventoryHandler(qtw.QWidget):
             #Code to modify the entry from the database
         elif response == qtw.QMessageBox.Cancel:
             pass  # Do nothing if Cancel is clicked
-        
         
         # updateItemID = self.ui.updateInvID.currentText()
         # updateInternalPartID =  self.ui.updateInternalPartID.text()
@@ -99,11 +102,17 @@ class updateInventoryHandler(qtw.QWidget):
         field[1] = self.ui.updateInternalPartID.text()
         field[2] = self.ui.updateInvName.currentText()
         field[3] = self.ui.updateInvDescription.text()    
-        field[4] = self.ui.updateInvCost.text() 
-        field[5] = self.ui.updateInvQtyRecieved.text()
+        field[4] = float(self.ui.updateInvCost.text()) 
+        field[5] = self.ui.updateInvQtyRecieved.value()
 
         print(field)
 
+        # Update the RHS of these entities to correspond to the table entries
+        #-----------------------------------------------------
+        # wrote field to table
+        # [Item ID, Internal Part ID, Item Name, Item Description, Item Cost, Item Qty] [string, string string string, string, int]
+        # I've assumed COST is FLOAT
+        #-----------------------------------------------------
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

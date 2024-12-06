@@ -105,4 +105,4 @@ class Ui_updateInventoryWidget(object):
         self.updateInvDescription.setPlaceholderText(_translate("updateInventoryWidget", "Auto-filled from Item ID"))
         self.label_6.setText(_translate("updateInventoryWidget", "Item Cost"))
         self.updateInvCost.setPlaceholderText(_translate("updateInventoryWidget", "Auto-filled from Item ID"))
-        self.label_4.setText(_translate("updateInventoryWidget", "Quantity Recieved"))
+        self.label_4.setText(_translate("updateInventoryWidget", "Quantity Counted"))

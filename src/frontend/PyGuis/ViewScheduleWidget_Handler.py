@@ -1,4 +1,5 @@
 from frontend.PyGuis.ViewScheduleWidget import Ui_Form
+#from ViewScheduleWidget import Ui_Form
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -10,50 +11,33 @@ class ViewScheudleWidgetHandler(qtw.QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.ui.refreshButton.clicked.connect(self.refreshButtonClicked)
+        #Update the RHS of these entities to correspond to the table entries
+        #-----------------------------------------------------
+        #read customer data from table
+        #["Work Order ID", "Scheduled Start Date", "Scheduled Start Time", "Estimated Runtime (minutes)", "Production Qty", "Cost ($)", "Operator"]
+        #-----------------------------------------------------
 
-    def refreshButtonClicked(self):
-        new_data = self.fetchWorkOrderData()
-        tableWidget = self.ui.allWorkOrderTable
+        self.userData = [["WO1","15/12/2024","08:00",10, 1,4, "Operator1"], ["WO2","15/12/2024","09:00",15, 2,5, "Operator2"], ["WO3","15/12/2024","10:00",20, 3,6, "Operator3"]]
 
-        for row_data in new_data:
-            current_row_count = tableWidget.rowCount()
-            tableWidget.insertRow(current_row_count)
+        self.ui.refreshButton.clicked.connect(self.table1Update)
+        self.table1Update()
 
-            for col, value in enumerate(row_data):
-                item = qtw.QTableWidgetItem(value)
-                tableWidget.setItem(current_row_count, col, item)
+    def table1Update(self):
+        # Clear the table before populating
+        self.ui.allWorkOrderTable.clearContents()  # Clear all cell contents but keep the headers
+        self.ui.allWorkOrderTable.setRowCount(0)  # Reset row count to zero
 
-    def fetchWorkOrderData(self):
-        # Example placeholder for fetching work order data
-        return [
-            ["0001", "2024-12-06", "11:00 AM", "10 mins"],
-            ["0002", "2024-12-08", "2:30 PM", "13 mins"],
-        ]
+        # Set new row count and populate the table with new data
+        self.ui.allWorkOrderTable.setRowCount(len(self.userData))
+        self.ui.allWorkOrderTable.setColumnCount(7)  # Adjust columns if necessary
+        self.ui.allWorkOrderTable.setHorizontalHeaderLabels(["Work Order ID", "Scheduled Start Date", "Scheduled Start Time", "Estimated Runtime (minutes)", "Production Qty", "Cost ($)", "Operator"]) 
 
-     # Today Production Schedule table to list code
-    def extractWorkOrderTableToList(self):
-        WorkOrder_list = []
-        tableWidget = self.ui.allWorkOrderTable
-        rows = tableWidget.rowCount()
-        columns = tableWidget.columnCount()
-
-
-        for row in range(rows):
-            row_data = []
-            for col in range(columns):
-                item = tableWidget.item(row, col)
-                row_data.append(item.text() if item else "")  # Handle empty cells
-            WorkOrder_list.append(row_data)
-
-        return WorkOrder_list
-
-    def printWorkOrderList(self):
-        # Print data from tableWidget
-        data_list = self.extractWorkOrderTableToList()
-        print("Work Order table data as list:")
-        for row in data_list:
-            print(row)
+        # Populate the table
+        for row, data in enumerate(self.userData):
+            for column, value in enumerate(data):
+                item = qtw.QTableWidgetItem(str(value))
+                self.ui.allWorkOrderTable.setItem(row, column, item)
+        #End table ops
 
 
 if __name__ == '__main__':
