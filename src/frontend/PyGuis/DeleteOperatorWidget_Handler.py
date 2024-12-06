@@ -1,4 +1,5 @@
 from frontend.PyGuis.DeleteOperatorWidget import Ui_DeleteOperatorWidget
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -15,9 +16,11 @@ class DeleteOperatorWidgetHandler(qtw.QWidget):
         #read customer data from table
         #[Customer ID, Customer Acct name, Addr 1, Addr 2, City, Region, Postal code, Country, Phone number, Email] all strings
         #-----------------------------------------------------
-        self.userData = [["jRopotar", "0479"], ["jKettle", "1542"], ["mDavis", "0869"]]
-        IDs = [item[0] for item in self.userData]
-
+        self.api = ApplicationHome()
+        self.userData = self.api.operatorFunctions('loadall')
+        #[["jRopotar", "0479"], ["jKettle", "1542"], ["mDavis", "0869"]]
+        IDs = [item[1] for item in self.userData]
+        IDs = map(str, IDs)
         #set default visibilities
         self.ui.deleteEmployeeNumberBox.setDisabled(True)
         
@@ -74,6 +77,7 @@ class DeleteOperatorWidgetHandler(qtw.QWidget):
         if response == qtw.QMessageBox.Ok: 
             operatorName =  self.ui.deleteOperatorComboBox.currentText()
             employeeNumber = self.ui.deleteEmployeeNumberBox.text()
+            self.api.operatorFunctions('delete', name=self.ui.deleteOperatorComboBox.currentText())
             print("Deleted Operator Name: ",operatorName)
             print("Deleted Employee Number: ",employeeNumber)
             self.close()  # Close the widget if OK is clicked

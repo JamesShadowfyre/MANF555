@@ -1,4 +1,5 @@
 from frontend.PyGuis.EditOperatorWidget import Ui_editOperatorWidget
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -13,20 +14,21 @@ class EditOperatorWidgetHandler(qtw.QWidget):
         self.ui.setupUi(self)
         # Set QIntValidator to restrict input to integers only
         self.ui.editEmployeeNumberInput.setValidator(QIntValidator())  # Accept any integer value
-
+        self.api = ApplicationHome()
         #Update the RHS of these entities to correspond to the table entries
         #-----------------------------------------------------
         #read customer data from table
         #[Customer ID, Customer Acct name, Addr 1, Addr 2, City, Region, Postal code, Country, Phone number, Email] all strings
         #-----------------------------------------------------
-        self.userData = [["jRopotar", "0479"], ["jKettle", "1542"], ["mDavis", "0869"]]
-        IDs = [item[0] for item in self.userData]
-
+        self.userData = self.api.operatorFunctions('loadall')
+        #[["jRopotar", "0479"], ["jKettle", "1542"], ["mDavis", "0869"]]
+        IDs = [item[1] for item in self.userData]
+        IDs = map(str, IDs)
         #set default visibilities
         self.ui.editEmployeeNumberInput.setDisabled(False)
 
 # Add usernames to the combo box
-    
+        IDs = map(str, IDs)
         self.ui.editOperatorNameInput.addItems(IDs)
 
         # Connect button and combobox signals

@@ -1,4 +1,5 @@
 from frontend.PyGuis.AddNewOperatorWidget import Ui_addNewOperatorWidget
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -13,8 +14,9 @@ class AddNewOperatorHandler(qtw.QWidget):
         self.ui.setupUi(self)
 # Set QIntValidator to restrict input to integers only
         self.ui.newEmployeeNumberInput.setValidator(QIntValidator())  # Accept any integer value
-
+        
         self.ui.saveOperatorButton.clicked.connect(self.AddNewOperatorSave)
+        self.api = ApplicationHome()
 
     def AddNewOperatorSave(self, state):
     
@@ -34,10 +36,12 @@ class AddNewOperatorHandler(qtw.QWidget):
         field = ["",""]
         field[0] = self.ui.newOperatorNameInput.text()
         field[1] = self.ui.newEmployeeNumberInput.text()
-               
+        self.api.operatorFunctions('create', name=field[0])
         operatorName =  self.ui.newOperatorNameInput.text()
         employeeNumber = self.ui.newEmployeeNumberInput.text()
-    
+
+
+
         print("New Operator Name: ",operatorName)
         print("New Employee Number: ",employeeNumber)
 
