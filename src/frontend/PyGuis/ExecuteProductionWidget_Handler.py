@@ -9,67 +9,35 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         self.ui = Ui_ExecuteProduction()
         self.ui.setupUi(self)
 
-        self.ui.executeProductionButton.clicked.connect(self.executeProductionButtonClicked)
-        
-        # Mock data to simulate fetching from a database
-        self.workOrdersData = {
-            "0098": {
-                "customer": "Steve",
-                "orderDate": "2024-11-01",
-                "quantity": 50,
-                "productionDate": "2024-12-07",
-                "drillingArrangement": "2L",
-                "backCaseDetails": "Black",
-                "shippingMethod": "Customer Pickup"
-            },
-            "0099": {
-                "customer": "Bob",
-                "orderDate": "2024-11-29",
-                "quantity": 70,
-                "productionDate": "2024-12-09",
-                "drillingArrangement": "ALL",
-                "backCaseDetails": "Black",
-                "shippingMethod": "Delivery (Other)"
-            },
-            "0100": {
-                "customer": "Joe",
-                "orderDate": "2024-12-01",
-                "quantity": 65,
-                "productionDate": "2024-12-12",
-                "drillingArrangement": "ALL",
-                "backCaseDetails": "Black",
-                "shippingMethod": "Delivery (Other)"
-            }
-            
-        }
+        #-----------------------------------------------------
+        #Replace RHS of self.userData with the tie in
+        #[User ID, Username]
+        #-----------------------------------------------------
+        self.workOrdersData = [
+            ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
+            ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
+            ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
+        ]
 
-        # Add work orders to the combo box
-        workOrderList = ["","0098", "0099", "0100"]  # Mock work order numbers
-        self.ui.executeWONumberComboBox.addItems(workOrderList)
+        # Populate work order combo box
+        workOrderIDs = [order[0] for order in self.workOrdersData]
+        self.ui.executeWONumberComboBox.addItems(workOrderIDs)  # Add work order IDs to the combo box
 
-        # Mock list for customers, drilling arrangements, and back case details
-        self.customers = ["Steve", "Bob", "Joe"]  # customer data
-        self.backCaseDetailsList = ["Black", "Blue", "Red"]  # Back case details data
-        self.drillingArrangements = ["2L", "2R", "ALL", "0"]  # Drilling arrangements data
+        # Populate customer, drilling arrangement, and back case details combo boxes initially
+        self.populateComboBoxes()
 
-        # Populate the combo boxes for customer, back case details, and drilling arrangements
-        self.ui.executeWOCustomerSelection.addItems(self.customers)
-        self.ui.executeWOBackCaseDetailsInput.addItems(self.backCaseDetailsList)
-        self.ui.executeWODrillingArrangementSelection.addItems(self.drillingArrangements)
-
-        # Initialize fields (optional)
-        self.ui.executeWODateInput.setDate(QDate(2000, 1, 1))
-        self.ui.executeWOQuantityInput.setValue(0)
-        self.ui.executeWOProductionDateInput.setDate(QDate(2000, 1, 1))
-        self.ui.executeWOShippingMethod.setCurrentText("")
-
-        # Disable fields initially
+        # Disable input fields initially
         self.disableFields()
 
-        # Connect the combo box text change to autofill function
-        self.ui.executeWONumberComboBox.currentTextChanged.connect(self.autofillFields)
+        # Connect signals
+        self.ui.executeProductionButton.clicked.connect(self.executeProductionButtonClicked)
+        self.ui.executeWONumberComboBox.currentTextChanged.connect(self.updateUI)
+
+        # Initial check to populate fields based on default selection
+        self.updateUI(self.ui.executeWONumberComboBox.currentText())
 
     def disableFields(self):
+        # Disable all fields initially
         self.ui.executeWODateInput.setDisabled(True)
         self.ui.executeWOBackCaseDetailsInput.setDisabled(True)
         self.ui.executeWODrillingArrangementSelection.setDisabled(True)
@@ -77,32 +45,8 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         self.ui.executeWOProductionDateInput.setDisabled(True)
         self.ui.executeWOShippingMethod.setDisabled(True)
 
-    def autofillFields(self):
-        # Get the selected work order number
-        workOrderNumber = self.ui.executeWONumberComboBox.currentText()
-
-        # If a valid work order is selected and it's not empty
-        if workOrderNumber and workOrderNumber in self.workOrdersData:
-            # Get the corresponding data for the work order
-            data = self.workOrdersData[workOrderNumber]
-
-            # Populate the fields with the data
-            self.ui.executeWOCustomerSelection.setCurrentText(data["customer"])
-            self.ui.executeWODateInput.setDate(QDate.fromString(data["orderDate"], "yyyy-MM-dd"))
-            self.ui.executeWOQuantityInput.setValue(data["quantity"])
-            self.ui.executeWOProductionDateInput.setDate(QDate.fromString(data["productionDate"], "yyyy-MM-dd"))
-            self.ui.executeWODrillingArrangementSelection.setCurrentText(data["drillingArrangement"])  # Autofill Drilling Arrangement
-            self.ui.executeWOBackCaseDetailsInput.setCurrentText(data["backCaseDetails"])
-            self.ui.executeWOShippingMethod.setCurrentText(data["shippingMethod"])
-
-            # Enable the fields after autofilling
-            self.enableFields()
-        else:
-            # Clear and disable fields if no valid selection is made
-            self.clearFields()
-            self.disableFields()
-
     def enableFields(self):
+        # Enable all fields for user input
         self.ui.executeWODateInput.setEnabled(True)
         self.ui.executeWOBackCaseDetailsInput.setEnabled(True)
         self.ui.executeWODrillingArrangementSelection.setEnabled(True)
@@ -111,15 +55,77 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         self.ui.executeWOShippingMethod.setEnabled(True)
 
     def clearFields(self):
+        # Clear all fields to default state
         self.ui.executeWOCustomerSelection.setCurrentText("")
         self.ui.executeWODateInput.setDate(QDate(2000, 1, 1))
         self.ui.executeWOQuantityInput.setValue(0)
         self.ui.executeWOProductionDateInput.setDate(QDate(2000, 1, 1))
-        self.ui.executeWODrillingArrangementSelection.clear()
+        self.ui.executeWODrillingArrangementSelection.setCurrentText("")
         self.ui.executeWOBackCaseDetailsInput.setCurrentText("")
         self.ui.executeWOShippingMethod.setCurrentText("")
 
+    def populateComboBoxes(self):
+        # Populate the combo boxes with the possible options
+
+        # Populate customer selection with unique customers
+        customers = list(set(order[1] for order in self.workOrdersData))
+        self.ui.executeWOCustomerSelection.addItems(customers)
+        
+        # Populate drilling arrangement with unique arrangements
+        drillingArrangements = list(set(order[5] for order in self.workOrdersData))
+        self.ui.executeWODrillingArrangementSelection.addItems(drillingArrangements)
+        
+        # Populate back case details with unique details
+        backCaseDetails = list(set(order[6] for order in self.workOrdersData))
+        self.ui.executeWOBackCaseDetailsInput.addItems(backCaseDetails)
+
+    def updateUI(self, workOrderNumber):
+        print(f"Updating UI for work order number: {workOrderNumber}")  # Debugging line
+
+        # Find the matching work order using `next()`
+        matchingOrder = next((order for order in self.workOrdersData if order[0] == workOrderNumber), None)
+
+        if matchingOrder:
+            # Debugging line to show found order
+            print(f"Found matching order: {matchingOrder}")
+            
+            # Populate customer selection QComboBox
+            self.ui.executeWOCustomerSelection.setCurrentText(matchingOrder[1])  # Customer
+            print(f"Customer: {matchingOrder[1]} set in executeWOCustomerSelection")  # Debugging line
+
+            # Populate order date QDateEdit
+            self.ui.executeWODateInput.setDate(QDate.fromString(matchingOrder[2], "yyyy-MM-dd"))  # Order Date
+            print(f"Order Date: {matchingOrder[2]} set in executeWODateInput")  # Debugging line
+
+            # Populate quantity QSpinBox
+            self.ui.executeWOQuantityInput.setValue(matchingOrder[3])  # Quantity
+            print(f"Quantity: {matchingOrder[3]} set in executeWOQuantityInput")  # Debugging line
+
+            # Populate production date QDateEdit
+            self.ui.executeWOProductionDateInput.setDate(QDate.fromString(matchingOrder[4], "yyyy-MM-dd"))  # Production Date
+            print(f"Production Date: {matchingOrder[4]} set in executeWOProductionDateInput")  # Debugging line
+
+            # Populate drilling arrangement QComboBox
+            self.ui.executeWODrillingArrangementSelection.setCurrentText(matchingOrder[5])  # Drilling Arrangement
+            print(f"Drilling Arrangement: {matchingOrder[5]} set in executeWODrillingArrangementSelection")  # Debugging line
+
+            # Populate back case details QComboBox
+            self.ui.executeWOBackCaseDetailsInput.setCurrentText(matchingOrder[6])  # Back Case Details
+            print(f"Back Case Details: {matchingOrder[6]} set in executeWOBackCaseDetailsInput")  # Debugging line
+
+            # Populate shipping method QComboBox
+            self.ui.executeWOShippingMethod.setCurrentText(matchingOrder[7])  # Shipping Method
+            print(f"Shipping Method: {matchingOrder[7]} set in executeWOShippingMethod")  # Debugging line
+
+            # Enable fields for editing
+            self.enableFields()
+        else:
+            # Clear and disable fields if no matching order is found
+            self.clearFields()
+            self.disableFields()
+
     def executeProductionButtonClicked(self):
+        # Collect data from the UI
         workOrderNumber = self.ui.executeWONumberComboBox.currentText()
         customer = self.ui.executeWOCustomerSelection.currentText()
         orderDate = self.ui.executeWODateInput.text()
@@ -128,16 +134,19 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         quantity = self.ui.executeWOQuantityInput.text()
         productionDate = self.ui.executeWOProductionDateInput.text()
         shippingMethod = self.ui.executeWOShippingMethod.currentText()
-        
+
+        # Print the collected data (replace with actual database save)
         print("Following work order executed: ")
-        print("Work Order Number: ", workOrderNumber)
-        print("Customer: ", customer)
-        print("Order Date: ", orderDate)
-        print("Back Case Details: ", backCaseDetails)
-        print("Drilling Arrangement: ", drillingArrangement)
-        print("Quantity: ", quantity)
-        print("Production Date: ", productionDate)
-        print("Shipping Method: ", shippingMethod)
+        print(f"Work Order Number: {workOrderNumber}")
+        print(f"Customer: {customer}")
+        print(f"Order Date: {orderDate}")
+        print(f"Back Case Details: {backCaseDetails}")
+        print(f"Drilling Arrangement: {drillingArrangement}")
+        print(f"Quantity: {quantity}")
+        print(f"Production Date: {productionDate}")
+        print(f"Shipping Method: {shippingMethod}")
+
+        # Close the widget after execution
         self.close()
 
 # Widget execution code
