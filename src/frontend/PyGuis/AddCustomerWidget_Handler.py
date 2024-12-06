@@ -77,14 +77,30 @@ class AddCustomerWidgetHandler(qtw.QWidget):
         field = ["","","","","","","","",""]
         field[0] = self.ui.accountNameInput.text()
         field[1] = self.ui.streetAddressLine1Input.text()
-        field[2] = self.ui.billingStreetAddressLine2Input.text()
+        field[2] = self.ui.streetAddressLine2Input.text()
         field[3] = self.ui.lineEdit_4.text()
         field[4] = self.ui.regionInput.currentText()
         field[5] = self.ui.postalCodeInput.text()
         field[6] = self.ui.comboBox.currentText()
         field[7] = self.ui.phoneNumberInput.text()
         field[8] = self.ui.emailInput.text()
+
+
         
+        #-----------------------------------------------------
+        #James: 
+        # write field to database - note that this one doesn't have the account ID as the 0th element!
+        # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email]
+        #-----------------------------------------------------
+
+
+if __name__ == '__main__':
+    app = qtw.QApplication([])
+    widget = AddCustomerWidgetHandler()
+    widget.show()
+    app.exec()
+
+
 
         #not including these in data tie in, just... waste of time.
         # field10 = self.ui.comboBox_2.currentText()
@@ -117,21 +133,6 @@ class AddCustomerWidgetHandler(qtw.QWidget):
         # self.ui.billingCountryInput.currentText()
         # self.ui.billingPhoneNumberInput.text()
         # self.ui.billingEmailInput.text()
-
-        print(field)
-        
-        #-----------------------------------------------------
-        #James: 
-        # write fieldx to database - note that this one doesn't have the account ID as the 0th element!
-        # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email]
-        #-----------------------------------------------------
-
-
-if __name__ == '__main__':
-    app = qtw.QApplication([])
-    widget = AddCustomerWidgetHandler()
-    widget.show()
-    app.exec()
 
 
 
