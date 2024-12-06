@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
             self.ui.station1Status_3.setText("Available for Production")
             self.ui.station1Status_3.setStyleSheet("background-color: white; color: black;")
 
-        self.ui.progressBar.setValue(WOCompletionPercentage)
+        self.ui.progressBar.setValue(int(WOCompletionPercentage))
 
         #Updating other GUI elements
         self.ui.lineEdit_6.setText(lastWOComplete)
