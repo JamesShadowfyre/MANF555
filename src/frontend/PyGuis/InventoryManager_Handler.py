@@ -21,9 +21,18 @@ class inventoryManagerHandler(qtw.QWidget):
         self.ui.createNewInventoryItem.clicked.connect(self.createNewInventoryItemClicked)
         self.ui.lowInvAlarmSettings.clicked.connect(self.lowInvAlarmSettingsClicked)
 
+        self.lowInvTableUpdate()
+        self.allInvTableUpdate()
+
     def addInventoryClicked(self):
         self.recieveInventoryWidget = RecieveInventoryWidgetHandler()
         self.recieveInventoryWidget.show()
+
+    def lowInvTableUpdate(self):
+        pass
+
+    def allInvTableUpdate(self):
+        pass
 
     def performInvCycleCountClicked(self):
         self.performCycleCounts = updateInventoryHandler()

@@ -1,5 +1,5 @@
-#from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
-from ExecuteProductionWidget import Ui_ExecuteProduction
+from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
+#from ExecuteProductionWidget import Ui_ExecuteProduction
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtCore import QDate
 
