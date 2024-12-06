@@ -26,6 +26,34 @@ class UserManagerWidgetHandler(qtw.QWidget):
         self.ui.changeUserPassword.clicked.connect(self.changeUserPasswordButtonClicked)
         self.ui.removeUserButton.clicked.connect(self.removeUserButtonClicked)
 
+        #-----------------------------------------------------
+        #Replace RHS of self.userData with the tie in
+        #[User ID, Username, Rights [Bool]
+        #----------------------------------------------------- 
+        self.userData = [["ID1", "user1",0], ["ID2", "user2",0], ["ID3", "user3",0]]
+        
+        #Table Operations Begin -----
+        # Clear the table before populating
+        self.ui.tableWidget.clearContents()  # Clear all cell contents but keep the headers
+        self.ui.tableWidget.setRowCount(0)  # Reset row count to zero
+
+        # Set new row count and populate the table with new data
+        self.ui.tableWidget.setRowCount(len(self.userData))
+        self.ui.tableWidget.setColumnCount(3)  # Adjust columns if necessary
+        self.ui.tableWidget.setHorizontalHeaderLabels(["User ID", "Username", "Admin Rights"]) 
+
+        # Populate the table
+        for row, data in enumerate(self.userData):
+            for column, value in enumerate(data):
+                # Convert rights (column 2) to human-readable text, e.g., Yes/No
+                if column == 2:  # Assuming rights is the third column
+                    item = qtw.QTableWidgetItem("Yes" if value else "No")
+                else:
+                    item = qtw.QTableWidgetItem(str(value))
+                self.ui.tableWidget.setItem(row, column, item)
+                self.ui.tableWidget.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.Stretch)
+        #Table Operations End -----
+        #  
     def newUserButtonClicked(self):
         self.setDisabled = (True)
         self.new_user_widget = NewUserWidgetHandler()

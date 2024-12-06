@@ -37,7 +37,7 @@ class Ui_UserManagerWidget(object):
         self.groupBox_3.setGeometry(QtCore.QRect(10, 130, 501, 211))
         self.groupBox_3.setObjectName("groupBox_3")
         self.tableWidget = QtWidgets.QTableWidget(self.groupBox_3)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 30, 481, 151))
+        self.tableWidget.setGeometry(QtCore.QRect(10, 30, 480, 150))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(3)
