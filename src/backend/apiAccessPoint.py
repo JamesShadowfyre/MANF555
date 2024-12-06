@@ -132,19 +132,19 @@ class ApplicationHome:
     # Morgan's addition, please remove or modify if required
         
     def operatorFunctions(self, functionType, **kwargs):
-        # if functionType == 'login':
-        #     return User.verify(username=kwargs['username'], password=kwargs['password'])
-        # elif functionType == 'get':
-        #     return User.getUser()
-               
         if functionType == 'loadall':
-            return User.loadAll()
+            operators = self.database.select(table='operator', fields=r'*', conditions=('1 = 1'))
+            return operators.fetchall()
         elif functionType == 'create':
-            User.createUser(kwargs['employeeNumber'], kwargs['operatorName'])
+            self.database.insert(table='operator', columns='name', 
+                            values=(str('\'' + kwargs['name'] + '\'' #+ 
+                                        # '\'' + userid + '\',' + 
+                                        # '\'' + str(self.operator) + '\',' + 
+                                        # '\'' + str(self.duration) + '\',' + 
+                                        # '\'' +  str(self.quantity) +'\''
+                                        )))
         elif functionType == 'delete':
-            User.delete(kwargs['id'])
-        elif functionType=='employeeNumberChange':
-            User.changePassword(kwargs['id'], kwargs['employeeNumber'])
+           self.database.delete(table='operator', conditions='name = ' + kwargs['name'])
         
     # Morgan's additions end
 
