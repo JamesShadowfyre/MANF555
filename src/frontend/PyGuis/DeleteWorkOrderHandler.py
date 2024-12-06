@@ -10,6 +10,7 @@ Remaining work:
 """
 
 from frontend.PyGuis.DeleteWorkOrderRev4 import Ui_CreateWorkOrderWidget
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore
@@ -23,8 +24,10 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         self.ui.setupUi(self)
         
         #set all of these equal to database values
-        list = ["","1","2","3","4"]
-        self.ui.WorkOrderNumber.addItems(list)
+        api = ApplicationHome()
+        self.WOs = api.getWorkOrderList()
+        list =  self.WOs.keys()
+        self.ui.WorkOrderNumber.addItems(map(str, list))
         
         self.ui.createWOCustomerSelection.setText("")
         self.ui.createWODateInput.setText("")
@@ -65,14 +68,19 @@ class DeleteWorkOrderHandler(qtw.QWidget):
      
         #use taskCodeValue to search for other elements from the database to update UI
         self.ProductTemplateReturn(2)
-        
-        customerfromTable = "string1"
-        WODatefromTable = "string2"
-        QtyfromTable = "string3"
-        woProddatefromTable  ="string4"
-        woreqdatefromTable = "string5"
-        shipmethodfromTable = "string6"
-        backCasefromTable = "string7"
+
+        chosenWO = self.WOs.get(int(taskcodeValue))
+        customerfromTable = chosenWO.getCustomer()
+        WODatefromTable = ""
+        QtyfromTable = str(chosenWO.getQuantity())
+        woProddatefromTable  =""
+        woreqdatefromTable = ""
+        shipmethodfromTable = ""
+        items = list(chosenWO.getComponent().keys())
+        try:
+            backCasefromTable = items[0]
+        except:
+            backCasefromTable = ""
 
         self.ui.createWOCustomerSelection.setText(customerfromTable)
         self.ui.createWODateInput.setText(WODatefromTable)
@@ -86,14 +94,13 @@ class DeleteWorkOrderHandler(qtw.QWidget):
         #using if statements to confirm that all inputs are valid.
 
             self.ProductTemplateReturn(taskcodeValue)
-            
             #provide user feedback
             msg_box = qtw.QMessageBox(self)
             msg_box.setWindowTitle("Delete Work Order")
             msg_box.setText("Are you sure you wish to delete the work order?")
             response = msg_box.exec_()
             if response == qtw.QMessageBox.Ok:   
-                self.savedataMethod(taskcodeValue) #Write data to table
+                self.savedataMethod(self.ui.WorkOrderNumber.currentText()) #Write data to table
                 self.close()  # Close the widget if OK is clicked
 
 
@@ -112,9 +119,11 @@ class DeleteWorkOrderHandler(qtw.QWidget):
 
         taskcodeValue = self.taskCode
         
-    def savedataMethod(self,taskcodeValue):
+    def savedataMethod(self,woNumber):
         #****Update the LHS to be the data table save destination
-        datatablevalue = taskcodeValue
+        api = ApplicationHome()
+        api.setWorkOrderFunctions('delete',id=woNumber)
+
         print("Data deleted")
 
 if __name__ == '__main__':

@@ -94,11 +94,13 @@ class ApplicationHome:
             self.workOrderMap.get(kwargs['id']).save()
         elif functionType == 'delete':
             self.database.delete(table='workOrder', conditions='id = ' + kwargs['id'])
+            self.workOrderMap.pop(int(kwargs['id']))
         elif functionType == 'getCompleted':
             completedList = []
             for workOrder in self.workOrderMap.values():
                 if workOrder.getCompleted() == True:
                     completedList.append(workOrder)
+            return completedList
     def userFunctions(self, functionType, **kwargs):
         if functionType == 'login':
             return User.verify(username=kwargs['username'], password=kwargs['password'])

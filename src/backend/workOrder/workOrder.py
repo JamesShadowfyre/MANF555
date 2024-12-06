@@ -40,6 +40,10 @@ class WorkOrder:
         return self.completed
     def getQuantity(self):
         return self.quantity
+    def getCustomer(self):
+        return self.customer
+    def getComponent(self):
+        return self.componentMap
     
     def setDuration(componentMap, quantity):
         return 0
@@ -60,6 +64,7 @@ class WorkOrder:
         workOrderMap = {}
         workOrders = WorkOrder.db.select(table='workOrder', fields=r'*', conditions='1 = 1')
         workOrders = workOrders.fetchall()
+        print(workOrders)
         for x in range(workOrders.__len__()):
-            workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], [], workOrders[x][4], '', '')
+            workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], {}, workOrders[x][5], '', '')
         return workOrderMap
