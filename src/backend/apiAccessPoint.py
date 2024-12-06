@@ -172,7 +172,7 @@ class ApplicationHome:
                                         # '\'' +  str(self.quantity) +'\''
                                         )))
         elif functionType == 'remove':
-            self.database.delete(table='customer', conditions='accountName = ' + kwargs['accountName'])
+            self.database.delete(table='customer', conditions='id = ' + kwargs['id'])
         elif functionType == 'get':
             customers = self.database.select(table='customer', fields=r'*', conditions=('accountName = \'' + kwargs['accountName'] + '\''))
             return customers.fetchall()

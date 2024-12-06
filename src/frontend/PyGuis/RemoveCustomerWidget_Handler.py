@@ -3,7 +3,7 @@
 #Change connection of data to table  - beyond this everything appears fully functional - JK
 
 from frontend.PyGuis.RemoveCustomerWidget import Ui_removeCustomerWidget
-
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -21,13 +21,14 @@ class RemoveCustomerWidgetHandler(qtw.QWidget):
         # read from customers table in database, in this order as userData
         # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email] - all str
         #-----------------------------------------------------
-
-        self.userData = [["ACCT1", "Account 1", "111 University Way", "A", "Kelowna", "BC", "V1V 1V1", "Canada", "111-111-1111","university1@ubc.ca"], ["ACCT2", "Account 2", "222 University Way", "B", "Kelowna", "BC", "V2V 2V2", "Canada", "222-222-2222","university2@ubc.ca"]]
+        self.api = ApplicationHome()
+        self.userData = self.api.userFunctions('loadall')
+        #[["ACCT1", "Account 1", "111 University Way", "A", "Kelowna", "BC", "V1V 1V1", "Canada", "111-111-1111","university1@ubc.ca"], ["ACCT2", "Account 2", "222 University Way", "B", "Kelowna", "BC", "V2V 2V2", "Canada", "222-222-2222","university2@ubc.ca"]]
         
 
         userIDs = [item[0] for item in self.userData]
         self.ui.comboBox_2.clear()
-        self.ui.comboBox_2.addItems(userIDs)
+        self.ui.comboBox_2.addItems(map(str, userIDs))
         self.ui.comboBox_2.currentIndexChanged.connect(self.refreshDeleteCustomerData)
 
         #set visibilities
@@ -91,14 +92,14 @@ class RemoveCustomerWidgetHandler(qtw.QWidget):
 
         #confirming functionality
         print(field)
-
+        
                 
         #-----------------------------------------------------
         #James: 
         # write field to database, in this order
         # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email] - all str
         #-----------------------------------------------------
-
+        
     def deleteCustomerButtonClicked(self):
         msg_box = qtw.QMessageBox(self)
         msg_box.setWindowTitle("Delete Customer")
@@ -107,6 +108,7 @@ class RemoveCustomerWidgetHandler(qtw.QWidget):
         response = msg_box.exec_()
         if response == qtw.QMessageBox.Ok:
             self.deleteCustDataMethod()
+            self.api.customerFunctions('remove', id=self.ui.comboBox_2.currentText())
             self.close()  # Close the widget if OK is clicked
             #Code to delete the entry from the database
         elif response == qtw.QMessageBox.Cancel:
