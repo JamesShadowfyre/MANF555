@@ -1,5 +1,5 @@
-from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
-#from ExecuteProductionWidget import Ui_ExecuteProduction
+#from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
+from ExecuteProductionWidget import Ui_ExecuteProduction
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtCore import QDate
 
@@ -11,14 +11,16 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         self.ui.setupUi(self)
 
         #-----------------------------------------------------
+        # James:
         #Replace RHS of self.userData with the tie in
-        #[User ID, Username]
+        #["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]
         #-----------------------------------------------------
         self.workOrdersData = [
             ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
             ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
             ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
         ]
+        
 
         # Populate work order combo box
         workOrderIDs = [order[0] for order in self.workOrdersData]
@@ -26,6 +28,7 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
 
         # Populate customer, drilling arrangement, and back case details combo boxes initially
         self.populateComboBoxes()
+        self.tableUpdate()
 
         # Disable input fields initially
         self.disableFields()
@@ -36,6 +39,36 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
 
         # Initial check to populate fields based on default selection
         self.updateUI(self.ui.executeWONumberComboBox.currentText())
+
+    def tableUpdate(self):
+            #Table Operations Begin -----
+            # Clear the table before populating
+            self.ui.tableWidget.clearContents()  # Clear all cell contents but keep the headers
+            self.ui.tableWidget.setRowCount(0)  # Reset row count to zero
+
+            # Set new row count and populate the table with new data
+            self.ui.tableWidget.setRowCount(len(self.workOrdersData))
+            self.ui.tableWidget.setColumnCount(7)  # Adjust columns if necessary
+            self.ui.tableWidget.setHorizontalHeaderLabels(["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]) 
+
+            # Populate the table
+            for row, data in enumerate(self.workOrdersData):
+                for column, value in enumerate(data):
+                    # Convert task code (column 4) to drilling description
+                    if column == 4:  # task code passed to is the fifth column
+                        if value == 0:
+                            item = qtw.QTableWidgetItem("No drilling")
+                        if value == 1:
+                            item = qtw.QTableWidgetItem("2x back holes")
+                        if value == 2:
+                            item = qtw.QTableWidgetItem("2x front holes")
+                        if value == 3:
+                            item = qtw.QTableWidgetItem("4x holes (2x front + 2x back)")
+                    else:
+                        item = qtw.QTableWidgetItem(str(value))
+                    self.ui.tableWidget.setItem(row, column, item)
+
+            #Table Operations End -----
 
     def disableFields(self):
         # Disable all fields initially
