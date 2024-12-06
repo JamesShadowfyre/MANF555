@@ -23,16 +23,18 @@ class ApplicationHome:
         totalWorkTime = 0
         totalitems = 0
         totalExpectedDuration = 0
+        totalCycles = 0
         x: WorkOrder
         for x in self.workOrderMap.values():
             totalWorkTime += float(x.getStats())/1000
             print(x.getStats())
             if x.getCompleted() == True:
                 totalitems += x.getQuantity()
-                totalExpectedDuration += x.getDuration()
+                totalCycles += 1
+                totalExpectedDuration += x.getDuration()*60
 
         if metricType == 'OEE':
-            return metrics.calculateOEE(totalitems, totalWorkTime, totalExpectedDuration, float(float((datetime.datetime.now() - self.startTime).total_seconds() / 60 - totalWorkTime)))
+            return metrics.calculateOEE(totalCycles, totalWorkTime, totalExpectedDuration, float(float((datetime.datetime.now() - self.startTime).total_seconds() - totalWorkTime)))
         elif metricType == 'FPFY':
             return 1
         elif metricType == 'TSP':
