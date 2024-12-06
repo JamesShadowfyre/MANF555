@@ -138,6 +138,18 @@ class EditWorkOrderHandler(qtw.QWidget):
             if taskcodeinput == "4x holes (2x front + 2x back)":
                 userData[7] = 3
 
+            api.setWorkOrderFunctions(functionType='create', 
+                                               customer=userData[0], 
+                                               orderDate=userData[1], 
+                                               quantity=userData[2], 
+                                               dueDate=userData[4], 
+                                               taskCode=userData[7],
+                                               case=userData[6],
+                                               delivery=userData[5],
+                                               date=userData[3].toPyDate()
+                                               )
+
+
             print(userData)
 
             #-----------------------------------------------------

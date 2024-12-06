@@ -6,6 +6,7 @@ from frontend.PyGuis.UserManagerWidget import Ui_UserManagerWidget
 from frontend.PyGuis.NewUserWidget_Handler import NewUserWidgetHandler
 from frontend.PyGuis.ChangePasswordWidget_Handler import ChangePasswordWidgetHandler
 from frontend.PyGuis.DeleteUserWidget_Handler import DeleteWidgetHandler
+from backend.apiAccessPoint import ApplicationHome
 
 # from UserManagerWidget import Ui_UserManagerWidget
 # from NewUserWidget_Handler import NewUserWidgetHandler
@@ -30,7 +31,9 @@ class UserManagerWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #[User ID, Username, Rights [Bool]
         #----------------------------------------------------- 
-        self.userData = [["ID1", "user1",0], ["ID2", "user2",0], ["ID3", "user3",0]]
+        #self.userData = [["ID1", "user1",0], ["ID2", "user2",0], ["ID3", "user3",0]]
+        api = ApplicationHome()
+        self.userData = api.userFunctions('loadall')
         
         #Table Operations Begin -----
         # Clear the table before populating

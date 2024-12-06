@@ -150,7 +150,8 @@ class CreateNewWorkOrderHandler(qtw.QWidget):
                                                dueDate=newWOReqdByDate, 
                                                taskCode=newTaskCode,
                                                case=newBackCaseSelection,
-                                               delivery=newWODeliveryMethod
+                                               delivery=newWODeliveryMethod,
+                                               date=newWOProductionDate.toPyDate()
                                                )
 
         #confirming that all the fields work - comment this out for final code

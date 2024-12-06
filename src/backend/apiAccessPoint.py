@@ -74,7 +74,8 @@ class ApplicationHome:
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
                                                 operator=None,
-                                                taskcode=kwargs['taskCode']
+                                                taskcode=kwargs['taskCode'],
+                                                startDate=kwargs['date']
                                                 ))
             self.workOrderMap.get(self.workOrderID + 1).save()
             self.workOrderID = self.workOrderMap.keys().__len__()
@@ -85,12 +86,14 @@ class ApplicationHome:
             return self.workOrderMap.get(kwargs['id'])
         elif functionType == 'edit':
             self.database.delete(table='workOrder', conditions='id = ' + kwargs['id'])
-            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=kwargs['id'], 
+            self.getWorkOrderList[kwargs['id']] = (WorkOrder(id=(self.workOrderID + 1), 
                                                 machineList=['Drilling'], 
                                                 componentMap={kwargs['case']: kwargs['taskCode']},
                                                 quantity=kwargs['quantity'],
                                                 customer=kwargs['customer'],
-                                                operator=None
+                                                operator=None,
+                                                taskcode=kwargs['taskCode'],
+                                                startDate=kwargs['date']
                                                 ))
             self.workOrderMap.get(kwargs['id']).save()
         elif functionType == 'delete':
@@ -111,6 +114,14 @@ class ApplicationHome:
             return User.verify(username=kwargs['username'], password=kwargs['password'])
         elif functionType == 'get':
             return User.getUser()
+        elif functionType == 'loadall':
+            return User.loadAll()
+        elif functionType == 'create':
+            User.createUser(kwargs['username'], kwargs['password'], kwargs['admin'])
+        elif functionType == 'delete':
+            User.delete(kwargs['id'])
+        elif functionType=='passwordchange':
+            User.changePassword(kwargs['id'], kwargs['password'])
 
     #Jon's additions start, please modify if they cause issue   
     def userFunctions2(self):

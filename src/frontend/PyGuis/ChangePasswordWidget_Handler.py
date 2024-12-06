@@ -1,6 +1,7 @@
 # needs to be connected to database to retrieve used data
 
 from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
+from backend.apiAccessPoint import ApplicationHome
 #from ChangePasswordWidget import Ui_ChangePasswordWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -17,9 +18,10 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData
         #[User ID, Username]
      #-----------------------------------------------------
-        self.userData = [["ID1", "user1"], ["ID2", "user2"], ["ID3", "user3"]]
+        self.api = ApplicationHome()
+        self.userData = self.api.userFunctions('loadall')
         IDs = [item[0] for item in self.userData]
-
+        IDs = map(str, IDs)
         # Disable the password and username fields initially
         self.ui.changePasswordPassword.setDisabled(True)
         self.ui.changePasswordUsername.setDisabled(True)
@@ -46,6 +48,7 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         # Enable the password field once a user is selected
         self.ui.changePasswordPassword.setDisabled(False)
         selectedUserID = self.ui.changePasswordEmployeeNumber.currentText()
+        
 
         matching_id = next((item[1] for item in self.userData if item[0] == selectedUserID), None)
         if matching_id:
@@ -67,7 +70,7 @@ class ChangePasswordWidgetHandler(qtw.QWidget):
         #write employeeSaveData to database
         #[User ID, Username, Password]
   #-----------------------------------------------------
-
+        self.api.userFunctions('passwordchange', id=employeeSaveData[0], password=employeeSaveData[2])
         self.close()
 
 # Widget execution code
