@@ -3,6 +3,7 @@
 #Change connection of data to table - beyond this everything appears fully functional - JK
 
 from frontend.PyGuis.editCustomerWidget import Ui_removeCustomerWidget
+from backend.apiAccessPoint import ApplicationHome
 
 
 from PyQt5 import QtWidgets as qtw
@@ -22,8 +23,11 @@ class EditCustomerWidgetHandler(qtw.QWidget):
         #read customer data from table
         #[Customer ID, Customer Acct name, Addr 1, Addr 2, City, Region, Postal code, Country, Phone number, Email] all strings
         #-----------------------------------------------------
-        self.userData = [["ACCT1", "Account 1", "111 University Way", "A", "Kelowna", "BC", "V1V 1V1", "Canada", "111-111-1111","university1@ubc.ca"], ["ACCT2", "Account 2", "222 University Way", "B", "Kelowna", "BC", "V2V 2V2", "Canada", "222-222-2222","university2@ubc.ca"]]
+        self.api = ApplicationHome()
+        self.userData = self.api.customerFunctions('getall')
+        #[["ACCT1", "Account 1", "111 University Way", "A", "Kelowna", "BC", "V1V 1V1", "Canada", "111-111-1111","university1@ubc.ca"], ["ACCT2", "Account 2", "222 University Way", "B", "Kelowna", "BC", "V2V 2V2", "Canada", "222-222-2222","university2@ubc.ca"]]
         userIDs = [item[0] for item in self.userData]
+        userIDs = map(str, userIDs)
         self.ui.comboBox_2.clear()
         self.ui.comboBox_2.addItems(userIDs)
         self.ui.billingCountryInput_2.addItems(["-","Canada","Other"])
@@ -116,7 +120,7 @@ class EditCustomerWidgetHandler(qtw.QWidget):
         field[8] = self.ui.removeCustomerEmail.text()
 
         print(field)
-
+        self.api.customerFunctions('edit', id=self.ui.comboBox_2.currentText(), accountName=field[0])
   #-----------------------------------------------------
         #James: 
         # write field to database - note that this one doesn't have the account ID as the 0th element!

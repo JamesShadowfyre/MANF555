@@ -26,13 +26,16 @@ class EditWorkOrderHandler(qtw.QWidget):
         #Read list of all WO IDs and Customer Account IDs from tables
         #Then read the list of work order information
         #-----------------------------------------------------    
-        api = ApplicationHome()
+        api = ApplicationHome() 
         self.WOs = api.getWorkOrderList()
         list =  self.WOs.keys() #WO number - update with sql data
-        customers = ["cust1", "cust2", "cust3"] # acct idupdate with sql data
-
+         # acct idupdate with sql data
+        customers = api.customerFunctions('getall')
+        newCustomers = []
+        for customer in customers:
+            newCustomers.append(customer[1])
         self.ui.WorkOrderNumber.addItems(map(str, list))
-        self.ui.comboBox_3.addItems(customers)
+        self.ui.comboBox_3.addItems(newCustomers)
         self.ui.createWODateInput.setText("")
         self.ui.createWOQuantityInput.setText("")
         self.ui.createWOProductionDateInput.setText("")

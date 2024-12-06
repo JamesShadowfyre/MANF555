@@ -5,7 +5,7 @@ from frontend.PyGuis.CustomerManager import Ui_CustomerManagerWidget
 from frontend.PyGuis.RemoveCustomerWidget_Handler import RemoveCustomerWidgetHandler
 from frontend.PyGuis.EditCustomerWidget_Handler import EditCustomerWidgetHandler
 from frontend.PyGuis.AddCustomerWidget_Handler import AddCustomerWidgetHandler
-
+from backend.apiAccessPoint import ApplicationHome
 
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
@@ -24,8 +24,10 @@ class CustomerManagerHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #[Account ID, Street Addr1, Street Addr2, City, Region, Postal Code, Canada, Email] - all strings
         #----------------------------------------------------- 
-
-        self.userData = [["ACCT1","111 University Way","A","Kelowna","BC","V1V 1V1", "Canada", "university1@ubc.ca"], ["ACCT2","222 University Way","B","Kelowna","BC","V2V 2V2", "Canada", "university2@ubc.ca"]]
+        self.api = ApplicationHome()
+        
+        self.userData = self.api.customerFunctions('getall')
+        #[["ACCT1","111 University Way","A","Kelowna","BC","V1V 1V1", "Canada", "university1@ubc.ca"], ["ACCT2","222 University Way","B","Kelowna","BC","V2V 2V2", "Canada", "university2@ubc.ca"]]
         
         
         self.refreshClickCount = 0
