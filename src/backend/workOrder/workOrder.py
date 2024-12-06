@@ -46,7 +46,7 @@ class WorkOrder:
         return self.componentMap
     
     def setDuration(componentMap, quantity):
-        return 0
+        return quantity*0.5 # 30s cycle time on drill station
         #This needs to cycle through all components and sum expected durations
 
     def save(self):
