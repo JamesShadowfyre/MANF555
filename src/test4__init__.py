@@ -1,11 +1,11 @@
 from backend.apiAccessPoint import ApplicationHome
-from frontend.PyGuis.DeleteUserWidget_Handler import DeleteWidgetHandler
+from frontend.PyGuis.DeleteOperatorWidget_Handler import DeleteOperatorWidgetHandler
 from PyQt5 import QtWidgets as qtw
 
 
 api = ApplicationHome()
 api.init_app()
 app = qtw.QApplication([])
-widget = DeleteWidgetHandler()
+widget = DeleteOperatorWidgetHandler()
 widget.show()
 app.exec()
