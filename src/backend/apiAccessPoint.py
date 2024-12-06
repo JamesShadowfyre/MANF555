@@ -36,7 +36,7 @@ class ApplicationHome:
         elif metricType == 'TSP':
             return totalitems
         elif metricType == 'Idle':
-            return float(float(datetime.datetime.now() - self.startTime - totalWorkTime) / float(datetime.datetime.now() - self.startTime))
+            return float(float((datetime.datetime.now() - self.startTime).total_seconds() / 60 - totalWorkTime)) # / float((datetime.datetime.now() - self.startTime).total_seconds() / 60)
         elif metricType == 'ScheduledDown':
             return 0
         elif metricType == 'Unexpected':
@@ -104,6 +104,8 @@ class ApplicationHome:
             return completedList
         elif functionType =='loadmain':
             return WorkOrder.loadmain()
+        elif functionType == 'loadOverview':
+            return WorkOrder.loadOverviewTable()
     def userFunctions(self, functionType, **kwargs):
         if functionType == 'login':
             return User.verify(username=kwargs['username'], password=kwargs['password'])

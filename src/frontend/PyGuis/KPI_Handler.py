@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
 
+
 class KPIHandler(qtw.QWidget): 
 
     def __init__(self):
@@ -10,6 +11,7 @@ class KPIHandler(qtw.QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui.returnToMain.clicked.connect(self.returnToMainClicked)
+        
 
     def returnToMainClicked(self):
         self.close()
