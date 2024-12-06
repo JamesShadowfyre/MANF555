@@ -31,8 +31,7 @@ class UserManagerWidgetHandler(qtw.QWidget):
         #[User ID, Username, Rights [Bool]
         #----------------------------------------------------- 
         self.userData = [["ID1", "user1",0], ["ID2", "user2",0], ["ID3", "user3",0]]
-        IDs = [item[0] for item in self.userData]
-
+        
         #Table Operations Begin -----
         # Clear the table before populating
         self.ui.tableWidget.clearContents()  # Clear all cell contents but keep the headers

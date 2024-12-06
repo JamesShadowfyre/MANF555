@@ -12,7 +12,7 @@ from PyQt5.QtGui import QPalette, QColor
 from PyQt5 import QtCore as qtc
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow
-import threading
+
 
 class MainWindow(QMainWindow):
     
@@ -27,11 +27,19 @@ class MainWindow(QMainWindow):
         self.timer.timeout.connect(self.MainWindowGUIRefresh)
         self.timer.start(1000) 
 
+        #-----------------------------------------------------
+        #There is no write data from the main screen, just read data. 
+        #Replace RHS of self.userData with the tie in
+        #[Work Order ID, Scheduled Start Date, Scheduled Start Time, Estimated Runtime (minutes), Production Qty, Cost ($)]; format is str, date, date/time, duration, int, string
+        #----------------------------------------------------- 
+        self.userData = [["WO1","15/12/2024","08:00",10, 1,4], ["WO2","15/12/2024","09:00",15, 2,5], ["WO1","15/12/2024","10:00",20, 3,6]]
+
         #widget data
         self.KPIMethod()
         self.prod_data()
         self.LoggedInUserData()
         self.MainWindowGUIRefresh()
+        self.tableUpdate()
 
         self.ui.mainMenuWorkOrderManagerButton.clicked.connect(self.openWorkOrderTab)
         self.ui.mainMenuScheduleManagerButton.clicked.connect(self.openProductionSchedulerTab)
@@ -75,11 +83,32 @@ class MainWindow(QMainWindow):
         self.ui.menuUser_Manager.triggered.connect(self.openUserManager)
         self.ui.actionExit.triggered.connect(self.ExitFunction)
 
-    ### Updating the visual elements on the screen with data 
+    ### Updating the visual elements on the screen with data
+    # 
+    # 
+    # 
+
+    def tableUpdate(self):
+         # Clear the table before populating
+        self.ui.tableWidget.clearContents()  # Clear all cell contents but keep the headers
+        self.ui.tableWidget.setRowCount(0)  # Reset row count to zero
+
+        # Set new row count and populate the table with new data
+        self.ui.tableWidget.setRowCount(len(self.userData))
+        self.ui.tableWidget.setColumnCount(6)  # Adjust columns if necessary
+        self.ui.tableWidget.setHorizontalHeaderLabels(["Work Order ID", "Scheduled Start Date", "Scheduled Start Time", "Estimated Runtime (minutes)", "Production Qty", "Cost ($)"]) 
+
+        # Populate the table
+        for row, data in enumerate(self.userData):
+            for column, value in enumerate(data):
+                item = qtw.QTableWidgetItem(str(value))
+                self.ui.tableWidget.setItem(row, column, item)
+                #self.ui.tableWidget.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.Stretch)
+        #Table Operations End -----
+        #  
 
     def LoggedInUserData(self):
         self.ui.userIdTextBrowser.setText(self.api.userFunctions('get'))
-
 
     def KPIMethod(self):
         OEE = 1
@@ -94,9 +123,16 @@ class MainWindow(QMainWindow):
         self.ui.TSP_Value.display(TSP)
 
     def prod_data(self):
-        lastWOComplete = "4"
-        WOInProgress = "5"
-        NextWO = "6"
+
+        #-----------------------------------------------------
+        #James:  
+        #
+        #Queries will need to be generated from the database for the objects below:
+        #----------------------------------------------------- 
+
+        lastWOComplete = "4" #replace with sql query for WOs - to make life easy we can -'ve index  the previous WO in the table
+        WOInProgress = "5" #not sure how you'll pull this one
+        NextWO = "6" #replace with sql query for WOs - to make life easy we can index the next WO in the table
         operator = "operator_str"
         WOsCompletedToday =  "7" #replace with sql query for WOs with "completed date" field = TODAY()
         WOScheduledForToday = "8" #replace with sql query for WOs with "scheduled date" field = TODAY()
