@@ -73,3 +73,8 @@ class WorkOrder:
         for x in range(workOrders.__len__()):
             workOrderMap[workOrders[x][0]] = WorkOrder(workOrders[x][0], ['Drilling'], {'B': workOrders[x][6]}, workOrders[x][5], '', '', taskcode=workOrders[x][6])
         return workOrderMap
+    
+    def loadmain():
+        workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, duration, quantity', conditions='1 = 1')
+        workOrders = workOrders.fetchall()
+        return workOrders

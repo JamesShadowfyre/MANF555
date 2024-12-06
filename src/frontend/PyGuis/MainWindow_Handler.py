@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         #Replace RHS of self.userData with the tie in
         #[Work Order ID, Scheduled Start Date, Scheduled Start Time, Estimated Runtime (minutes), Production Qty, Cost ($)]; format is str, date, date/time, duration, int, string
         #----------------------------------------------------- 
-        self.userData = [["WO1","15/12/2024","08:00",10, 1,4], ["WO2","15/12/2024","09:00",15, 2,5], ["WO1","15/12/2024","10:00",20, 3,6]]
+        self.userData = self.api.setWorkOrderFunctions('loadmain') #[["WO1","15/12/2024","08:00",10, 1,4], ["WO2","15/12/2024","09:00",15, 2,5], ["WO1","15/12/2024","10:00",20, 3,6]]
 
         #widget data
         self.KPIMethod()
@@ -111,9 +111,9 @@ class MainWindow(QMainWindow):
         self.ui.userIdTextBrowser.setText(self.api.userFunctions('get'))
 
     def KPIMethod(self):
-        OEE = 1
-        FPFY = 2
-        TSP = 3
+        OEE = self.api.calculateMetrics('OEE')*100
+        FPFY = self.api.calculateMetrics('FPFY')*100
+        TSP = self.api.calculateMetrics('TSP')
 
         #I'm sure that some functions are going to be needed to calculate the OEE. Let me know how I can help, James.
 
