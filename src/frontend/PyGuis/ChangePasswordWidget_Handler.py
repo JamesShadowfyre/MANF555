@@ -1,7 +1,7 @@
 # needs to be connected to database to retrieve used data
 
-#from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
-from ChangePasswordWidget import Ui_ChangePasswordWidget
+from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
+#from ChangePasswordWidget import Ui_ChangePasswordWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
 

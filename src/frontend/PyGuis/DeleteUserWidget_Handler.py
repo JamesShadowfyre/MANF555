@@ -1,7 +1,7 @@
 # needs to be connected to database to retrieve user  list
 
-#from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
-from DeleteUserWidget import Ui_ChangePasswordWidget
+from frontend.PyGuis.ChangePasswordWidget import Ui_ChangePasswordWidget
+#from DeleteUserWidget import Ui_ChangePasswordWidget
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
 
