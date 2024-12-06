@@ -1,4 +1,5 @@
 from frontend.PyGuis.ExecuteProductionWidget import Ui_ExecuteProduction
+from backend.apiAccessPoint import ApplicationHome
 #from ExecuteProductionWidget import Ui_ExecuteProduction
 from PyQt5 import QtWidgets as qtw
 from PyQt5.QtCore import QDate
@@ -15,13 +16,13 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
         #Replace RHS of self.userData with the tie in
         #["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]
         #-----------------------------------------------------
-        self.workOrdersData = [
-            ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
-            ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
-            ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
-        ]
-        
-
+        self.api = ApplicationHome()
+        # self.workOrdersData = [
+        #     ["0098", "Steve", "2024-11-01", 50, "2024-12-07", "2L", "Black", "Customer Pickup"],
+        #     ["0099", "Bob", "2024-11-29", 70, "2024-12-09", "2R", "Black", "Delivery (Other)"],
+        #     ["0100", "Joe", "2024-12-01", 65, "2024-12-12", "ALL", "Black", "Delivery (Other)"]
+        # ]
+        self.workOrdersData = self.api.setWorkOrderFunctions('loadoverview')
         # Populate work order combo box
         workOrderIDs = [order[0] for order in self.workOrdersData]
         self.ui.executeWONumberComboBox.addItems(workOrderIDs)  # Add work order IDs to the combo box
