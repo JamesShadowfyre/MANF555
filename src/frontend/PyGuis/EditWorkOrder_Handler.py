@@ -108,7 +108,7 @@ class EditWorkOrderHandler(qtw.QWidget):
         self.ui.comboBox_3.setDisabled(False)
 
     def SaveNewWorkWorder(self, taskcodeValue):    
-
+        api = ApplicationHome()
         self.ProductTemplateReturn(taskcodeValue)
         
         #provide user feedback

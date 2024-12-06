@@ -3,7 +3,7 @@ from backend.loginSystem.User import User
 from backend.externalCommunication.database import Database
 from backend.metrics import metrics
 import datetime
-import atexit
+
 
 class ApplicationHome:
     def __new__(cls):
@@ -18,13 +18,15 @@ class ApplicationHome:
         self.workOrderID = self.workOrderMap.keys().__len__()
         self.startTime = datetime.datetime.now()
 
+
     def calculateMetrics(self, metricType):
         totalWorkTime = 0
         totalitems = 0
         totalExpectedDuration = 0
         x: WorkOrder
         for x in self.workOrderMap.values():
-            totalWorkTime += float(x.getStats())
+            totalWorkTime += float(x.getStats())/1000
+            print(x.getStats())
             if x.getCompleted() == True:
                 totalitems += x.getQuantity()
                 totalExpectedDuration += x.getDuration()
@@ -124,6 +126,25 @@ class ApplicationHome:
             User.delete(kwargs['id'])
         elif functionType=='passwordchange':
             User.changePassword(kwargs['id'], kwargs['password'])
+
+    # Morgan's addition, please remove or modify if required
+        
+    def operatorFunctions(self, functionType, **kwargs):
+        # if functionType == 'login':
+        #     return User.verify(username=kwargs['username'], password=kwargs['password'])
+        # elif functionType == 'get':
+        #     return User.getUser()
+               
+        if functionType == 'loadall':
+            return User.loadAll()
+        elif functionType == 'create':
+            User.createUser(kwargs['employeeNumber'], kwargs['operatorName'])
+        elif functionType == 'delete':
+            User.delete(kwargs['id'])
+        elif functionType=='passwordchange':
+            User.changePassword(kwargs['id'], kwargs['password'])
+        
+    # Morgan's additions end
 
     #Jon's additions start, please modify if they cause issue   
     def userFunctions2(self):
