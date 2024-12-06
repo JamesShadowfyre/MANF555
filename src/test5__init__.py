@@ -1,11 +1,11 @@
 from backend.apiAccessPoint import ApplicationHome
-from frontend.PyGuis.EditOperatorWidget_Handler import EditOperatorWidgetHandler
+from frontend.PyGuis.OperatorManagerWidget_Handler import OperatorManagerWidgetHandler
 from PyQt5 import QtWidgets as qtw
 
 
 api = ApplicationHome()
 api.init_app()
 app = qtw.QApplication([])
-widget = EditOperatorWidgetHandler()
+widget = OperatorManagerWidgetHandler()
 widget.show()
 app.exec()
