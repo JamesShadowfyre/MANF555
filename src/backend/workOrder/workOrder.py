@@ -2,6 +2,7 @@ import backend.factory.AbstractMachine
 import backend.inventory.item
 from backend.externalCommunication.database import Database
 from backend.loginSystem.User import User
+import datetime
 
 class WorkOrder:
     db: Database
@@ -56,13 +57,14 @@ class WorkOrder:
         clientid = '1'#WorkOrder.db.select(table='customer', fields=r'id', conditions=('accountName = \'' + self.customer + '\'')).fetchone()[0]
         userid = str(User.getId())
         print(self.taskCode)
-        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity, taskcode', 
+        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity, taskcode, startDate', 
                             values=(str('\'' + clientid + '\',' + 
                                         '\'' + userid + '\',' + 
                                         '\'' + str(self.operator) + '\',' + 
                                         '\'' + str(self.duration) + '\',' + 
                                         '\'' +  str(self.quantity) +'\',' + 
-                                        '\'' +  str(self.taskCode) +'\''
+                                        '\'' +  str(self.taskCode) +'\',' + 
+                                        '\'' +  str(datetime.date.today()) +'\''
                                         )))
     
     def loadMap():
@@ -75,7 +77,7 @@ class WorkOrder:
         return workOrderMap
     
     def loadmain():
-        workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, duration, quantity', conditions='1 = 1')
+        workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, duration, quantity', conditions=str('startDate =\'' + str(datetime.date.today())+'\''))
         workOrders = workOrders.fetchall()
         return workOrders
     def loadOverviewTable():

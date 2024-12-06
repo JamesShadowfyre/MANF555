@@ -17,6 +17,7 @@ class Database:
     def select(self, **kwargs):
         if kwargs['fields'] == None:
             kwargs['fields'] = '*'
+        print('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions'])
         return self.db.execute('SELECT ' + kwargs['fields'] + ' FROM ' + kwargs['table'] + ' WHERE ' + kwargs['conditions']) 
 
     def insert(self, **kwargs):
