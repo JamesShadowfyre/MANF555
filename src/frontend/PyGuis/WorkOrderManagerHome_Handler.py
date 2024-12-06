@@ -7,6 +7,7 @@ from frontend.PyGuis.CreateWorkOrderWidget_Handler import CreateNewWorkOrderHand
 from frontend.PyGuis.DeleteWorkOrderHandler import DeleteWorkOrderHandler
 from frontend.PyGuis.EditWorkOrder_Handler import EditWorkOrderHandler
 from frontend.PyGuis.CustomerManager_Handler import CustomerManagerHandler
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -15,7 +16,7 @@ class WorkOrderManagerHomeHandler(qtw.QWidget):
     
     def __init__(self):
         super().__init__()
-
+        self.api = ApplicationHome()
         self.ui = Ui_WorkOrderManagerWidget()
         self.ui.setupUi(self)
         self.refreshClickCount = 0
@@ -54,8 +55,8 @@ class WorkOrderManagerHomeHandler(qtw.QWidget):
             # Replace RHS of self.userData with the tie in for data read. I've already built the function to convert the task code to a drilling description
             #["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]
             #----------------------------------------------------- 
-            self.userData = [["WO1","15/12/2024","15/12/2024","ACCT-1",0, 10,"Operator1"], ["WO2","16/12/2024","16/12/2024","ACCT-2",1, 20,"Operator2"]]
-            
+            #self.userData = [["WO1","15/12/2024","15/12/2024","ACCT-1",0, 10,"Operator1"], ["WO2","16/12/2024","16/12/2024","ACCT-2",1, 20,"Operator2"]]
+            self.userData = self.api.setWorkOrderFunctions('loadOverview')
             #Table Operations Begin -----
             # Clear the table before populating
             self.ui.tableWidget.clearContents()  # Clear all cell contents but keep the headers

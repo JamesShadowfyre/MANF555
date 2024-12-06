@@ -78,3 +78,7 @@ class WorkOrder:
         workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, duration, quantity', conditions='1 = 1')
         workOrders = workOrders.fetchall()
         return workOrders
+    def loadOverviewTable():
+        workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, clientid, taskcode', conditions='1 = 1')
+        workOrders = workOrders.fetchall()
+        return workOrders
