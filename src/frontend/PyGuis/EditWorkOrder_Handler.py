@@ -144,12 +144,12 @@ class EditWorkOrderHandler(qtw.QWidget):
             api.setWorkOrderFunctions(functionType='create', 
                                                customer=userData[0], 
                                                orderDate=userData[1], 
-                                               quantity=userData[2], 
+                                               quantity=float(userData[2]), 
                                                dueDate=userData[4], 
                                                taskCode=userData[7],
                                                case=userData[6],
                                                delivery=userData[5],
-                                               date=userData[3].toPyDate()
+                                               date=userData[3]
                                                )
 
 
