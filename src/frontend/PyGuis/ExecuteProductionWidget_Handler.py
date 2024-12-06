@@ -39,31 +39,13 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
 
     def disableFields(self):
         # Disable all fields initially
+        self.ui.executeWOCustomerSelection.setDisabled(True)
         self.ui.executeWODateInput.setDisabled(True)
         self.ui.executeWOBackCaseDetailsInput.setDisabled(True)
         self.ui.executeWODrillingArrangementSelection.setDisabled(True)
         self.ui.executeWOQuantityInput.setDisabled(True)
         self.ui.executeWOProductionDateInput.setDisabled(True)
         self.ui.executeWOShippingMethod.setDisabled(True)
-
-    def enableFields(self):
-        # Enable all fields for user input
-        self.ui.executeWODateInput.setEnabled(True)
-        self.ui.executeWOBackCaseDetailsInput.setEnabled(True)
-        self.ui.executeWODrillingArrangementSelection.setEnabled(True)
-        self.ui.executeWOQuantityInput.setEnabled(True)
-        self.ui.executeWOProductionDateInput.setEnabled(True)
-        self.ui.executeWOShippingMethod.setEnabled(True)
-
-    def clearFields(self):
-        # Clear all fields to default state
-        self.ui.executeWOCustomerSelection.setCurrentText("")
-        self.ui.executeWODateInput.setDate(QDate(2000, 1, 1))
-        self.ui.executeWOQuantityInput.setValue(0)
-        self.ui.executeWOProductionDateInput.setDate(QDate(2000, 1, 1))
-        self.ui.executeWODrillingArrangementSelection.setCurrentText("")
-        self.ui.executeWOBackCaseDetailsInput.setCurrentText("")
-        self.ui.executeWOShippingMethod.setCurrentText("")
 
     def populateComboBoxes(self):
         # Populate the combo boxes with the possible options
@@ -118,11 +100,8 @@ class ExecuteProductionWidgetHandler(qtw.QWidget):
             self.ui.executeWOShippingMethod.setCurrentText(matchingOrder[7])  # Shipping Method
             print(f"Shipping Method: {matchingOrder[7]} set in executeWOShippingMethod")  # Debugging line
 
-            # Enable fields for editing
-            self.enableFields()
         else:
-            # Clear and disable fields if no matching order is found
-            self.clearFields()
+            # Disable fields if no matching order is found
             self.disableFields()
 
     def executeProductionButtonClicked(self):
