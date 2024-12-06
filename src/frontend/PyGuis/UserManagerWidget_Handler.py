@@ -1,12 +1,12 @@
 #User Manager Widget
-#Need to connect this to open other screens... which need to be built still
 
 
-from frontend.PyGuis.UserManagerWidget import Ui_UserManagerWidget
-from PyQt5 import QtWidgets as qtw
 # import secondary widget handlers
+from frontend.PyGuis.UserManagerWidget import Ui_UserManagerWidget
 from frontend.PyGuis.NewUserWidget_Handler import NewUserWidgetHandler
 from frontend.PyGuis.ChangePasswordWidget_Handler import ChangePasswordWidgetHandler
+from frontend.PyGuis.DeleteUserWidget_Handler import DeleteWidgetHandler
+from PyQt5 import QtWidgets as qtw
 
 
 class UserManagerWidgetHandler(qtw.QWidget):
@@ -33,15 +33,13 @@ class UserManagerWidgetHandler(qtw.QWidget):
     def changeUserPasswordButtonClicked(self):
         self.change_password_widget = ChangePasswordWidgetHandler()
         self.change_password_widget.show()
-        # print("change password button pressed")
+
 
     def removeUserButtonClicked(self):
-        #self.remove_user_widget = 
-        #self.remove_user_widget.show()
+        self.remove_user_widget = DeleteWidgetHandler()
+        self.remove_user_widget.show()
         print("remove user button pressed")
     
-
-
 
 if __name__ == '__main__':
     app = qtw.QApplication([])

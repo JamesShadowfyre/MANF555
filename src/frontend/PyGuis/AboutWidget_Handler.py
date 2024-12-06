@@ -1,6 +1,7 @@
 #MainWindow_Handler
 
 from frontend.PyGuis.AboutWidget import Ui_AboutWidget
+
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
