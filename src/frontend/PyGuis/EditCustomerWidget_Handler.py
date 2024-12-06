@@ -24,25 +24,24 @@ class EditCustomerWidgetHandler(qtw.QWidget):
         #-----------------------------------------------------
         self.userData = [["ACCT1", "Account 1", "111 University Way", "A", "Kelowna", "BC", "V1V 1V1", "Canada", "111-111-1111","university1@ubc.ca"], ["ACCT2", "Account 2", "222 University Way", "B", "Kelowna", "BC", "V2V 2V2", "Canada", "222-222-2222","university2@ubc.ca"]]
         userIDs = [item[0] for item in self.userData]
-
-        self.refreshEditCustomerData()
         self.ui.comboBox_2.clear()
         self.ui.comboBox_2.addItems(userIDs)
         self.ui.billingCountryInput_2.addItems(["-","Canada","Other"])
         self.ui.billingRegionInput_2.addItems(["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"])
         self.ui.comboBox_2.currentIndexChanged.connect(self.refreshEditCustomerData)
+        self.refreshEditCustomerData()
 
-        #set default visibilities
-        self.ui.comboBox_2.setDisabled(False)
-        self.ui.removeCustomerCity.setDisabled(True)
-        self.ui.billingRegionInput_2.setDisabled(True)
-        self.ui.removeCustomerEmail.setDisabled(True)
-        self.ui.removeCustomerId.setDisabled(True)
-        self.ui.removeCustomerPhoneNumber.setDisabled(True)
-        self.ui.removeCustomerPostalCode.setDisabled(True)
-        self.ui.billingCountryInput_2.setDisabled(True)
-        self.ui.removeCustomerStreetAddressLine1.setDisabled(True)
-        self.ui.removeCustomerStreetAddressLine2.setDisabled(True)
+        # #set default visibilities
+        # self.ui.comboBox_2.setDisabled(False)
+        # self.ui.removeCustomerCity.setDisabled(True)
+        # self.ui.billingRegionInput_2.setDisabled(True)
+        # self.ui.removeCustomerEmail.setDisabled(True)
+        # self.ui.removeCustomerId.setDisabled(True)
+        # self.ui.removeCustomerPhoneNumber.setDisabled(True)
+        # self.ui.removeCustomerPostalCode.setDisabled(True)
+        # self.ui.billingCountryInput_2.setDisabled(True)
+        # self.ui.removeCustomerStreetAddressLine1.setDisabled(True)
+        # self.ui.removeCustomerStreetAddressLine2.setDisabled(True)
 
         self.ui.deleteCustomerButton.clicked.connect(self.deleteCustomerButtonClicked)  
 
@@ -78,16 +77,16 @@ class EditCustomerWidgetHandler(qtw.QWidget):
             print("No matching customer found")
 
         #update screen visibilities
-        self.ui.comboBox_2.setDisabled(False)
-        self.ui.removeCustomerCity.setDisabled(False)
-        self.ui.billingRegionInput_2.setDisabled(False)
-        self.ui.removeCustomerEmail.setDisabled(False)
-        self.ui.removeCustomerId.setDisabled(False)
-        self.ui.removeCustomerPhoneNumber.setDisabled(False)
-        self.ui.removeCustomerPostalCode.setDisabled(False)
-        self.ui.billingCountryInput_2.setDisabled(False)
-        self.ui.removeCustomerStreetAddressLine1.setDisabled(False)
-        self.ui.removeCustomerStreetAddressLine2.setDisabled(False)
+        # self.ui.comboBox_2.setDisabled(False)
+        # self.ui.removeCustomerCity.setDisabled(False)
+        # self.ui.billingRegionInput_2.setDisabled(False)
+        # self.ui.removeCustomerEmail.setDisabled(False)
+        # self.ui.removeCustomerId.setDisabled(False)
+        # self.ui.removeCustomerPhoneNumber.setDisabled(False)
+        # self.ui.removeCustomerPostalCode.setDisabled(False)
+        # self.ui.billingCountryInput_2.setDisabled(False)
+        # self.ui.removeCustomerStreetAddressLine1.setDisabled(False)
+        # self.ui.removeCustomerStreetAddressLine2.setDisabled(False)
 
     def deleteCustomerButtonClicked(self):
         msg_box = qtw.QMessageBox(self)
