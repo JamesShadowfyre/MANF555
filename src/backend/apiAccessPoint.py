@@ -32,7 +32,7 @@ class ApplicationHome:
                 totalExpectedDuration += x.getDuration()
 
         if metricType == 'OEE':
-            return metrics.calculateOEE(totalitems, totalWorkTime, totalExpectedDuration)
+            return metrics.calculateOEE(totalitems, totalWorkTime, totalExpectedDuration, float(float((datetime.datetime.now() - self.startTime).total_seconds() / 60 - totalWorkTime)))
         elif metricType == 'FPFY':
             return 1
         elif metricType == 'TSP':
