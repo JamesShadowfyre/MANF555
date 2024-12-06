@@ -1,7 +1,7 @@
 class metrics:
     
-    def calculateOEE(totalitems, totalWorkTime, totalExpectedDuration):
-        availability = 1
+    def calculateOEE(totalitems, totalWorkTime, totalExpectedDuration, idle):
+        availability = totalWorkTime / (totalWorkTime + idle)
         try:
             performance = totalExpectedDuration*totalitems / totalWorkTime
         except:

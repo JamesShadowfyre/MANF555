@@ -13,7 +13,7 @@ class WorkOrder:
         self.id = id
         self.machineList = [DrillingMachine()]
         self.componentMap = componentMap
-        self.quantity = quantity
+        self.quantity = float(quantity)
         self.customer = customer 
         self.duration = WorkOrder.setDuration(componentMap, quantity)
         self.taskCode = taskcode

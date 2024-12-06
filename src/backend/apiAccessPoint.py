@@ -23,16 +23,18 @@ class ApplicationHome:
         totalWorkTime = 0
         totalitems = 0
         totalExpectedDuration = 0
+        totalCycles = 0
         x: WorkOrder
         for x in self.workOrderMap.values():
             totalWorkTime += float(x.getStats())/1000
             print(x.getStats())
             if x.getCompleted() == True:
                 totalitems += x.getQuantity()
-                totalExpectedDuration += x.getDuration()
+                totalCycles += 1
+                totalExpectedDuration += x.getDuration()*60
 
         if metricType == 'OEE':
-            return metrics.calculateOEE(totalitems, totalWorkTime, totalExpectedDuration)
+            return metrics.calculateOEE(totalCycles, totalWorkTime, totalExpectedDuration, float(float((datetime.datetime.now() - self.startTime).total_seconds() - totalWorkTime)))
         elif metricType == 'FPFY':
             return 1
         elif metricType == 'TSP':
@@ -141,8 +143,8 @@ class ApplicationHome:
             User.createUser(kwargs['employeeNumber'], kwargs['operatorName'])
         elif functionType == 'delete':
             User.delete(kwargs['id'])
-        elif functionType=='passwordchange':
-            User.changePassword(kwargs['id'], kwargs['password'])
+        elif functionType=='employeeNumberChange':
+            User.changePassword(kwargs['id'], kwargs['employeeNumber'])
         
     # Morgan's additions end
 
