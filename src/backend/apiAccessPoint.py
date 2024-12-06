@@ -125,6 +125,25 @@ class ApplicationHome:
         elif functionType=='passwordchange':
             User.changePassword(kwargs['id'], kwargs['password'])
 
+    # Morgan's addition, please remove or modify if required
+        """
+    def operatorFunctions(self, functionType, **kwargs):
+        # if functionType == 'login':
+        #     return User.verify(username=kwargs['username'], password=kwargs['password'])
+        # elif functionType == 'get':
+        #     return User.getUser()
+        
+        if functionType == 'loadall':
+            return User.loadAll()
+        elif functionType == 'create':
+            User.createUser(kwargs['employeeNumber'], kwargs['operatorName'])
+        elif functionType == 'delete':
+            User.delete(kwargs['id'])
+        elif functionType=='passwordchange':
+            User.changePassword(kwargs['id'], kwargs['password'])
+        """ 
+    # Morgan's additions end
+
     #Jon's additions start, please modify if they cause issue   
     def userFunctions2(self):
             return User.getAdmin()
