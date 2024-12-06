@@ -15,11 +15,12 @@ class DeleteOperatorWidgetHandler(qtw.QWidget):
         #read customer data from table
         #[Customer ID, Customer Acct name, Addr 1, Addr 2, City, Region, Postal code, Country, Phone number, Email] all strings
         #-----------------------------------------------------
-        self.userData = [["001", "James"], ["002", "Jon"], ["003", "Morgan"]]
+        self.userData = [["jRopotar", "0479"], ["jKettle", "1542"], ["mDavis", "0869"]]
         IDs = [item[0] for item in self.userData]
 
         #set default visibilities
-        self.ui.deleteEmployeeNumberBox.setDisabled(False)
+        self.ui.deleteEmployeeNumberBox.setDisabled(True)
+        
 
 # Add usernames to the combo box
     
@@ -79,8 +80,6 @@ class DeleteOperatorWidgetHandler(qtw.QWidget):
 
         self.close()
        
-       
-        self.close()
 
 # Code to launch widget
 if __name__ == '__main__':
