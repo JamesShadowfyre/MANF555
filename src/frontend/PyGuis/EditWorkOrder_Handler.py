@@ -8,6 +8,7 @@ Remaining work:
 """
 
 from frontend.PyGuis.EditWorkOrderWidget import Ui_CreateWorkOrderWidget
+from backend.apiAccessPoint import ApplicationHome
 #from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
@@ -25,12 +26,12 @@ class EditWorkOrderHandler(qtw.QWidget):
         #Read list of all WO IDs and Customer Account IDs from tables
         #Then read the list of work order information
         #-----------------------------------------------------    
-        list = ["","1","2","3","4"] #WO number - update with sql data
+        api = ApplicationHome()
+        self.WOs = api.getWorkOrderList()
+        list =  self.WOs.keys() #WO number - update with sql data
         customers = ["cust1", "cust2", "cust3"] # acct idupdate with sql data
 
-        WOInfo = []
-
-        self.ui.WorkOrderNumber.addItems(list)
+        self.ui.WorkOrderNumber.addItems(map(str, list))
         self.ui.comboBox_3.addItems(customers)
         self.ui.createWODateInput.setText("")
         self.ui.createWOQuantityInput.setText("")
@@ -68,19 +69,22 @@ class EditWorkOrderHandler(qtw.QWidget):
         self.ui.WorkOrderNumber.currentTextChanged.connect(self.updateUI)
 
     def updateUI(self, taskcodeValue):
-     
         #use taskCodeValue to search for other elements from the database to update UI
         #Update the RHS of the arguments to the table entries
-        self.ProductTemplateReturn(taskcodeValue)
         
-        customerfromTable = "string1"
-        WODatefromTable = "string2"
-        QtyfromTable = "string3"
-        woProddatefromTable  ="string4"
-        woreqdatefromTable = "string5"
-        shipmethodfromTable = "string6"
-        backCasefromTable = "string7"
-
+        chosenWO = self.WOs.get(int(taskcodeValue))
+        customerfromTable = chosenWO.getCustomer()
+        WODatefromTable = ""
+        QtyfromTable = str(chosenWO.getQuantity())
+        woProddatefromTable  =""
+        woreqdatefromTable = ""
+        shipmethodfromTable = ""
+        items = list(chosenWO.getComponent().keys())
+        try:
+            backCasefromTable = items[0]
+        except:
+            backCasefromTable = ""
+        self.ProductTemplateReturn(chosenWO.getTaskCode())
         self.ui.comboBox_3.setCurrentText(customerfromTable)
         self.ui.createWODateInput.setText(WODatefromTable)
         self.ui.createWOQuantityInput.setText(QtyfromTable)
