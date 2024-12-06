@@ -7,8 +7,8 @@ Remaining work:
 - I am getting really confused looking at this. Moving onto something else. 
 """
 
-#from frontend.PyGuis.EditWorkOrderWidget import Ui_CreateWorkOrderWidget
-from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
+from frontend.PyGuis.EditWorkOrderWidget import Ui_CreateWorkOrderWidget
+#from EditWorkOrderWidget import Ui_CreateWorkOrderWidget
 from PyQt5.QtCore import QDate
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore
