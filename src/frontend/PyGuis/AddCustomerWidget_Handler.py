@@ -2,7 +2,8 @@
 
 #Work remaining on this Handler:
 
-from frontend.PyGuis.AddCustomerWidget import Ui_AddNewCustomerWidget
+#from frontend.PyGuis.AddCustomerWidget import Ui_AddNewCustomerWidget
+from AddCustomerWidget import Ui_AddNewCustomerWidget
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -73,25 +74,29 @@ class AddCustomerWidgetHandler(qtw.QWidget):
     def saveNewCustData(self, state):
         self.changeBillingVis(state) #Update the UI accordingly before written data is saved
 
-        field1 = self.ui.accountNameInput.text()
-        field2 = self.ui.streetAddressLine1Input.text()
-        field3 = self.ui.billingStreetAddressLine2Input.text()
-        field4 = self.ui.lineEdit_4.text()
-        field5 = self.ui.regionInput.currentText()
-        field6 = self.ui.postalCodeInput.text()
-        field7 = self.ui.comboBox.currentText()
-        field8 = self.ui.phoneNumberInput.text()
-        field9 = self.ui.emailInput.text()
-        field10 = self.ui.comboBox_2.currentText()
-        field11 = self.ui.billingNameInput.text()
-        field12 = self.ui.billingStreetAddressLine1Input.text()
-        field13 = self.ui.billingStreetAddressLine2Input.text()
-        field14 = self.ui.billingCityInput.text()
-        field15 = self.ui.billingRegionInput.currentText()
-        field16 = self.ui.billingPostalCodeInput_2.text()
-        field17 = self.ui.billingCountryInput.currentText()
-        field18 = self.ui.billingPhoneNumberInput.text()
-        field19 = self.ui.billingEmailInput.text()
+        field = ["","","","","","","","",""]
+        field[0] = self.ui.accountNameInput.text()
+        field[1] = self.ui.streetAddressLine1Input.text()
+        field[2] = self.ui.billingStreetAddressLine2Input.text()
+        field[3] = self.ui.lineEdit_4.text()
+        field[4] = self.ui.regionInput.currentText()
+        field[5] = self.ui.postalCodeInput.text()
+        field[6] = self.ui.comboBox.currentText()
+        field[7] = self.ui.phoneNumberInput.text()
+        field[8] = self.ui.emailInput.text()
+        
+
+        #not including these in data tie in, just... waste of time.
+        # field10 = self.ui.comboBox_2.currentText()
+        # field11 = self.ui.billingNameInput.text()
+        # field12 = self.ui.billingStreetAddressLine1Input.text()
+        # field13 = self.ui.billingStreetAddressLine2Input.text()
+        # field14 = self.ui.billingCityInput.text()
+        # field15 = self.ui.billingRegionInput.currentText()
+        # field16 = self.ui.billingPostalCodeInput_2.text()
+        # field17 = self.ui.billingCountryInput.currentText()
+        # field18 = self.ui.billingPhoneNumberInput.text()
+        # field19 = self.ui.billingEmailInput.text()
 
         # self.ui.accountNameInput.text()
         # self.ui.streetAddressLine1Input.text()
@@ -113,6 +118,13 @@ class AddCustomerWidgetHandler(qtw.QWidget):
         # self.ui.billingPhoneNumberInput.text()
         # self.ui.billingEmailInput.text()
 
+        print(field)
+        
+        #-----------------------------------------------------
+        #James: 
+        # write fieldx to database - note that this one doesn't have the account ID as the 0th element!
+        # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email]
+        #-----------------------------------------------------
 
 
 if __name__ == '__main__':
