@@ -4,6 +4,7 @@
 
 #from frontend.PyGuis.AddCustomerWidget import Ui_AddNewCustomerWidget
 from frontend.PyGuis.AddCustomerWidget import Ui_AddNewCustomerWidget
+from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
 from PyQt5 import QtCore as qtc
@@ -92,6 +93,8 @@ class AddCustomerWidgetHandler(qtw.QWidget):
         # write field to database - note that this one doesn't have the account ID as the 0th element!
         # [Customer Acct Name, Add1, Add2, City, Region, Postal Code, Country, Phone number, Email]
         #-----------------------------------------------------
+        self.api = ApplicationHome()
+        self.api.customerFunctions('create', accountName=field[0])
 
 
 if __name__ == '__main__':

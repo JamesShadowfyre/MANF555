@@ -134,26 +134,28 @@ class ApplicationHome:
     
     def customerFunctions(self, functionType, **kwargs):
         if functionType == 'create':
-            # self.database.insert(table='customer', columns='clientid, createdby, operatorid, duration, quantity', 
-            #                 values=(str('\'' + clientid + '\',' + 
-            #                             '\'' + userid + '\',' + 
-            #                             '\'' + str(self.operator) + '\',' + 
-            #                             '\'' + str(self.duration) + '\',' + 
-            #                             '\'' +  str(self.quantity) +'\''
-            #                             )))
-            a = 0
+            self.database.insert(table='customer', columns='accountName', 
+                            values=(str('\'' + kwargs['accountName'] + '\'' #+ 
+                                        # '\'' + userid + '\',' + 
+                                        # '\'' + str(self.operator) + '\',' + 
+                                        # '\'' + str(self.duration) + '\',' + 
+                                        # '\'' +  str(self.quantity) +'\''
+                                        )))
         elif functionType == 'edit':
             self.database.delete(table='customer', conditions='accountName = ' + kwargs['accountName'])
-            # self.database.insert(table='customer', columns='clientid, createdby, operatorid, duration, quantity', 
-            #                 values=(str('\'' + clientid + '\',' + 
-            #                             '\'' + userid + '\',' + 
-            #                             '\'' + str(self.operator) + '\',' + 
-            #                             '\'' + str(self.duration) + '\',' + 
-            #                             '\'' +  str(self.quantity) +'\''
-            #                             )))
+            self.database.insert(table='customer', columns='accountName', 
+                            values=(str('\'' + kwargs['accountName'] + '\'' #+ 
+                                        # '\'' + userid + '\',' + 
+                                        # '\'' + str(self.operator) + '\',' + 
+                                        # '\'' + str(self.duration) + '\',' + 
+                                        # '\'' +  str(self.quantity) +'\''
+                                        )))
         elif functionType == 'remove':
             self.database.delete(table='customer', conditions='accountName = ' + kwargs['accountName'])
         elif functionType == 'get':
             customers = self.database.select(table='customer', fields=r'*', conditions=('accountName = \'' + kwargs['accountName'] + '\''))
+            return customers.fetchall()
+        elif functionType == 'getall':
+            customers = self.database.select(table='customer', fields=r'accountName', conditions=('1 = 1'))
             return customers.fetchall()
 
