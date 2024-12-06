@@ -666,6 +666,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="machineListButton">
+       <property name="text">
+        <string>Machine List</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
