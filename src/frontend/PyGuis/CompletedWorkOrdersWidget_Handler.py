@@ -1,6 +1,6 @@
 
 from frontend.PyGuis.CompletedWorkOrdersWidget import Ui_CompletedWorkOrders
-#from backend.apiAccessPoint import ApplicationHome
+from backend.apiAccessPoint import ApplicationHome
 #from CompletedWorkOrdersWidget import Ui_CompletedWorkOrders
 
 from PyQt5 import QtWidgets as qtw
@@ -25,7 +25,9 @@ class CompletedWorkOrdersWidgetHandler(qtw.QWidget):
         # Ensure query filters by COMPLETED DATE isNOT BLANK
         #["Work Order ID", "Scheduled Start Date", "Date Completed", "Account ID", "Drilling Arrangement", "Cost", "Operator"]
         #----------------------------------------------------- 
-        self.userData = [["WO1","15/12/2024","15/12/2024","ACCT-1",0, 10,"Operator1"], ["WO2","16/12/2024","16/12/2024","ACCT-2",1, 20,"Operator2"]]
+        self.api = ApplicationHome()
+        self.userData = self.api.setWorkOrderFunctions('completed')
+        #[["WO1","15/12/2024","15/12/2024","ACCT-1",0, 10,"Operator1"], ["WO2","16/12/2024","16/12/2024","ACCT-2",1, 20,"Operator2"]]
         #self.userData = self.api.setWorkOrderFunctions('loadOverview')
         #Table Operations Begin -----
         # Clear the table before populating

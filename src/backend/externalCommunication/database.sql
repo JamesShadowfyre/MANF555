@@ -16,6 +16,7 @@ Create Table IF NOT EXISTS workOrder (
     taskCode integer,
     startDate date,
     startTime decimal,
+    complete bool,
     FOREIGN KEY (clientid) REFERENCES customer(id),
     FOREIGN KEY (createdBy) REFERENCES user(id),
     FOREIGN KEY (operatorid) REFERENCES operator(id)
@@ -65,3 +66,4 @@ Create Table IF NOT EXISTS customer (
     billingEmail TEXT
 );
 
+update workOrder set complete = 1 where id = 3
