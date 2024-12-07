@@ -7,6 +7,7 @@ from frontend.PyGuis.CreateWorkOrderWidget_Handler import CreateNewWorkOrderHand
 from frontend.PyGuis.DeleteWorkOrderHandler import DeleteWorkOrderHandler
 from frontend.PyGuis.EditWorkOrder_Handler import EditWorkOrderHandler
 from frontend.PyGuis.CustomerManager_Handler import CustomerManagerHandler
+from frontend.PyGuis.CompletedWorkOrdersWidget_Handler import CompletedWorkOrdersWidgetHandler
 from backend.apiAccessPoint import ApplicationHome
 from PyQt5 import QtWidgets as qtw
 # from PyQt5 import QtGui
@@ -28,6 +29,11 @@ class WorkOrderManagerHomeHandler(qtw.QWidget):
         self.ui.completedWOButton.clicked.connect(self.completedWorkOrdersButtonClicked)
         self.ui.customerManagerButton.clicked.connect(self.customerManagerButtonClicked)
         self.ui.RefreshData.clicked.connect(self.refreshWorkOrderData)
+        self.ui.completedWOButton.clicked.connect(self.viewCompletedWOs)
+
+    def viewCompletedWOs(self):
+        self.ViewCompletedWO = CompletedWorkOrdersWidgetHandler()
+        self.ViewCompletedWO.show()
 
     def createWorkOrderButtonClicked(self):
         self.CreateWO = CreateNewWorkOrderHandler()
