@@ -66,3 +66,4 @@ Create Table IF NOT EXISTS customer (
     billingEmail TEXT
 );
 
+update workOrder set complete = 1 where id = 3

@@ -59,14 +59,15 @@ class WorkOrder:
         clientid = '1'#WorkOrder.db.select(table='customer', fields=r'id', conditions=('accountName = \'' + self.customer + '\'')).fetchone()[0]
         userid = str(User.getId())
         print(self.taskCode)
-        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity, taskcode, startDate', 
+        WorkOrder.db.insert(table='workOrder', columns='clientid, createdby, operatorid, duration, quantity, taskcode, startDate, complete', 
                             values=(str('\'' + clientid + '\',' + 
                                         '\'' + userid + '\',' + 
                                         '\'' + str(self.operator) + '\',' + 
                                         '\'' + str(self.duration) + '\',' + 
                                         '\'' +  str(self.quantity) +'\',' + 
                                         '\'' +  str(self.taskCode) +'\',' + 
-                                        '\'' +  str(self.startDate) +'\''
+                                        '\'' +  str(self.startDate) +'\','+
+                                        '\'' +  str(self.completed) +'\'' 
                                         )))
     
     def loadMap():
@@ -86,7 +87,10 @@ class WorkOrder:
         workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, clientid, taskcode', conditions='1 = 1')
         workOrders = workOrders.fetchall()
         return workOrders
-    
+    def loadComplete():
+        workOrders = WorkOrder.db.select(table='workOrder', fields=r'id, startDate, startTime, clientid, taskcode', conditions='complete = 1')
+        workOrders = workOrders.fetchall()
+        return workOrders
     def disconnect(self):
         for machine in self.machineList:
             machine.disconnect()

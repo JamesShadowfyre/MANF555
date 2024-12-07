@@ -109,6 +109,8 @@ class ApplicationHome:
                 if workOrder.getCompleted() == True:
                     completedList.append(workOrder)
             return completedList
+        elif functionType=='completed':
+            return WorkOrder.loadComplete()
         elif functionType =='loadmain':
             return WorkOrder.loadmain()
         elif functionType == 'loadOverview':
