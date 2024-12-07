@@ -53,7 +53,7 @@ class Ui_MachineList(object):
         item = self.tableWidget.item(0, 0)
         item.setText(_translate("MachineList", "Drilling"))
         item = self.tableWidget.item(0, 1)
-        item.setText(_translate("MachineList", "12 seconds"))
+        item.setText(_translate("MachineList", "30 seconds"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
 
